@@ -1,26 +1,40 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme {
+   /* PRIMARY : Couleur phare de ton branding */
+   --color-primary: #bc6c25;                 /* Terracotta (accent brunch, chaleureux) */
+   --color-on-primary: #fffdfa;              /* Texte sur primary (blanc cassé) */
+   --color-primary-container: #f9efe3;       /* Fond pâle/brunch (sable doux) */
+   --color-on-primary-container: #2d4059;    /* Texte sur le container (bleu profond) */
+ 
+   /* SECONDARY : Couleur secondaire */
+   --color-secondary: #2d4059;               /* Ocean Blue (profondeur, contraste) */
+   --color-on-secondary: #fffdfa;            /* Texte sur secondary */
+   --color-secondary-container: #e4c27a;     /* Or pâle (pour surligner) */
+   --color-on-secondary-container: #2d4059;  /* Texte foncé sur le container */
+ 
+   /* TERTIARY : Pour les détails, accents ludiques */
+   --color-tertiary: #e4c27a;                /* Gold accent */
+   --color-on-tertiary: #2d4059;             /* Texte bleu profond */
+   --color-tertiary-container: #fffdfa;      /* Fond blanc cassé */
+   --color-on-tertiary-container: #bc6c25;   /* Texte terracotta */
+ 
+   /* NEUTRALS : Fonds, surfaces */
+   --color-background: #fffdfa;              /* Blanc cassé général */
+   --color-surface: #f9efe3;                 /* Surface pâle (sable) */
+   --color-on-background: #2d4059;           /* Texte principal */
+   --color-on-surface: #2d4059;              /* Texte sur surface */
+ 
+   /* Autres utilitaires */
+   --color-outline: #d7ccc8;                 /* Warm gray (borders/lines) */
+   --color-shadow: 0 4px 24px rgba(45, 64, 89, 0.05);
+ 
+   /* Typography */
+   --font-logo: 'Pacifico', cursive;
+   --font-title: 'Playfair Display', serif;
+   --font-body: 'Montserrat', sans-serif;
+   --font-alt: 'Dancing Script', cursive;
+ 
+   /* Radius & autres */
+   --radius-xl: 2rem;
 }
