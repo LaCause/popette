@@ -1,46 +1,8 @@
-import Head from "next/head";
+import { ResolvedImage } from "../components/ResolvedImage/ResolvedImage";
 
-export default function AProposPage() {
+export default function AboutUsPage() {
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Restaurant",
-              name: "Popette Brunch",
-              image: "https://popette.com/images/hero-brunch.jpg",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "12 rue du Brunch",
-                addressLocality: "Arcachon",
-                postalCode: "33120",
-                addressCountry: "FR",
-              },
-              url: "https://popette.com",
-              telephone: "+33556000000",
-              priceRange: "€€",
-              servesCuisine: ["Brunch", "Végétarien", "Maison"],
-              openingHoursSpecification: [
-                {
-                  "@type": "OpeningHoursSpecification",
-                  dayOfWeek: [
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                    "Sunday",
-                  ],
-                  opens: "10:00",
-                  closes: "15:30",
-                },
-              ],
-            }),
-          }}
-        />
-      </Head>
       <main className="bg-[var(--color-background)] text-[var(--color-on-background)] py-16 px-6 sm:px-8 lg:px-16">
         <div className="max-w-5xl mx-auto space-y-20">
           {/* En-tête */}
@@ -73,8 +35,8 @@ export default function AProposPage() {
               </p>
             </div>
             <div className="overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1000&q=80"
+              <ResolvedImage
+                src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092"
                 alt="Cuisine Popette"
                 className="w-full h-full object-cover hover:scale-105 transition duration-300"
               />

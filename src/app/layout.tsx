@@ -1,4 +1,6 @@
+import Footer from "./components/Footer/Footer";
 import Navigation from "./components/Navigation/Navigation";
+import { ToastProvider } from "./components/ToastContainer/ToastContainer";
 import "./globals.css";
 
 export const metadata = {
@@ -54,7 +56,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`antialiased`}>
         <Navigation />
-        {children}
+        <ToastProvider>{children}</ToastProvider>
+        <Footer />
       </body>
     </html>
   );
