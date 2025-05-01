@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ResolvedImage } from "./components/ResolvedImage/ResolvedImage";
+import { IMAGE_TEST_URL } from "./constants/dev";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
@@ -370,35 +371,35 @@ export default async function Home() {
             <div className="grid grid-cols-2 sm:grid-cols-4 auto-rows-[8rem] sm:auto-rows-[10rem]">
               <div className="col-span-2 row-span-2 overflow-hidden">
                 <ResolvedImage
-                  src=""
+                  src={IMAGE_TEST_URL}
                   alt="Table de brunch"
                   className="w-full h-full object-cover hover:scale-105 transition duration-300"
                 />
               </div>
               <div className="overflow-hidden">
                 <ResolvedImage
-                  src=""
+                  src={IMAGE_TEST_URL}
                   alt="Pancakes"
                   className="w-full h-full object-cover hover:scale-105 transition duration-300"
                 />
               </div>
               <div className="row-span-2 overflow-hidden">
                 <ResolvedImage
-                  src=""
+                  src={IMAGE_TEST_URL}
                   alt="Avocado toast"
                   className="w-full h-full object-cover hover:scale-105 transition duration-300"
                 />
               </div>
               <div className="overflow-hidden">
                 <ResolvedImage
-                  src=""
+                  src={IMAGE_TEST_URL}
                   alt="Smoothie bowl"
                   className="w-full h-full object-cover hover:scale-105 transition duration-300"
                 />
               </div>
               <div className="col-span-2 overflow-hidden">
                 <ResolvedImage
-                  src=""
+                  src={IMAGE_TEST_URL}
                   alt="Café brunch"
                   className="w-full h-full object-cover hover:scale-105 transition duration-300"
                 />
