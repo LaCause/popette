@@ -20,7 +20,9 @@ export default function Navigation() {
     { href: "/", label: "Accueil" },
     { href: "/menu", label: "Menu" },
     { href: "/contact", label: "Contact" },
-    { href: "/a-propos", label: "À propos" },
+    { href: "/showcase", label: "Showcase" },
+    { href: "/about-us", label: "À propos" },
+    { href: "/blog", label: "Blog" },
   ];
 
   return (
@@ -69,11 +71,12 @@ export default function Navigation() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05, duration: 0.3 }}
+                  className="relative"
                 >
                   <Link
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="w-full block text-5xl text-left hover:text-[var(--color-primary)] transition"
+                    className="w-full block text-5xl text-left hover:text-primary typography-tertiary-m transition before:content-start before:h-3.5 before:w-full before:bg-amber-600 before:absolute before:left-0 before:bottom-0 before:z-[-1] before:scale-x-20 before:origin-top before:transition before:duration-200 hover:before:scale-x-100"
                   >
                     {item.label}
                   </Link>
