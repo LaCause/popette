@@ -1,12 +1,4 @@
-import Header from "./components/Header/Header";
-import Navigation from "./components/Navigation/Navigation";
-import Footer from "./components/Footer/Footer";
-import Image from "next/image";
-
 export default async function Home() {
-  const res = await fetch(`http://localhost:3000/api/articles`);
-  const articles = await res.json();
-
   return (
     <main className="min-h-screen bg-[var(--color-background)]">
       {/* HERO SECTION */}

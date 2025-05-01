@@ -1,3 +1,4 @@
+import Navigation from "./components/Navigation/Navigation";
 import "./globals.css";
 
 export const metadata = {
@@ -14,7 +15,7 @@ export const metadata = {
     "où bruncher Arcachon",
     "bon plan brunch Arcachon",
     "brunch gourmand Arcachon",
-    "brunch familial Arcachon"
+    "brunch familial Arcachon",
   ],
   openGraph: {
     title: "Popette Brunch – Brunch pas cher et gourmand à Arcachon",
@@ -27,22 +28,22 @@ export const metadata = {
         url: "https://popette-brunch.fr/og-image.jpg", // image de couverture optimisée
         width: 1200,
         height: 630,
-        alt: "Brunch pas cher à Arcachon – Popette Brunch"
-      }
+        alt: "Brunch pas cher à Arcachon – Popette Brunch",
+      },
     ],
     locale: "fr_FR",
-    type: "website"
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Brunch pas cher à Arcachon – Popette Brunch",
     description:
       "Popette Brunch à Arcachon : le brunch convivial, gourmand et abordable pour tous !",
-    images: ["https://popette-brunch.fr/og-image.jpg"]
+    images: ["https://popette-brunch.fr/og-image.jpg"],
   },
   icons: {
-    icon: "/favicon.ico"
-  }
+    icon: "/favicon.ico",
+  },
 };
 export default function RootLayout({
   children,
@@ -51,9 +52,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`antialiased`}
-      >
+      <body className={`antialiased`}>
+        <Navigation />
         {children}
       </body>
     </html>
