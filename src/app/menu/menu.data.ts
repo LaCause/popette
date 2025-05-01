@@ -1,5 +1,3 @@
-// app/menu/menu.data.ts
-
 export type MenuItem = {
   name: string;
   description: string;
