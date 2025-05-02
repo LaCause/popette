@@ -1,7 +1,7 @@
 "use client";
 
 interface SEOJsonLdProps {
-  json: Record<string, any>;
+  json: Record<string, unknown>;
 }
 
 export const SEOJsonLd = ({ json }: SEOJsonLdProps) => {
