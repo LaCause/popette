@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "hard:clean": "rm -rf .next && rm -rf tsconfig.tsbuildinfo && rm -rf node_modules && npm cache clean --force && npm i",
+    "codemod:force": "npx @next/codemod@canary next-async-request-api . --force"
   },
   "dependencies": {
     "@radix-ui/react-toast": "^1.2.11",

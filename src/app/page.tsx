@@ -30,7 +30,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
   };
 };
 
-export default async function Home() {
+export default function Page() {
   return (
     <>
       <script
