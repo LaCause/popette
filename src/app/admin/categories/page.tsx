@@ -51,9 +51,7 @@ export default function AdminCategoriesPage() {
   };
 
   return (
-    <div className="p-8 max-w-xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Catégories du menu</h1>
-
+    <div className="max-w-4xl mx-auto p-6 space-y-8">
       <ul className="mb-6 space-y-2">
         {categories.map((cat) => (
           <li

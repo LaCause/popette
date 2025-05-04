@@ -11,15 +11,18 @@
     "codemod:force": "npx @next/codemod@canary next-async-request-api . --force",
     "prisma:migrate": "npx prisma migrate dev --name init",
     "prisma:generate": "npx prisma generate",
-    "prisma:studio": "npx prisma studio"
+    "prisma:studio": "npx prisma studio",
+    "create:admin": "ts-node scripts/createAdmin.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.7.0",
     "@prisma/extension-optimize": "^1.1.8",
     "@radix-ui/react-toast": "^1.2.11",
+    "bcryptjs": "^3.0.2",
     "framer-motion": "^12.9.4",
     "lucide-react": "^0.503.0",
     "next": "15.3.1",
+    "next-auth": "^4.24.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "resend": "^4.4.1",
@@ -28,6 +31,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^3.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -35,6 +39,7 @@
     "eslint-config-next": "15.3.1",
     "prisma": "^6.7.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }

@@ -20,10 +20,11 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
+    console.log(body);
 
     const newDish = await prisma.menuItem.create({
       data: {
-        title: body.name, // body.name provient du client, mais le champ est "title" dans Prisma
+        title: body.title,
         price: body.price,
         category: { connect: { id: body.categoryId } },
       },

@@ -62,19 +62,14 @@ export default function AdminMenuPage() {
       categoryId: parseInt(categoryId),
     };
 
-    if (editId) {
-      await fetch(`/api/dishes/${editId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-    } else {
-      await fetch("/api/dishes", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-    }
+    const method = editId ? "PUT" : "POST";
+    const endpoint = editId ? `/api/dishes/${editId}` : "/api/dishes";
+
+    await fetch(endpoint, {
+      method,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
 
     resetForm();
     fetchItems();
@@ -95,109 +90,121 @@ export default function AdminMenuPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-8">
-      <h1 className="text-3xl font-bold">Gestion du menu</h1>
-
-      <div className="space-y-4 bg-white p-6 shadow-md rounded-md">
-        <h2 className="text-xl font-semibold">
+    <div className="max-w-5xl mx-auto p-6 space-y-12">
+      {/* Formulaire */}
+      <section className="border border-gray-200 bg-white p-6 space-y-4 shadow-sm">
+        <h2 className="text-xl font-semibold text-gray-900 tracking-tight">
           {editId ? "Modifier un plat" : "Ajouter un plat"}
         </h2>
 
-        <input
-          className="border p-2 w-full"
-          placeholder="Nom du plat"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea
-          className="border p-2 w-full"
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input
-          className="border p-2 w-full"
-          placeholder="Prix"
-          type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
-        <input
-          className="border p-2 w-full"
-          placeholder="URL de l'image"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-        />
-        <select
-          className="border p-2 w-full"
-          value={categoryId}
-          onChange={(e) => setCategoryId(e.target.value)}
-        >
-          <option value="">Sélectionner une catégorie</option>
-          {categories.map((cat) => (
-            <option key={cat.id} value={cat.id}>
-              {cat.name}
-            </option>
-          ))}
-        </select>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input
+            className="form-input"
+            placeholder="Nom du plat"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <input
+            className="form-input"
+            placeholder="Prix (€)"
+            type="number"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+          <input
+            className="form-input"
+            placeholder="URL de l'image"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+          />
+          <select
+            className="form-input"
+            value={categoryId}
+            onChange={(e) => setCategoryId(e.target.value)}
+          >
+            <option value="">Catégorie</option>
+            {categories.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.name}
+              </option>
+            ))}
+          </select>
+          <textarea
+            className="form-input md:col-span-2"
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <button
             onClick={submit}
-            className="bg-green-600 text-white px-4 py-2 rounded"
+            className="bg-primary text-white px-5 py-2 text-sm tracking-wide hover:opacity-90 transition"
           >
             {editId ? "Mettre à jour" : "Ajouter"}
           </button>
           {editId && (
             <button
               onClick={resetForm}
-              className="text-gray-600 underline ml-2"
+              className="text-gray-500 hover:text-gray-800 text-sm"
             >
               Annuler
             </button>
           )}
         </div>
-      </div>
+      </section>
 
-      <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Plats existants</h2>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {/* Liste des plats */}
+      <section>
+        <h2 className="text-xl font-semibold text-gray-900 mb-4 tracking-tight">
+          Plats existants
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {items.map((dish) => (
-            <li
+            <div
               key={dish.id}
-              className="border p-4 rounded shadow-sm bg-white space-y-2"
+              className="border border-gray-200 p-4 space-y-2 bg-white shadow-sm"
             >
-              <div className="text-lg font-bold">{dish.title}</div>
+              <div className="flex justify-between items-center">
+                <h3 className="text-base font-medium">{dish.title}</h3>
+                <span className="text-sm font-semibold text-primary">
+                  {dish.price.toFixed(2)} €
+                </span>
+              </div>
+
               {dish.imageUrl && (
                 <img
                   src={dish.imageUrl}
                   alt={dish.title}
-                  className="w-full h-32 object-cover rounded"
+                  className="w-full h-36 object-cover"
                 />
               )}
-              <div className="text-sm text-gray-700">{dish.description}</div>
-              <div className="text-sm">Prix : {dish.price.toFixed(2)} €</div>
-              <div className="text-sm text-gray-500">
+
+              <p className="text-sm text-gray-700">{dish.description}</p>
+
+              <div className="text-xs text-gray-500">
                 Catégorie : {dish.category.name}
               </div>
-              <div className="flex gap-2 mt-2">
+
+              <div className="flex gap-3 pt-2 text-sm">
                 <button
                   onClick={() => handleEdit(dish)}
-                  className="text-blue-600"
+                  className="text-blue-600 hover:underline"
                 >
                   Modifier
                 </button>
                 <button
                   onClick={() => handleDelete(dish.id)}
-                  className="text-red-600"
+                  className="text-red-600 hover:underline"
                 >
                   Supprimer
                 </button>
               </div>
-            </li>
+            </div>
           ))}
-        </ul>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

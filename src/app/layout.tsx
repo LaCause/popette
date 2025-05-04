@@ -3,6 +3,7 @@ import Footer from "./components/Footer/Footer";
 import Navigation from "./components/Navigation/Navigation";
 import { ToastProvider } from "./components/ToastContainer/ToastContainer";
 import "./globals.css";
+import { SessionProviderWrapper } from "./providers/sessionProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -35,8 +36,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased`}>
-        <Navigation />
-        <ToastProvider>{children}</ToastProvider>
+        <SessionProviderWrapper>
+          <Navigation />
+          <ToastProvider>{children}</ToastProvider>
+        </SessionProviderWrapper>
         <Footer />
       </body>
     </html>
