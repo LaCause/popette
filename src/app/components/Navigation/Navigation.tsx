@@ -4,9 +4,12 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { X, Menu } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { signOut, useSession } from "next-auth/react";
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
+  const { data: session, status } = useSession();
+  const userIsAuthenticated = status === "authenticated";
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -33,6 +36,23 @@ export default function Navigation() {
       >
         Popette
       </Link>
+
+      {userIsAuthenticated && (
+        <>
+          <Link
+            className="bg-primary text-on-primary typography-primary-xs py-1 px-6 rounded-sm transition ml-auto mr-4"
+            href={"/admin"}
+          >
+            Admin
+          </Link>
+          <button
+            className="bg-primary text-on-primary typography-primary-xs py-1 px-6 rounded-sm transition mr-4"
+            onClick={() => signOut({ callbackUrl: "/admin/login" })}
+          >
+            Deconnexion
+          </button>
+        </>
+      )}
 
       <button
         onClick={() => setOpen(true)}
