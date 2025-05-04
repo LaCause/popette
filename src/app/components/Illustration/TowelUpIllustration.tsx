@@ -3,7 +3,7 @@ const TowelUpIllustration = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
-    viewBox="0 0 200 200"
+    viewBox="0 0 340 180"
     preserveAspectRatio="xMidYMid meet"
     className={`w-full h-auto ${props.className ?? ""}`}
     {...props}

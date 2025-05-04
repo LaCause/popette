@@ -2,8 +2,6 @@ import { Metadata } from "next";
 import { ResolvedImage } from "./components/ResolvedImage/ResolvedImage";
 import { SEO_HOME } from "./constants/seo";
 import HeroSection from "./components/Hero/HeroSection/HeroSection";
-import PancakesIllustrationMotion from "./components/Illustration/PancakesIllustration";
-import { useRef } from "react";
 
 export const metadata: Metadata = {
   title: SEO_HOME.title,
@@ -35,12 +33,12 @@ export default function Page() {
         {/* ABOUT US */}
         <section
           id="a-propos"
-          className="bg-[var(--color-tertiary-container)] text-[var(--color-on-primary-container)] py-16 px-6 sm:px-8 lg:px-16"
+          className="bg-tertiary-container text-on-primary-container py-16 px-6 sm:px-8 lg:px-16"
         >
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Texte */}
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-title font-semibold">
+              <h2 className="typography-tertiary-xl-bold tracking-widest text-primary">
                 Notre histoire
               </h2>
               <p className="font-body text-base leading-relaxed text-[var(--color-on-primary-container)]/90">
@@ -361,66 +359,6 @@ export default function Page() {
                 </div>
               </article>
             </div>
-          </div>
-        </section>
-
-        {/* RESERVATION */}
-        {/* <section
-          id="reservation"
-          className="bg-[var(--color-tertiary-container)] text-[var(--color-on-tertiary-container)] py-16 px-6 sm:px-8 lg:px-16 text-center"
-        >
-          <div className="max-w-2xl mx-auto space-y-6">
-            <h2 className="text-3xl md:text-4xl font-title font-semibold">
-              Réserver une table
-            </h2>
-            <p className="font-body text-base md:text-lg text-[var(--color-on-tertiary-container)]/80">
-              Vous souhaitez venir bruncher ce week-end ? Pensez à réserver pour
-              garantir votre table.
-            </p>
-            <a
-              href="https://www.thefork.fr/restaurant/nom-de-ton-etablissement"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-6 py-3 bg-[var(--color-primary)] text-[var(--color-on-primary)] font-body font-semibold rounded-full shadow hover:scale-105 transition"
-            >
-              Réserver en ligne
-            </a>
-          </div>
-        </section> */}
-
-        {/* NEWSLETTER */}
-        <section
-          id="newsletter"
-          className="bg-[var(--color-surface)] text-[var(--color-on-surface)] py-16 px-6 sm:px-8 lg:px-16"
-        >
-          <div className="max-w-xl mx-auto text-center space-y-6">
-            <h2 className="text-3xl md:text-4xl font-title font-semibold">
-              Restez dans la boucle
-            </h2>
-            <p className="font-body text-base text-[var(--color-on-surface)]/80">
-              Recevez nos menus du week-end, les nouveautés de saison et nos
-              événements directement dans votre boîte mail.
-            </p>
-
-            {/* Formulaire */}
-            <form className="mt-4 flex flex-col sm:flex-row items-center gap-4 justify-center">
-              <input
-                type="email"
-                required
-                placeholder="Votre adresse email"
-                className="w-full sm:w-auto px-4 py-3 border border-[var(--color-outline)] bg-[var(--color-background)] text-[var(--color-on-background)] font-body rounded-full focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition"
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 bg-[var(--color-primary)] text-[var(--color-on-primary)] font-body font-semibold rounded-full shadow hover:scale-105 transition"
-              >
-                S’abonner
-              </button>
-            </form>
-
-            <p className="text-xs font-body text-[var(--color-on-surface)]/60 mt-2">
-              Pas de spam, promis. Vous pouvez vous désabonner à tout moment.
-            </p>
           </div>
         </section>
       </main>
