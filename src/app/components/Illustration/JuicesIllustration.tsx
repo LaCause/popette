@@ -2,9 +2,10 @@ import * as React from "react";
 const JuicesIllustration = (props: React.JSX.IntrinsicElements["svg"]) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={69}
-    height={69}
     fill="none"
+    viewBox="0 0 200 200"
+    preserveAspectRatio="xMidYMid meet"
+    className={`w-full h-auto ${props.className ?? ""}`}
     {...props}
   >
     <path

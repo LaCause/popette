@@ -1,32 +1,40 @@
 "use client";
 
 import { motion } from "framer-motion";
-import HeroIllustration from "../../Illustration/HeroIllustration";
+import { useRef } from "react";
+import PancakesIllustrationMotion from "../../Illustration/PancakesIllustration";
+import { ResolvedImage } from "../../ResolvedImage/ResolvedImage";
+import CurvedText from "../../CurvedText/CurvedText";
+import EggBaconIllustration from "../../Illustration/EggBacon";
 
 export default function HeroSection() {
+  const ref = useRef<HTMLElement>(null); //
   return (
     <>
-      <HeroIllustration className="absolute top-0 left-0 w-full h-full z-30" />
-      <section className="relative min-h-[80vh] flex items-center justify-center text-center px-6 py-24 bg-[var(--color-primary-container)] text-[var(--color-on-primary-container)] overflow-hidden">
+      <section
+        ref={ref}
+        className="relative min-h-[80vh] flex items-center justify-center text-center px-6 py-48 bg-[var(--color-tertiary-container)] text-[var(--color-on-primary-container)]"
+      >
         <div
           className="absolute inset-0 z-0 bg-[url('/')] bg-cover bg-center opacity-30 blur-sm scale-105"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-[var(--color-primary-container)]/70 backdrop-blur-md z-10" />
+        <div className="absolute inset-0 bg-[var(--color-tertiary-container)]/70 backdrop-blur-md z-10" />
         <motion.div
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="relative z-20 max-w-3xl space-y-8"
         >
-          <h1 className="font-logo text-4xl sm:text-5xl md:text-6xl tracking-wide leading-tight drop-shadow-sm">
-            Popette Brunch
+          <h1 className="font-logo text-4xl sm:text-5xl md:text-9xl tracking-wide leading-tight drop-shadow-sm text-primary">
+            Popette
           </h1>
 
-          <p className="font-body text-base sm:text-lg md:text-xl text-[var(--color-on-primary-container)]/90 leading-relaxed">
-            Une parenthèse gourmande en plein cœur d’Arcachon. Produits frais,
-            ambiance chaleureuse, et recettes maison pour tous les appétits.
-          </p>
+          <span className="font-logo text-primary text-3xl tracking-wide leading-tight">
+            Brunch
+          </span>
+
+          <CurvedText text="Chill vibes, No Hype" className="uppercase" />
 
           <div>
             <a
@@ -36,6 +44,11 @@ export default function HeroSection() {
               Voir le menu
             </a>
           </div>
+          <EggBaconIllustration className="w-28 mx-auto z-30 absolute" />
+          <PancakesIllustrationMotion
+            scrollRef={ref}
+            className="w-28 mx-auto z-30 absolute"
+          />
         </motion.div>
       </section>
     </>

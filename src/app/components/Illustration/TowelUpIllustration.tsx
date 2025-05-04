@@ -2,9 +2,10 @@ import * as React from "react";
 const TowelUpIllustration = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={324}
-    height={167}
     fill="none"
+    viewBox="0 0 200 200"
+    preserveAspectRatio="xMidYMid meet"
+    className={`w-full h-auto ${props.className ?? ""}`}
     {...props}
   >
     <path fill="#fff" d="M323.33 166.26 1.23 122.02 182.01.46l141.32 165.8Z" />
