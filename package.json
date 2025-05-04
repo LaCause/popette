@@ -8,9 +8,14 @@
     "start": "next start",
     "lint": "next lint",
     "hard:clean": "rm -rf .next && rm -rf tsconfig.tsbuildinfo && rm -rf node_modules && npm cache clean --force && npm i",
-    "codemod:force": "npx @next/codemod@canary next-async-request-api . --force"
+    "codemod:force": "npx @next/codemod@canary next-async-request-api . --force",
+    "prisma:migrate": "npx prisma migrate dev --name init",
+    "prisma:generate": "npx prisma generate",
+    "prisma:studio": "npx prisma studio"
   },
   "dependencies": {
+    "@prisma/client": "^6.7.0",
+    "@prisma/extension-optimize": "^1.1.8",
     "@radix-ui/react-toast": "^1.2.11",
     "framer-motion": "^12.9.4",
     "lucide-react": "^0.503.0",
@@ -28,6 +33,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
+    "prisma": "^6.7.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
