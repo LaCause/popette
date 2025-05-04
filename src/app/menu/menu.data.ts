@@ -12,6 +12,24 @@ export type MenuCategory = {
 
 export const menuData: MenuCategory[] = [
   {
+    id: "Formules",
+    title: "Formules",
+    items: [
+      {
+        name: "Popette Brunch",
+        description:
+          "Pain brioché, crevettes, avocat, pickles d’oignons, mangue, sauce blanche aux agrumes",
+        price: "28",
+      },
+      {
+        name: "Le Mini Popette",
+        description:
+          "Pain de campagne, écrasé d’avocat, œuf poché, citron vert",
+        price: "28",
+      },
+    ],
+  },
+  {
     id: "brunch",
     title: "Brunch salé & sucré",
     items: [
