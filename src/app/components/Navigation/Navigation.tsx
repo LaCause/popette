@@ -26,7 +26,7 @@ export default function Navigation() {
   ];
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 bg-[var(--color-background)] shadow backdrop-blur-md border-b border-[var(--color-outline)]">
+    <header className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 shadow backdrop-blur-md">
       <Link
         href="/"
         className="font-logo text-3xl text-[var(--color-primary)] tracking-wider"

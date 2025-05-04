@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { ResolvedImage } from "./components/ResolvedImage/ResolvedImage";
 import { SEO_HOME } from "./constants/seo";
 import HeroSection from "./components/Hero/HeroSection/HeroSection";
+import PancakesIllustrationMotion from "./components/Illustration/PancakesIllustration";
+import { useRef } from "react";
 
 export const metadata: Metadata = {
   title: SEO_HOME.title,
