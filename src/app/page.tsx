@@ -1,33 +1,21 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import { ResolvedImage } from "./components/ResolvedImage/ResolvedImage";
-import { IMAGE_TEST_URL } from "./constants/dev";
+import { SEO_HOME } from "./constants/seo";
 
-export const generateMetadata = async (): Promise<Metadata> => {
-  return {
-    title: "Popette – Brunch maison à Arcachon",
-    description:
-      "Brunch fait maison, local et gourmand à Arcachon. Popette vous accueille avec des produits frais, dans une ambiance conviviale.",
-    alternates: {
-      canonical: "https://popette.com",
-    },
-    openGraph: {
-      title: "Popette – Brunch maison à Arcachon",
-      description:
-        "Brunch fait maison, local et gourmand à Arcachon. Popette vous accueille avec des produits frais, dans une ambiance conviviale.",
-      url: "https://popette.com",
-      siteName: "Popette",
-      images: [
-        {
-          url: "https://popette.com/og-image.jpg",
-          width: 1200,
-          height: 630,
-          alt: "Popette – Brunch maison à Arcachon",
-        },
-      ],
-      locale: "fr_FR",
-      type: "website",
-    },
-  };
+export const metadata: Metadata = {
+  title: SEO_HOME.title,
+  description: SEO_HOME.description,
+  openGraph: {
+    title: SEO_HOME.title,
+    description: SEO_HOME.description,
+    url: "https://popette-brunch.com",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SEO_HOME.title,
+    description: SEO_HOME.description,
+  },
 };
 
 export default function Page() {
@@ -35,39 +23,7 @@ export default function Page() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Restaurant",
-            name: "Popette",
-            image: "https://popette.com/images/og-image.jpg",
-            url: "https://popette.com",
-            telephone: "+33556000000",
-            priceRange: "€€",
-            servesCuisine: ["Brunch", "Cuisine maison", "Végétarien"],
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "12 rue du Brunch",
-              addressLocality: "Arcachon",
-              postalCode: "33120",
-              addressCountry: "FR",
-            },
-            openingHoursSpecification: [
-              {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: [
-                  "Wednesday",
-                  "Thursday",
-                  "Friday",
-                  "Saturday",
-                  "Sunday",
-                ],
-                opens: "10:00",
-                closes: "15:30",
-              },
-            ],
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: SEO_HOME.jsonLd }}
       />
       <main className="min-h-screen bg-[var(--color-background)]">
         {/* HERO SECTION */}
@@ -104,7 +60,7 @@ export default function Page() {
         {/* ABOUT US */}
         <section
           id="a-propos"
-          className="bg-[var(--color-primary-container)] text-[var(--color-on-primary-container)] py-16 px-6 sm:px-8 lg:px-16"
+          className="bg-[var(--color-tertiary-container)] text-[var(--color-on-primary-container)] py-16 px-6 sm:px-8 lg:px-16"
         >
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Texte */}
@@ -347,63 +303,6 @@ export default function Page() {
               ></iframe>
               {/* Overlay graphique facultatif */}
               <div className="absolute inset-0 pointer-events-none ring-2 ring-[var(--color-primary)] mix-blend-multiply opacity-10"></div>
-            </div>
-          </div>
-        </section>
-
-        {/* /* SECTION GALERIE */}
-        <section
-          id="galerie"
-          className="bg-[var(--color-background)] text-[var(--color-on-background)]"
-        >
-          <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-16 py-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-title font-semibold">
-              Un brunch en images
-            </h2>
-            <p className="mt-2 text-sm md:text-base font-body text-[var(--color-on-background)]/80">
-              Plats maison, sourires et ambiance chaleureuse à découvrir en
-              salle.
-            </p>
-          </div>
-
-          {/* Patchwork sans espacement */}
-          <div className="max-w-[100rem] mx-auto">
-            <div className="grid grid-cols-2 sm:grid-cols-4 auto-rows-[8rem] sm:auto-rows-[10rem]">
-              <div className="col-span-2 row-span-2 overflow-hidden">
-                <ResolvedImage
-                  src={IMAGE_TEST_URL}
-                  alt="Table de brunch"
-                  className="w-full h-full object-cover hover:scale-105 transition duration-300"
-                />
-              </div>
-              <div className="overflow-hidden">
-                <ResolvedImage
-                  src={IMAGE_TEST_URL}
-                  alt="Pancakes"
-                  className="w-full h-full object-cover hover:scale-105 transition duration-300"
-                />
-              </div>
-              <div className="row-span-2 overflow-hidden">
-                <ResolvedImage
-                  src={IMAGE_TEST_URL}
-                  alt="Avocado toast"
-                  className="w-full h-full object-cover hover:scale-105 transition duration-300"
-                />
-              </div>
-              <div className="overflow-hidden">
-                <ResolvedImage
-                  src={IMAGE_TEST_URL}
-                  alt="Smoothie bowl"
-                  className="w-full h-full object-cover hover:scale-105 transition duration-300"
-                />
-              </div>
-              <div className="col-span-2 overflow-hidden">
-                <ResolvedImage
-                  src={IMAGE_TEST_URL}
-                  alt="Café brunch"
-                  className="w-full h-full object-cover hover:scale-105 transition duration-300"
-                />
-              </div>
             </div>
           </div>
         </section>

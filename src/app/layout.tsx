@@ -23,11 +23,11 @@ import "./globals.css";
 //     title: "Popette Brunch – Brunch pas cher et gourmand à Arcachon",
 //     description:
 //       "Popette Brunch vous propose un brunch copieux, pas cher et convivial à Arcachon. Produits locaux, formules adaptées à tous les budgets, terrasse ensoleillée et ambiance chaleureuse.",
-//     url: "https://popette-brunch.fr", // Remplace par ton vrai domaine
+//     url: "https://popette-brunch.fr",
 //     siteName: "Popette Brunch",
 //     images: [
 //       {
-//         url: "https://popette-brunch.fr/og-image.jpg", // image de couverture optimisée
+//         url: "https://popette-brunch.fr/og-image.jpg",
 //         width: 1200,
 //         height: 630,
 //         alt: "Brunch pas cher à Arcachon – Popette Brunch",

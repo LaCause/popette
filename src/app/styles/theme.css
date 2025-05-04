@@ -27,28 +27,30 @@
 }
 
 @theme {
-  --color-primary: #bc6c25;
+  /* --color-primary: #df492c; */
+  /* --color-primary: #c16856; */
+  --color-primary: #b8503d; /* Rouge terracotta : profond, appétissant */
   --color-on-primary: #fffdfa;
-  --color-primary-container: #f9efe3;
-  --color-on-primary-container: #2d4059;
+  --color-primary-container: #fbe9e6; /* Version pastel/crémeuse */
+  --color-on-primary-container: #3a120c;
 
-  --color-secondary: #2d4059;
+  --color-secondary: #3e2e2c; /* Chocolat noir, pour contraste et élégance */
   --color-on-secondary: #fffdfa;
-  --color-secondary-container: #e4c27a;
-  --color-on-secondary-container: #2d4059;
+  --color-secondary-container: #e9d9d6;
+  --color-on-secondary-container: #24120f;
 
-  --color-tertiary: #e4c27a;
-  --color-on-tertiary: #2d4059;
-  --color-tertiary-container: #fffdfa;
-  --color-on-tertiary-container: #bc6c25;
+  --color-tertiary: #dbb891; /* Beige caramel doux, évoque les viennoiseries ou le bois clair */
+  --color-on-tertiary: #3e2c20;
+  --color-tertiary-container: #fff4eb;
+  --color-on-tertiary-container: #7b4b35;
 
   --color-background: #fffdfa;
-  --color-surface: #f9efe3;
-  --color-on-background: #2d4059;
-  --color-on-surface: #2d4059;
+  --color-surface: #fcf4f1;
+  --color-on-background: #3a2a25;
+  --color-on-surface: #4a322c;
 
-  --color-outline: #d7ccc8;
-  --color-shadow: 0 4px 24px rgba(45, 64, 89, 0.05);
+  --color-outline: #dbc8c2;
+  --color-shadow: 0 4px 24px rgba(75, 45, 35, 0.06);
 
   --font-body: "Montserrat", sans-serif;
   --font-title: "Playfair Display", serif;

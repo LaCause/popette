@@ -1,11 +1,32 @@
+import { Metadata } from "next";
 import { ResolvedImage } from "../components/ResolvedImage/ResolvedImage";
+import { SEO_ABOUT } from "../constants/seo";
+
+export const metadata: Metadata = {
+  title: SEO_ABOUT.title,
+  description: SEO_ABOUT.description,
+  openGraph: {
+    title: SEO_ABOUT.title,
+    description: SEO_ABOUT.description,
+    url: "https://popette-brunch.com",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SEO_ABOUT.title,
+    description: SEO_ABOUT.description,
+  },
+};
 
 export default function AboutUsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: SEO_ABOUT.jsonLd }}
+      />
       <main className="bg-[var(--color-background)] text-[var(--color-on-background)] py-16 px-6 sm:px-8 lg:px-16">
         <div className="max-w-5xl mx-auto space-y-20">
-          {/* En-tête */}
           <header className="text-center space-y-4">
             <h1 className="text-4xl font-title font-semibold">
               À propos de Popette
@@ -16,7 +37,6 @@ export default function AboutUsPage() {
             </p>
           </header>
 
-          {/* Notre histoire */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="space-y-4">
               <h2 className="text-2xl font-title font-semibold">
@@ -43,7 +63,6 @@ export default function AboutUsPage() {
             </div>
           </section>
 
-          {/* Nos valeurs */}
           <section className="space-y-8 text-center">
             <h2 className="text-2xl font-title font-semibold">Nos valeurs</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
