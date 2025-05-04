@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { ResolvedImage } from "./components/ResolvedImage/ResolvedImage";
 import { SEO_HOME } from "./constants/seo";
+import HeroSection from "./components/Hero/HeroSection/HeroSection";
 
 export const metadata: Metadata = {
   title: SEO_HOME.title,
@@ -26,36 +27,8 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: SEO_HOME.jsonLd }}
       />
       <main className="min-h-screen bg-[var(--color-background)]">
-        {/* HERO SECTION */}
-        <section className="relative min-h-[70vh] flex items-center justify-center text-center px-6 py-16 bg-[var(--color-primary-container)] text-[var(--color-on-primary-container)]">
-          {/* Image de fond */}
-          <div
-            className="absolute inset-0 z-0 bg-[url('/images/hero-brunch.jpg')] bg-cover bg-center opacity-20"
-            aria-hidden="true"
-          ></div>
-
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-[var(--color-primary-container)]/60 backdrop-blur-sm z-10"></div>
-
-          {/* Contenu */}
-          <div className="relative z-20 max-w-3xl space-y-6">
-            <h1 className="font-logo text-4xl sm:text-5xl md:text-6xl tracking-wide">
-              Popette Brunch
-            </h1>
-            <p className="font-body text-base sm:text-lg md:text-xl text-[var(--color-on-primary-container)]/90">
-              Une parenthèse gourmande en plein cœur d’Arcachon. Produits frais,
-              ambiance chaleureuse, et recettes maison pour tous les appétits.
-            </p>
-            <div>
-              <a
-                href="#menu"
-                className="inline-block rounded-full px-6 py-3 bg-[var(--color-primary)] text-[var(--color-on-primary)] font-body font-semibold text-sm uppercase shadow hover:scale-105 transition"
-              >
-                Voir le menu
-              </a>
-            </div>
-          </div>
-        </section>
+        {/* <HeroIllustration /> */}
+        <HeroSection />
 
         {/* ABOUT US */}
         <section
