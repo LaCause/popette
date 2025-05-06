@@ -1,5 +1,6 @@
 "use client";
 
+import { ResolvedImage } from "@/app/components/ResolvedImage/ResolvedImage";
 import { useEffect, useState } from "react";
 
 interface Category {
@@ -175,7 +176,7 @@ export default function AdminMenuPage() {
               </div>
 
               {dish.imageUrl && (
-                <img
+                <ResolvedImage
                   src={dish.imageUrl}
                   alt={dish.title}
                   className="w-full h-36 object-cover"

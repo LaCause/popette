@@ -37,6 +37,7 @@ export async function PUT(
 
     return NextResponse.json(updatedItem);
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { error: "Item not found or update failed" },
       { status: 500 }
