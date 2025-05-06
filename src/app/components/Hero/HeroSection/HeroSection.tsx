@@ -44,7 +44,7 @@ export default function HeroSection() {
               Voir le menu
             </a>
             <a
-              href="#menu"
+              href="/contact"
               className="inline-block rounded-full px-6 py-3 bg-[var(--color-primary)] text-[var(--color-on-primary)] font-body font-semibold text-sm uppercase shadow-md hover:scale-105 hover:shadow-lg transition"
             >
               Contactez-nous

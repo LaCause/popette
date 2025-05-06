@@ -23,9 +23,15 @@ export const metadata: Metadata = {
     creator: "@popettebrunch",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" },
+    ],
     apple: "/apple-touch-icon.png",
+    shortcut: "favicon.ico",
   },
+  // manifest: "/site.webmanifest",
   metadataBase: new URL("https://popette-brunch.com"),
 };
 export default function RootLayout({

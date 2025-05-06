@@ -64,6 +64,7 @@ export default function AdminMenuPage() {
 
     const method = editId ? "PUT" : "POST";
     const endpoint = editId ? `/api/dishes/${editId}` : "/api/dishes";
+    console.log(method, endpoint, body);
 
     await fetch(endpoint, {
       method,

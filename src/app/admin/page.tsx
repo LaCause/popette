@@ -17,18 +17,6 @@ const sections = [
     icon: BookOpen,
     description: "Organisez vos plats par catégorie.",
   },
-  {
-    name: "Commentaires",
-    href: "/admin/blog/comments",
-    icon: MessageCircle,
-    description: "Modérez les retours des clients.",
-  },
-  {
-    name: "Paramètres du blog",
-    href: "/admin/blog/settings",
-    icon: Settings,
-    description: "Configurez les options du blog.",
-  },
 ];
 
 export default function DashboardAdmin() {
