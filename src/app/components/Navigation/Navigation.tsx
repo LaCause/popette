@@ -5,6 +5,9 @@ import Link from "next/link";
 import { X, Menu } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { signOut, useSession } from "next-auth/react";
+import EggBaconIllustrationMotion from "../Illustration/EggBacon";
+import CoffeeIllustration from "../Illustration/CoffeeIllustration";
+import BreadIllustration from "../Illustration/BreadIllustration";
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
@@ -64,46 +67,74 @@ export default function Navigation() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", stiffness: 260, damping: 30 }}
-            className="fixed inset-0 z-50 bg-[var(--color-surface)] text-[var(--color-on-surface)]"
-          >
-            <div className="flex justify-between items-center px-6 py-4 border-b border-[var(--color-outline)]">
-              <span className="font-logo text-3xl text-[var(--color-primary)] tracking-wider">
-                Popette
-              </span>
-              <button
-                onClick={() => setOpen(false)}
-                aria-label="Fermer le menu"
-                className="text-[var(--color-on-surface)] hover:text-[var(--color-primary)] transition"
-              >
-                <X size={28} />
-              </button>
-            </div>
-
-            <nav className="flex flex-col items-start gap-10 px-8 pt-10 text-xl font-title tracking-wide">
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.3 }}
-                  className="relative"
+          <>
+            {/* Menu principal */}
+            <motion.div
+              key="mobile-nav"
+              initial={{ opacity: 0, x: "100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: "100%" }}
+              transition={{ type: "spring", stiffness: 260, damping: 30 }}
+              className="fixed inset-0 z-50 bg-[var(--color-surface)] text-[var(--color-on-surface)]"
+            >
+              <div className="flex justify-between items-center px-6 py-4 border-b border-[var(--color-outline)]">
+                <span className="font-logo text-3xl text-[var(--color-primary)] tracking-wider">
+                  Popette
+                </span>
+                <button
+                  onClick={() => setOpen(false)}
+                  aria-label="Fermer le menu"
+                  className="text-[var(--color-on-surface)] hover:text-[var(--color-primary)] transition"
                 >
-                  <Link
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="w-full block text-5xl text-left hover:text-primary typography-tertiary-m transition before:content-start before:h-3.5 before:w-full before:bg-amber-600 before:absolute before:left-0 before:bottom-0 before:z-[-1] before:scale-x-20 before:origin-top before:transition before:duration-200 hover:before:scale-x-100"
+                  <X size={28} />
+                </button>
+              </div>
+
+              <nav className="flex flex-col items-start gap-10 px-8 pt-10 text-xl font-title tracking-wide">
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={`${item.href}-${index}`}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05, duration: 0.3 }}
+                    className="relative"
                   >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </nav>
-          </motion.div>
+                    <Link
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="w-full block text-5xl text-left hover:text-primary typography-tertiary-m transition before:content-start before:h-3.5 before:w-full before:bg-amber-600 before:absolute before:left-0 before:bottom-0 before:z-[-1] before:scale-x-20 before:origin-top before:transition before:duration-200 hover:before:scale-x-100"
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </nav>
+            </motion.div>
+
+            {/* Illustration Egg + animation */}
+            <motion.div
+              key="egg-bacon"
+              className="absolute w-2xl top-0 -left-64 z-20"
+              initial={{ opacity: 0, x: -80, y: 40 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              exit={{ opacity: 0, x: -80, y: 40 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
+              <motion.div
+                animate={{
+                  y: [0, -8, 0, 8, 0],
+                  rotate: [0, 1.2, 0, -1.2, 0],
+                }}
+                transition={{
+                  duration: 6,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                }}
+              >
+                <BreadIllustration />
+              </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>

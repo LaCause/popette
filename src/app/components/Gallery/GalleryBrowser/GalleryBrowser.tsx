@@ -7,6 +7,7 @@ import { IMAGE_TEST_URL } from "@/app/constants/dev";
 import { ResolvedImage } from "../../ResolvedImage/ResolvedImage";
 
 const images = Array(8).fill(IMAGE_TEST_URL);
+images.push("https://placehold.co/600x400/000000/FFF.png");
 
 export default function GalleryBrowser() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
