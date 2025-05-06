@@ -22,6 +22,7 @@ export async function PUT(
 
   const body = await req.json();
   const parse = updateSchema.safeParse(body);
+  console.log(parse.error);
 
   if (!parse.success) {
     return NextResponse.json({ error: parse.error.flatten() }, { status: 400 });
@@ -32,8 +33,6 @@ export async function PUT(
       where: { id },
       data: parse.data,
     });
-
-    console.log(updatedItem);
 
     return NextResponse.json(updatedItem);
   } catch (error) {

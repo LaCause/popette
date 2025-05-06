@@ -108,23 +108,21 @@ export default function Navigation() {
                 ))}
               </nav>
             </motion.div>
-
-            {/* Illustration Egg + animation */}
             <motion.div
               key="egg-bacon"
-              className="absolute w-2xl top-0 -left-64 z-20"
+              className="absolute w-4xl top-0 -left-64 z-20"
               initial={{ opacity: 0, x: -80, y: 40 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               exit={{ opacity: 0, x: -80, y: 40 }}
-              transition={{ duration: 1, ease: "easeOut" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
             >
               <motion.div
                 animate={{
-                  y: [0, -8, 0, 8, 0],
-                  rotate: [0, 1.2, 0, -1.2, 0],
+                  y: [0, -8, 0],
+                  // rotate: [0, 1.2, 0, -1.2, 0],
                 }}
                 transition={{
-                  duration: 6,
+                  duration: 1,
                   ease: "easeInOut",
                   repeat: Infinity,
                 }}

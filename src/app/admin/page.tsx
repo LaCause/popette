@@ -22,7 +22,7 @@ const sections = [
 export default function DashboardAdmin() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-12 space-y-8">
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-2 gap-6">
         {sections.map((section, index) => {
           const Icon = section.icon;
           return (
