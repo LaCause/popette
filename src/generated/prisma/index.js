@@ -148,7 +148,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/yanissahnoune/Desktop/projects/popette/src/generated/prisma",
+      "value": "/Users/ysahnoune/Desktop/projects-perso/popette/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -162,12 +162,11 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/yanissahnoune/Desktop/projects/popette/prisma/schema.prisma",
+    "sourceFilePath": "/Users/ysahnoune/Desktop/projects-perso/popette/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../../prisma",
   "clientVersion": "6.7.0",

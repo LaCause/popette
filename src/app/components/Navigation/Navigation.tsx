@@ -5,13 +5,11 @@ import Link from "next/link";
 import { X, Menu } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { signOut, useSession } from "next-auth/react";
-import EggBaconIllustrationMotion from "../Illustration/EggBacon";
-import CoffeeIllustration from "../Illustration/CoffeeIllustration";
 import BreadIllustration from "../Illustration/BreadIllustration";
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const userIsAuthenticated = status === "authenticated";
 
   useEffect(() => {
