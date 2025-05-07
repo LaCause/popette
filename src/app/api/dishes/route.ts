@@ -25,6 +25,8 @@ export async function POST(req: Request) {
       data: {
         title: body.title,
         price: body.price,
+        description: body.description,
+        imageUrl: body.imageUrl,
         category: { connect: { id: body.categoryId } },
       },
       include: {

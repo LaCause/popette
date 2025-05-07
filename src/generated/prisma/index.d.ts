@@ -2111,56 +2111,66 @@ export namespace Prisma {
 
   export type CategoryAvgAggregateOutputType = {
     id: number | null
+    order: number | null
   }
 
   export type CategorySumAggregateOutputType = {
     id: number | null
+    order: number | null
   }
 
   export type CategoryMinAggregateOutputType = {
     id: number | null
     name: string | null
     slug: string | null
+    order: number | null
   }
 
   export type CategoryMaxAggregateOutputType = {
     id: number | null
     name: string | null
     slug: string | null
+    order: number | null
   }
 
   export type CategoryCountAggregateOutputType = {
     id: number
     name: number
     slug: number
+    order: number
     _all: number
   }
 
 
   export type CategoryAvgAggregateInputType = {
     id?: true
+    order?: true
   }
 
   export type CategorySumAggregateInputType = {
     id?: true
+    order?: true
   }
 
   export type CategoryMinAggregateInputType = {
     id?: true
     name?: true
     slug?: true
+    order?: true
   }
 
   export type CategoryMaxAggregateInputType = {
     id?: true
     name?: true
     slug?: true
+    order?: true
   }
 
   export type CategoryCountAggregateInputType = {
     id?: true
     name?: true
     slug?: true
+    order?: true
     _all?: true
   }
 
@@ -2254,6 +2264,7 @@ export namespace Prisma {
     id: number
     name: string
     slug: string
+    order: number
     _count: CategoryCountAggregateOutputType | null
     _avg: CategoryAvgAggregateOutputType | null
     _sum: CategorySumAggregateOutputType | null
@@ -2279,6 +2290,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     slug?: boolean
+    order?: boolean
     items?: boolean | Category$itemsArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
@@ -2287,21 +2299,24 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     slug?: boolean
+    order?: boolean
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     slug?: boolean
+    order?: boolean
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectScalar = {
     id?: boolean
     name?: boolean
     slug?: boolean
+    order?: boolean
   }
 
-  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug", ExtArgs["result"]["category"]>
+  export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "order", ExtArgs["result"]["category"]>
   export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     items?: boolean | Category$itemsArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
@@ -2318,6 +2333,7 @@ export namespace Prisma {
       id: number
       name: string
       slug: string
+      order: number
     }, ExtArgs["result"]["category"]>
     composites: {}
   }
@@ -2745,6 +2761,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Category", 'Int'>
     readonly name: FieldRef<"Category", 'String'>
     readonly slug: FieldRef<"Category", 'String'>
+    readonly order: FieldRef<"Category", 'Int'>
   }
     
 
@@ -4328,7 +4345,8 @@ export namespace Prisma {
   export const CategoryScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    slug: 'slug'
+    slug: 'slug',
+    order: 'order'
   };
 
   export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
@@ -4491,6 +4509,7 @@ export namespace Prisma {
     id?: IntFilter<"Category"> | number
     name?: StringFilter<"Category"> | string
     slug?: StringFilter<"Category"> | string
+    order?: IntFilter<"Category"> | number
     items?: MenuItemListRelationFilter
   }
 
@@ -4498,6 +4517,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
+    order?: SortOrder
     items?: MenuItemOrderByRelationAggregateInput
   }
 
@@ -4508,6 +4528,7 @@ export namespace Prisma {
     OR?: CategoryWhereInput[]
     NOT?: CategoryWhereInput | CategoryWhereInput[]
     name?: StringFilter<"Category"> | string
+    order?: IntFilter<"Category"> | number
     items?: MenuItemListRelationFilter
   }, "id" | "slug">
 
@@ -4515,6 +4536,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
+    order?: SortOrder
     _count?: CategoryCountOrderByAggregateInput
     _avg?: CategoryAvgOrderByAggregateInput
     _max?: CategoryMaxOrderByAggregateInput
@@ -4529,6 +4551,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Category"> | number
     name?: StringWithAggregatesFilter<"Category"> | string
     slug?: StringWithAggregatesFilter<"Category"> | string
+    order?: IntWithAggregatesFilter<"Category"> | number
   }
 
   export type MenuItemWhereInput = {
@@ -4647,6 +4670,7 @@ export namespace Prisma {
   export type CategoryCreateInput = {
     name: string
     slug: string
+    order?: number
     items?: MenuItemCreateNestedManyWithoutCategoryInput
   }
 
@@ -4654,12 +4678,14 @@ export namespace Prisma {
     id?: number
     name: string
     slug: string
+    order?: number
     items?: MenuItemUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     items?: MenuItemUpdateManyWithoutCategoryNestedInput
   }
 
@@ -4667,6 +4693,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
     items?: MenuItemUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
@@ -4674,17 +4701,20 @@ export namespace Prisma {
     id?: number
     name: string
     slug: string
+    order?: number
   }
 
   export type CategoryUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type CategoryUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type MenuItemCreateInput = {
@@ -4856,26 +4886,31 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
+    order?: SortOrder
   }
 
   export type CategoryAvgOrderByAggregateInput = {
     id?: SortOrder
+    order?: SortOrder
   }
 
   export type CategoryMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
+    order?: SortOrder
   }
 
   export type CategoryMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     slug?: SortOrder
+    order?: SortOrder
   }
 
   export type CategorySumOrderByAggregateInput = {
     id?: SortOrder
+    order?: SortOrder
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -5310,12 +5345,14 @@ export namespace Prisma {
   export type CategoryCreateWithoutItemsInput = {
     name: string
     slug: string
+    order?: number
   }
 
   export type CategoryUncheckedCreateWithoutItemsInput = {
     id?: number
     name: string
     slug: string
+    order?: number
   }
 
   export type CategoryCreateOrConnectWithoutItemsInput = {
@@ -5337,12 +5374,14 @@ export namespace Prisma {
   export type CategoryUpdateWithoutItemsInput = {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type CategoryUncheckedUpdateWithoutItemsInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type MenuItemCreateManyCategoryInput = {

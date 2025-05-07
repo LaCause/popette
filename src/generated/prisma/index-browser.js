@@ -130,7 +130,8 @@ exports.Prisma.AdminScalarFieldEnum = {
 exports.Prisma.CategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  slug: 'slug'
+  slug: 'slug',
+  order: 'order'
 };
 
 exports.Prisma.MenuItemScalarFieldEnum = {

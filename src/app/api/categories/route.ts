@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     const categories = await prisma.category.findMany({
-      orderBy: { name: "asc" },
+      orderBy: { order: "asc" }, // 🆕 ordre personnalisé
     });
     return NextResponse.json(categories);
   } catch (err) {
@@ -15,10 +15,9 @@ export async function GET() {
     );
   }
 }
-
 export async function POST(req: Request) {
   try {
-    const { name, slug } = await req.json();
+    const { name, slug, order } = await req.json();
 
     if (!name || !slug) {
       return NextResponse.json(
@@ -28,7 +27,11 @@ export async function POST(req: Request) {
     }
 
     const created = await prisma.category.create({
-      data: { name, slug },
+      data: {
+        name,
+        slug,
+        order: typeof order === "number" ? order : 0, // 🆕 gère le champ
+      },
     });
 
     return NextResponse.json(created, { status: 201 });
