@@ -93,7 +93,6 @@ export default function AdminMenuPage() {
 
   return (
     <div className="max-w-5xl mx-auto p-6 space-y-12">
-      {/* Formulaire */}
       <section className="border border-gray-200 bg-white p-6 space-y-4 shadow-sm">
         <h2 className="text-xl font-semibold text-gray-900 tracking-tight">
           {editId ? "Modifier un plat" : "Ajouter un plat"}

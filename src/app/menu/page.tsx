@@ -1,31 +1,28 @@
+import { Category, MenuItem } from "@/generated/prisma";
 import { SEO_MENU } from "../constants/seo";
-import { Metadata } from "next";
 import MenuBrowser from "../components/Menu/MenuBrowser/MenuBrowser";
+import { prisma } from "../lib/prisma";
 
-export const metadata: Metadata = {
-  title: SEO_MENU.title,
-  description: SEO_MENU.description,
-  openGraph: {
-    title: SEO_MENU.title,
-    description: SEO_MENU.description,
-    url: "https://popette-brunch.com",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: SEO_MENU.title,
-    description: SEO_MENU.description,
-  },
-};
+// Typage étendu avec items inclus
+type CategoryWithItems = Category & { items: MenuItem[] };
 
-export default function MenuPage() {
+export default async function MenuPage() {
+  const categories: CategoryWithItems[] = await prisma.category.findMany({
+    orderBy: { order: "asc" },
+    include: {
+      items: {
+        orderBy: { createdAt: "asc" },
+      },
+    },
+  });
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: SEO_MENU.jsonLd }}
       />
-      <MenuBrowser />
+      <MenuBrowser categories={categories} />
     </>
   );
 }
