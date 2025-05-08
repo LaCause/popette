@@ -17,6 +17,12 @@ const sections = [
     icon: BookOpen,
     description: "Organisez vos plats par catégorie.",
   },
+  {
+    name: "Articles",
+    href: "/admin/posts",
+    icon: BookOpen,
+    description: "Organisez vos articles.",
+  },
 ];
 
 export default function DashboardAdmin() {

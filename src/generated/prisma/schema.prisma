@@ -39,3 +39,14 @@ model MenuItem {
   categoryId  Int
   createdAt   DateTime @default(now())
 }
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  title     String
+  date      DateTime
+  image     String
+  category  String
+  content   String // HTML brut
+  createdAt DateTime @default(now())
+}
