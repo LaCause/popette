@@ -144,6 +144,17 @@ exports.Prisma.MenuItemScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.PostScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  date: 'date',
+  image: 'image',
+  category: 'category',
+  content: 'content',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -163,7 +174,8 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   Admin: 'Admin',
   Category: 'Category',
-  MenuItem: 'MenuItem'
+  MenuItem: 'MenuItem',
+  Post: 'Post'
 };
 
 /**

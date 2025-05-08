@@ -129,7 +129,7 @@ export default function MenuBrowser({
                       <header className="text-center">
                         <h2
                           id={`cat-${cat.id}`}
-                          className="text-2xl font-title text-[var(--color-primary)]"
+                          className="typography-tertiary-l-bold tracking-widest text-primary"
                         >
                           {cat.name}
                         </h2>

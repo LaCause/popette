@@ -9,7 +9,7 @@
     "lint": "next lint",
     "hard:clean": "rm -rf .next && rm -rf tsconfig.tsbuildinfo && rm -rf node_modules && npm cache clean --force && npm i",
     "codemod:force": "npx @next/codemod@canary next-async-request-api . --force",
-    "prisma:migrate": "npx prisma migrate dev --name init",
+    "prisma:migrate": "npx prisma migrate dev --name",
     "prisma:generate": "npx prisma generate",
     "prisma:studio": "npx prisma studio",
     "create:admin": "ts-node scripts/createAdmin.ts"
