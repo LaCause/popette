@@ -4435,7 +4435,7 @@ export namespace Prisma {
     title: string | null
     date: Date | null
     image: string | null
-    category: string | null
+    excerpt: string | null
     content: string | null
     createdAt: Date | null
   }
@@ -4446,7 +4446,7 @@ export namespace Prisma {
     title: string | null
     date: Date | null
     image: string | null
-    category: string | null
+    excerpt: string | null
     content: string | null
     createdAt: Date | null
   }
@@ -4457,7 +4457,7 @@ export namespace Prisma {
     title: number
     date: number
     image: number
-    category: number
+    excerpt: number
     content: number
     createdAt: number
     _all: number
@@ -4478,7 +4478,7 @@ export namespace Prisma {
     title?: true
     date?: true
     image?: true
-    category?: true
+    excerpt?: true
     content?: true
     createdAt?: true
   }
@@ -4489,7 +4489,7 @@ export namespace Prisma {
     title?: true
     date?: true
     image?: true
-    category?: true
+    excerpt?: true
     content?: true
     createdAt?: true
   }
@@ -4500,7 +4500,7 @@ export namespace Prisma {
     title?: true
     date?: true
     image?: true
-    category?: true
+    excerpt?: true
     content?: true
     createdAt?: true
     _all?: true
@@ -4598,7 +4598,7 @@ export namespace Prisma {
     title: string
     date: Date
     image: string
-    category: string
+    excerpt: string
     content: string
     createdAt: Date
     _count: PostCountAggregateOutputType | null
@@ -4628,7 +4628,7 @@ export namespace Prisma {
     title?: boolean
     date?: boolean
     image?: boolean
-    category?: boolean
+    excerpt?: boolean
     content?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["post"]>
@@ -4639,7 +4639,7 @@ export namespace Prisma {
     title?: boolean
     date?: boolean
     image?: boolean
-    category?: boolean
+    excerpt?: boolean
     content?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["post"]>
@@ -4650,7 +4650,7 @@ export namespace Prisma {
     title?: boolean
     date?: boolean
     image?: boolean
-    category?: boolean
+    excerpt?: boolean
     content?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["post"]>
@@ -4661,12 +4661,12 @@ export namespace Prisma {
     title?: boolean
     date?: boolean
     image?: boolean
-    category?: boolean
+    excerpt?: boolean
     content?: boolean
     createdAt?: boolean
   }
 
-  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "title" | "date" | "image" | "category" | "content" | "createdAt", ExtArgs["result"]["post"]>
+  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "title" | "date" | "image" | "excerpt" | "content" | "createdAt", ExtArgs["result"]["post"]>
 
   export type $PostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Post"
@@ -4677,7 +4677,7 @@ export namespace Prisma {
       title: string
       date: Date
       image: string
-      category: string
+      excerpt: string
       content: string
       createdAt: Date
     }, ExtArgs["result"]["post"]>
@@ -5108,7 +5108,7 @@ export namespace Prisma {
     readonly title: FieldRef<"Post", 'String'>
     readonly date: FieldRef<"Post", 'DateTime'>
     readonly image: FieldRef<"Post", 'String'>
-    readonly category: FieldRef<"Post", 'String'>
+    readonly excerpt: FieldRef<"Post", 'String'>
     readonly content: FieldRef<"Post", 'String'>
     readonly createdAt: FieldRef<"Post", 'DateTime'>
   }
@@ -5530,7 +5530,7 @@ export namespace Prisma {
     title: 'title',
     date: 'date',
     image: 'image',
-    category: 'category',
+    excerpt: 'excerpt',
     content: 'content',
     createdAt: 'createdAt'
   };
@@ -5803,7 +5803,7 @@ export namespace Prisma {
     title?: StringFilter<"Post"> | string
     date?: DateTimeFilter<"Post"> | Date | string
     image?: StringFilter<"Post"> | string
-    category?: StringFilter<"Post"> | string
+    excerpt?: StringFilter<"Post"> | string
     content?: StringFilter<"Post"> | string
     createdAt?: DateTimeFilter<"Post"> | Date | string
   }
@@ -5814,7 +5814,7 @@ export namespace Prisma {
     title?: SortOrder
     date?: SortOrder
     image?: SortOrder
-    category?: SortOrder
+    excerpt?: SortOrder
     content?: SortOrder
     createdAt?: SortOrder
   }
@@ -5828,7 +5828,7 @@ export namespace Prisma {
     title?: StringFilter<"Post"> | string
     date?: DateTimeFilter<"Post"> | Date | string
     image?: StringFilter<"Post"> | string
-    category?: StringFilter<"Post"> | string
+    excerpt?: StringFilter<"Post"> | string
     content?: StringFilter<"Post"> | string
     createdAt?: DateTimeFilter<"Post"> | Date | string
   }, "id" | "slug">
@@ -5839,7 +5839,7 @@ export namespace Prisma {
     title?: SortOrder
     date?: SortOrder
     image?: SortOrder
-    category?: SortOrder
+    excerpt?: SortOrder
     content?: SortOrder
     createdAt?: SortOrder
     _count?: PostCountOrderByAggregateInput
@@ -5858,7 +5858,7 @@ export namespace Prisma {
     title?: StringWithAggregatesFilter<"Post"> | string
     date?: DateTimeWithAggregatesFilter<"Post"> | Date | string
     image?: StringWithAggregatesFilter<"Post"> | string
-    category?: StringWithAggregatesFilter<"Post"> | string
+    excerpt?: StringWithAggregatesFilter<"Post"> | string
     content?: StringWithAggregatesFilter<"Post"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
   }
@@ -6030,7 +6030,7 @@ export namespace Prisma {
     title: string
     date: Date | string
     image: string
-    category: string
+    excerpt?: string
     content: string
     createdAt?: Date | string
   }
@@ -6041,7 +6041,7 @@ export namespace Prisma {
     title: string
     date: Date | string
     image: string
-    category: string
+    excerpt?: string
     content: string
     createdAt?: Date | string
   }
@@ -6051,7 +6051,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6062,7 +6062,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6073,7 +6073,7 @@ export namespace Prisma {
     title: string
     date: Date | string
     image: string
-    category: string
+    excerpt?: string
     content: string
     createdAt?: Date | string
   }
@@ -6083,7 +6083,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6094,7 +6094,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     image?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    excerpt?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6372,7 +6372,7 @@ export namespace Prisma {
     title?: SortOrder
     date?: SortOrder
     image?: SortOrder
-    category?: SortOrder
+    excerpt?: SortOrder
     content?: SortOrder
     createdAt?: SortOrder
   }
@@ -6387,7 +6387,7 @@ export namespace Prisma {
     title?: SortOrder
     date?: SortOrder
     image?: SortOrder
-    category?: SortOrder
+    excerpt?: SortOrder
     content?: SortOrder
     createdAt?: SortOrder
   }
@@ -6398,7 +6398,7 @@ export namespace Prisma {
     title?: SortOrder
     date?: SortOrder
     image?: SortOrder
-    category?: SortOrder
+    excerpt?: SortOrder
     content?: SortOrder
     createdAt?: SortOrder
   }
