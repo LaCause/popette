@@ -46,7 +46,7 @@ model Post {
   title     String
   date      DateTime
   image     String
-  category  String
+  excerpt   String   @default("")
   content   String   // HTML brut
   createdAt DateTime @default(now())
 }

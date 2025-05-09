@@ -62,7 +62,7 @@ export default function ArticleList() {
           title={post.title}
           image={post.image}
           category={post.category}
-          date={post.date}
+          content={post.content}
         />
       ))}
     </div>

@@ -3,27 +3,22 @@
 import ArticleCard from "@/app/components/Article/ArticleCard/ArticleCard";
 import TiptapEditor from "@/app/components/TiptapEditor/TiptapEditor";
 import { useToast } from "@/app/components/ToastContainer/ToastContainer";
+import { Post } from "@/generated/prisma";
 import { useEffect, useState } from "react";
 
-interface Post {
-  id: number;
-  slug: string;
-  title: string;
+type PostFormInput = Omit<Post, "id" | "createdAt" | "date"> & {
   date: string;
-  image: string;
-  category: string;
-  content: string;
-}
+};
 
 export default function AdminPostsPage() {
   const { showToast } = useToast();
   const [posts, setPosts] = useState<Post[]>([]);
-  const [form, setForm] = useState<Omit<Post, "id">>({
+  const [form, setForm] = useState<PostFormInput>({
     slug: "",
     title: "",
-    date: "",
+    date: new Date().toISOString(),
     image: "",
-    category: "",
+    excerpt: "",
     content: "",
   });
   const [editId, setEditId] = useState<number | null>(null);
@@ -42,9 +37,9 @@ export default function AdminPostsPage() {
     setForm({
       slug: "",
       title: "",
-      date: "",
+      date: new Date().toISOString(),
       image: "",
-      category: "",
+      excerpt: "",
       content: "",
     });
     setEditId(null);
@@ -81,9 +76,9 @@ export default function AdminPostsPage() {
     setForm({
       slug: post.slug,
       title: post.title,
-      date: post.date.split("T")[0], // pour l’input date
+      date: new Date(post.date).toISOString().split("T")[0],
       image: post.image,
-      category: post.category,
+      excerpt: post.excerpt,
       content: post.content,
     });
     setEditId(post.id);
@@ -120,10 +115,10 @@ export default function AdminPostsPage() {
             className="form-input"
           />
           <input
-            placeholder="Catégorie"
-            value={form.category}
-            onChange={(e) => setForm({ ...form, category: e.target.value })}
-            className="form-input"
+            placeholder="Résumé"
+            value={form.excerpt}
+            onChange={(e) => setForm({ ...form, excerpt: e.target.value })}
+            className="form-input md:col-span-2"
           />
           <input
             placeholder="URL de l’image"
@@ -175,8 +170,8 @@ export default function AdminPostsPage() {
                 slug={post.slug}
                 title={post.title}
                 image={post.image}
-                category={post.category}
-                date={post.date}
+                excerpt={post.excerpt}
+                date={post.date.toISOString()}
               />
 
               {/* Boutons d'action en overlay */}

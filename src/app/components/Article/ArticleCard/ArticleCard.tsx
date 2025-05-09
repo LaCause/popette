@@ -1,19 +1,22 @@
+import { Post } from "@/generated/prisma";
 import Image from "next/image";
 import Link from "next/link";
 
-interface ArticleCardProps {
-  slug: string;
-  title: string;
-  image: string;
-  category: string;
+// Reuse Prisma type but override date to be a string
+export type ArticleCardProps = Omit<
+  Post,
+  "id" | "content" | "createdAt" | "excerpt" | "date"
+> & {
   date: string;
-}
+  excerpt?: string;
+};
 
 export default function ArticleCard({
   slug,
   title,
   image,
   date,
+  excerpt,
 }: ArticleCardProps) {
   const formattedDate = new Date(date).toLocaleDateString("fr-FR", {
     day: "2-digit",
@@ -39,7 +42,11 @@ export default function ArticleCard({
         <h2 className="typography-tertiary-xl text-primary capitalize">
           {title}
         </h2>
-        <p className="typography-primary-xs">Excerpt</p>
+        {excerpt && (
+          <p className="typography-primary-xs text-[var(--color-on-background)]/80 line-clamp-2">
+            {excerpt}
+          </p>
+        )}
       </div>
     </Link>
   );
