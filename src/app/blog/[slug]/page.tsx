@@ -1,16 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { posts } from "@/app/constants/blog";
 import { ArticleBody } from "@/app/components/Article/ArticleBody/ArticleBody";
 import { ArticleSuggestion } from "@/app/components/Article/ArticleSuggestion/ArticleSuggestion";
 import { SEOJsonLd } from "@/app/components/JsonLd/SEOJsonLd/SEOJsonLd";
+import { getPostBySlug } from "@/app/lib/posts/post";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
-  const post = posts.find((p) => p.slug === params.slug);
+  const post = await getPostBySlug(params.slug);
   if (!post) return { title: "Article introuvable" };
 
   const description = post.content.replace(/<[^>]+>/g, "").slice(0, 160);
@@ -41,7 +41,8 @@ export default async function Page(props: {
   params: Promise<{ slug: string }>;
 }) {
   const params = await props.params;
-  const post = posts.find((p) => p.slug === params.slug);
+  const post = await getPostBySlug(params.slug);
+
   if (!post)
     return <div className="text-center py-20">Article introuvable</div>;
 

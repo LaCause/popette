@@ -1,6 +1,8 @@
 "use client";
 
-import Image from "next/image";
+import ArticleCard from "@/app/components/Article/ArticleCard/ArticleCard";
+import TiptapEditor from "@/app/components/TiptapEditor/TiptapEditor";
+import { useToast } from "@/app/components/ToastContainer/ToastContainer";
 import { useEffect, useState } from "react";
 
 interface Post {
@@ -14,6 +16,7 @@ interface Post {
 }
 
 export default function AdminPostsPage() {
+  const { showToast } = useToast();
   const [posts, setPosts] = useState<Post[]>([]);
   const [form, setForm] = useState<Omit<Post, "id">>({
     slug: "",
@@ -57,11 +60,13 @@ export default function AdminPostsPage() {
       body: JSON.stringify(form),
     });
 
-    console.log(JSON.stringify(form));
-
     if (res.ok) {
       resetForm();
       fetchPosts();
+      showToast({
+        title: "Article enregistré",
+        variant: "success",
+      });
     } else {
       console.error("Erreur lors de la soumission");
     }
@@ -126,12 +131,17 @@ export default function AdminPostsPage() {
             onChange={(e) => setForm({ ...form, image: e.target.value })}
             className="form-input md:col-span-2"
           />
-          <textarea
-            placeholder="Contenu (HTML)"
-            value={form.content}
-            onChange={(e) => setForm({ ...form, content: e.target.value })}
-            className="form-input md:col-span-2 min-h-[200px]"
-          />
+          <div className="md:col-span-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Contenu (éditeur visuel)
+            </label>
+            <TiptapEditor
+              content={form.content}
+              onChange={(html) =>
+                setForm((prev) => ({ ...prev, content: html }))
+              }
+            />
+          </div>
         </div>
 
         <div className="flex gap-3">
@@ -153,46 +163,40 @@ export default function AdminPostsPage() {
       </section>
 
       {/* Liste des articles */}
-      <section className="space-y-4">
-        {posts.length &&
-          posts.map((post) => (
-            <div
-              key={post.id}
-              className="border p-4 rounded bg-white shadow-sm space-y-2"
-            >
-              <div className="flex flex-col justify-between items-center">
-                <h2 className="text-lg font-semibold">{post.title}</h2>
-                <Image
-                  src={post.image ?? "/placeholder.png"}
-                  alt={post.title}
-                  width={600}
-                  height={300}
-                  className="w-2xs h-2xs object-cover"
-                />
-                <div className="flex gap-3 text-sm">
-                  <button
-                    onClick={() => handleEdit(post)}
-                    className="text-blue-600 hover:underline"
-                  >
-                    Modifier
-                  </button>
-                  <button
-                    onClick={() => handleDelete(post.id)}
-                    className="text-red-600 hover:underline"
-                  >
-                    Supprimer
-                  </button>
-                </div>
+      <section className="space-y-8 mt-12">
+        <h2 className="text-xl font-semibold text-gray-800 mb-2">
+          Articles existants
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts.map((post) => (
+            <div key={post.id} className="relative group">
+              <ArticleCard
+                slug={post.slug}
+                title={post.title}
+                image={post.image}
+                category={post.category}
+                date={post.date}
+              />
+
+              {/* Boutons d'action en overlay */}
+              <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <button
+                  onClick={() => handleEdit(post)}
+                  className="bg-white text-blue-600 border border-blue-200 px-2 py-1 text-xs rounded shadow-sm hover:bg-blue-50"
+                >
+                  Modifier
+                </button>
+                <button
+                  onClick={() => handleDelete(post.id)}
+                  className="bg-white text-red-600 border border-red-200 px-2 py-1 text-xs rounded shadow-sm hover:bg-red-50"
+                >
+                  Supprimer
+                </button>
               </div>
-              <div className="text-sm text-gray-500">
-                <span>{post.date.split("T")[0]}</span> —{" "}
-                <span>{post.category}</span>
-              </div>
-              <p className="line-clamp-2 text-sm">
-                {post.content.replace(/<[^>]+>/g, "")}
-              </p>
             </div>
           ))}
+        </div>
       </section>
     </div>
   );
