@@ -13,7 +13,6 @@ const postSchema = z.object({
   content: z.string().min(1),
 });
 
-// GET all posts
 export async function GET() {
   try {
     const posts = await prisma.post.findMany({
