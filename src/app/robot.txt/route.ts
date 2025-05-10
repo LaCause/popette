@@ -4,7 +4,7 @@ export async function GET() {
   const body = `User-agent: *
 Allow: /
 
-Sitemap: https://popette.com/sitemap.xml
+Sitemap: https://popette-brunch.com/sitemap.xml
 `;
 
   return new NextResponse(body, {

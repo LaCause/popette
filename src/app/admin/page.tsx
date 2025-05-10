@@ -38,18 +38,18 @@ export default function DashboardAdmin() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.04 * index }}
               whileHover={{ scale: 1.015 }}
-              className="group bg-[var(--color-surface)] border border-[var(--color-outline)] rounded-2xl p-6 hover:shadow-md transition-all"
+              className="group bg-tertiary-container border border-outline rounded-2xl p-6 hover:shadow-md transition-all"
             >
               <Link href={section.href} className="block h-full">
                 <div className="flex items-start gap-4">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[var(--color-primary-container)] text-[var(--color-primary)] group-hover:scale-105 transition-transform">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary-container text-primary group-hover:scale-105 transition-transform">
                     <Icon className="w-6 h-6" />
                   </div>
                   <div className="flex-1">
-                    <h2 className="text-lg font-semibold text-[var(--color-on-surface)] mb-1">
+                    <h2 className="text-lg font-semibold text-on-tertiary-container mb-1">
                       {section.name}
                     </h2>
-                    <p className="text-sm text-[var(--color-on-surface)] opacity-80">
+                    <p className="text-sm text-on-tertiary-container opacity-80">
                       {section.description}
                     </p>
                   </div>

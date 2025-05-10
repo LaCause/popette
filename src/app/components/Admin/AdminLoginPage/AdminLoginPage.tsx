@@ -74,7 +74,7 @@ export default function AdminLoginPage() {
 
         <button
           type="submit"
-          className="bg-[var(--color-primary)] text-[var(--color-on-primary)] px-4 py-2 rounded hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 transition"
+          className="bg-primary text-on-primary px-4 py-2 rounded hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 transition"
         >
           Se connecter
         </button>

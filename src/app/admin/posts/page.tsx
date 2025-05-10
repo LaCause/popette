@@ -5,6 +5,7 @@ import TiptapEditor from "@/app/components/TiptapEditor/TiptapEditor";
 import { useToast } from "@/app/components/ToastContainer/ToastContainer";
 import { Post } from "@/generated/prisma";
 import { useEffect, useState } from "react";
+import { useDebouncedCallback } from "use-debounce";
 
 type PostFormInput = Omit<Post, "id" | "createdAt" | "date"> & {
   date: string;
@@ -22,6 +23,26 @@ export default function AdminPostsPage() {
     content: "",
   });
   const [editId, setEditId] = useState<number | null>(null);
+
+  const [slugTaken, setSlugTaken] = useState(false);
+
+  // Fonction pour vérifier le slug
+  const checkSlug = useDebouncedCallback(async (slug: string) => {
+    const res = await fetch(`/api/posts/check-slug?slug=${slug}`);
+    const { exists } = await res.json();
+    setSlugTaken(exists);
+  }, 1000);
+
+  const generateSlug = (title: string) => {
+    return title
+      .toLowerCase()
+      .trim()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9 -]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
+  };
 
   const fetchPosts = async () => {
     const res = await fetch("/api/posts");
@@ -54,6 +75,8 @@ export default function AdminPostsPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     });
+
+    console.log("!!!!!!!!", res);
 
     if (res.ok) {
       resetForm();
@@ -98,9 +121,18 @@ export default function AdminPostsPage() {
           <input
             placeholder="Titre"
             value={form.title}
-            onChange={(e) => setForm({ ...form, title: e.target.value })}
+            onChange={(e) => {
+              const newTitle = e.target.value;
+              const newSlug = generateSlug(newTitle);
+              setForm({ ...form, title: newTitle, slug: newSlug });
+              checkSlug(newSlug);
+            }}
             className="form-input"
           />
+          {slugTaken && (
+            <p className="text-sm text-red-500">Ce slug est déjà utilisé</p>
+          )}
+
           <input
             placeholder="Slug"
             value={form.slug}
@@ -122,7 +154,7 @@ export default function AdminPostsPage() {
           />
           <input
             placeholder="URL de l’image"
-            value={form.image}
+            value={form.image ?? ""}
             onChange={(e) => setForm({ ...form, image: e.target.value })}
             className="form-input md:col-span-2"
           />
@@ -171,10 +203,8 @@ export default function AdminPostsPage() {
                 title={post.title}
                 image={post.image}
                 excerpt={post.excerpt}
-                date={post.date.toISOString()}
+                date={new Date(post.date).toISOString()}
               />
-
-              {/* Boutons d'action en overlay */}
               <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 <button
                   onClick={() => handleEdit(post)}

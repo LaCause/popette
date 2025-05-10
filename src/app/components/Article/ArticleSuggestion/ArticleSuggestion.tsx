@@ -8,14 +8,14 @@ export const ArticleSuggestion = ({ exclude }: { exclude: string }) => {
   if (suggestions.length === 0) return null;
 
   return (
-    <div className="mt-16 border-t border-[var(--color-outline)] pt-8">
+    <div className="mt-16 border-t border-outline pt-8">
       <h2 className="text-2xl font-title mb-6">Autres articles</h2>
       <div className="grid gap-6 sm:grid-cols-2">
         {suggestions.map((p) => (
           <Link
             key={p.slug}
             href={`/blog/${p.slug}`}
-            className="group block bg-[var(--color-surface)] rounded-xl overflow-hidden border border-[var(--color-outline)] hover:shadow transition"
+            className="group block bg-tertiary-container rounded-xl overflow-hidden border border-outline hover:shadow transition"
           >
             <div className="relative w-full h-48">
               <Image
@@ -26,10 +26,10 @@ export const ArticleSuggestion = ({ exclude }: { exclude: string }) => {
               />
             </div>
             <div className="p-4 space-y-1">
-              <h3 className="font-title text-lg group-hover:text-[var(--color-primary)]">
+              <h3 className="font-title text-lg group-hover:text-primary">
                 {p.title}
               </h3>
-              <p className="text-sm text-[var(--color-on-surface)]/70 line-clamp-2">
+              <p className="text-sm text-on-tertiary-container/70 line-clamp-2">
                 {p.content.replace(/<[^>]+>/g, "").slice(0, 120)}…
               </p>
             </div>

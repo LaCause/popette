@@ -3,7 +3,6 @@ import { SEO_MENU } from "../constants/seo";
 import MenuBrowser from "../components/Menu/MenuBrowser/MenuBrowser";
 import { prisma } from "../lib/prisma";
 
-// Typage étendu avec items inclus
 type CategoryWithItems = Category & { items: MenuItem[] };
 
 export default async function MenuPage() {

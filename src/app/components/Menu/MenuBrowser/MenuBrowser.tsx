@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Category, MenuItem } from "@/generated/prisma";
+import { SectionHeader } from "../../SectionHeader/SectionHeader";
 
 interface CategoryWithItems extends Category {
   items: MenuItem[];
@@ -36,19 +37,16 @@ export default function MenuBrowser({
 
   return (
     <main
-      className="bg-[var(--color-background)] text-[var(--color-on-background)] py-16 px-6 sm:px-8 lg:px-16"
+      className="bg-[var(--color-background)] text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16"
       role="main"
       aria-label="Navigation du menu"
     >
       <div className="max-w-5xl mx-auto space-y-12">
-        <h1
-          className="typography-tertiary-xl-bold tracking-widest text-center"
-          id="menu-heading"
-        >
-          Notre carte complète
-        </h1>
-
-        {/* Filtres */}
+        <SectionHeader
+          as="h1"
+          title="Notre carte complète"
+          description="Découvrez notre menu brunch fait maison, préparé avec des produits frais et locaux. Assiettes salées, douceurs sucrées, options végétariennes, vegan et sans gluten – servis en continu dans une ambiance chaleureuse au cœur d’Arcachon."
+        />
         <nav
           aria-label="Filtrer par catégorie"
           className="flex flex-wrap gap-4 justify-center mt-6"
@@ -62,8 +60,8 @@ export default function MenuBrowser({
             aria-pressed={activeCategory === 0}
             className={`px-4 py-2 font-body text-sm border rounded-full transition ${
               activeCategory === 0
-                ? "bg-[var(--color-primary)] text-[var(--color-on-primary)]"
-                : "bg-transparent border-[var(--color-outline)] text-[var(--color-on-background)]"
+                ? "bg-primary text-on-primary"
+                : "bg-transparent border-outline text-on-tertiary-container"
             }`}
           >
             Tout
@@ -79,8 +77,8 @@ export default function MenuBrowser({
               aria-pressed={activeCategory === cat.id}
               className={`px-4 py-2 font-body text-sm border rounded-full transition ${
                 activeCategory === cat.id
-                  ? "bg-[var(--color-primary)] text-[var(--color-on-primary)]"
-                  : "bg-transparent border-[var(--color-outline)] text-[var(--color-on-background)]"
+                  ? "bg-primary text-on-primary"
+                  : "bg-transparent border-outline text-on-tertiary-container"
               }`}
             >
               {cat.name}
@@ -99,7 +97,7 @@ export default function MenuBrowser({
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Rechercher un plat..."
-            className="w-full px-4 py-2 font-body text-sm border border-[var(--color-outline)] rounded-full bg-[var(--color-surface)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+            className="w-full px-4 py-2 font-body text-sm border border-outline rounded-full bg-tertiary-container focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
           />
         </div>
 
@@ -144,7 +142,7 @@ export default function MenuBrowser({
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 10 }}
                             transition={{ duration: 0.2, delay: i * 0.03 }}
-                            className="border-b border-[var(--color-outline)] pb-4"
+                            className="border-b border-outline pb-4"
                             role="listitem"
                           >
                             <div className="flex justify-between items-start">
@@ -156,7 +154,7 @@ export default function MenuBrowser({
                               </span>
                             </div>
                             {item.description && (
-                              <p className="text-sm font-body text-[var(--color-on-background)]/80">
+                              <p className="text-sm font-body text-on-tertiary-container/80">
                                 {item.description}
                               </p>
                             )}
@@ -175,7 +173,7 @@ export default function MenuBrowser({
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2, delay: i * 0.03 }}
-                      className="border-b border-[var(--color-outline)] pb-4"
+                      className="border-b border-outline pb-4"
                       role="listitem"
                     >
                       <div className="flex justify-between items-start">
@@ -187,7 +185,7 @@ export default function MenuBrowser({
                         </span>
                       </div>
                       {item.description && (
-                        <p className="text-sm font-body text-[var(--color-on-background)]/80">
+                        <p className="text-sm font-body text-on-tertiary-container/80">
                           {item.description}
                         </p>
                       )}
@@ -197,7 +195,7 @@ export default function MenuBrowser({
               )
             ) : (
               <motion.p
-                className="mt-10 text-center font-body text-sm text-[var(--color-on-background)]/60"
+                className="mt-10 text-center font-body text-sm text-on-tertiary-container/60"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 role="status"

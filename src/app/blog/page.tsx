@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import ArticleList from "../components/Article/ArticleList/ArticleList";
 import { SEO_BLOG } from "../constants/seo";
 import { Metadata } from "next";
+import { SectionHeader } from "../components/SectionHeader/SectionHeader";
 
 export const metadata: Metadata = {
   title: SEO_BLOG.title,
@@ -30,21 +31,17 @@ export default function Page() {
 
       {/* Contenu principal */}
       <main
-        className="bg-[var(--color-background)] text-[var(--color-on-background)] py-16 px-6 sm:px-8 lg:px-16"
+        className="bg-[var(--color-background)] text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16"
         role="main"
       >
-        <section className="max-w-5xl mx-auto space-y-10">
-          <header className="text-center space-y-4">
-            <h1 className="text-4xl sm:text-5xl font-title font-semibold text-[var(--color-primary)]">
-              Nos recettes maison
-            </h1>
-            <p className="text-lg text-[var(--color-on-background)]/80 font-body max-w-2xl mx-auto">
-              Découvrez toutes les recettes Popette : des idées brunch sucrées
+        <SectionHeader
+          as="h1"
+          title="Notre Actualité"
+          description="Découvrez toutes les recettes Popette : des idées brunch sucrées
               et salées, simples, gourmandes et inspirées par les saisons. À
-              tester chez vous ou à venir savourer sur place.
-            </p>
-          </header>
-
+              tester chez vous ou à venir savourer sur place."
+        />
+        <section className="max-w-5xl mx-auto space-y-10">
           <Suspense
             fallback={<p className="text-center text-sm">Chargement…</p>}
           >

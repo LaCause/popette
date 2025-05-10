@@ -8,9 +8,9 @@ const postSchema = z.object({
   date: z.string().refine((val) => !isNaN(Date.parse(val)), {
     message: "Date invalide",
   }),
-  image: z.string().url(),
-  category: z.string().min(1),
+  image: z.string().url().optional(),
   content: z.string().min(1),
+  excerpt: z.string().optional(), // facultatif
 });
 
 export async function GET() {
@@ -20,9 +20,9 @@ export async function GET() {
     });
     return NextResponse.json(posts);
   } catch (error) {
-    console.log("BLOG ARTICLE API ERROR - GET : ", error);
+    console.error("BLOG ARTICLE API ERROR - GET:", error);
     return NextResponse.json(
-      { error: "Erreur chargement posts" },
+      { error: "Erreur lors du chargement des articles" },
       { status: 500 }
     );
   }
@@ -30,6 +30,7 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
+  console.log(body);
   const parsed = postSchema.safeParse(body);
 
   if (!parsed.success) {
@@ -39,18 +40,24 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  const { slug, title, date, image, content, excerpt = "" } = parsed.data;
+
   try {
     const created = await prisma.post.create({
       data: {
-        ...parsed.data,
-        date: new Date(parsed.data.date),
+        slug,
+        title,
+        date: new Date(date),
+        image,
+        excerpt,
+        content,
       },
     });
     return NextResponse.json(created, { status: 201 });
   } catch (error) {
-    console.log("BLOG ARTICLE API ERROR - POST : ", error);
+    console.error("BLOG ARTICLE API ERROR - POST:", error);
     return NextResponse.json(
-      { error: "Erreur création post" },
+      { error: "Erreur lors de la création de l’article" },
       { status: 500 }
     );
   }
