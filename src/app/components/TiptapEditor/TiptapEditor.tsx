@@ -24,14 +24,14 @@ export default function TiptapEditor({
     if (editor && content !== editor.getHTML()) {
       editor.commands.setContent(content);
     }
-  }, [content]);
+  }, [content, editor]);
 
   if (!editor) return null;
 
   return (
     <div className="space-y-3">
       {/* Toolbar */}
-      <div className="flex flex-wrap gap-2 bg-[var(--color-surface)] p-3 border border-[var(--color-outline)] rounded-xl shadow-sm">
+      <div className="flex flex-wrap gap-2 bg-tertiary-container p-3 border border-outline rounded-xl shadow-sm">
         <FormatButton
           label="Gras"
           active={editor.isActive("bold")}
@@ -70,7 +70,7 @@ export default function TiptapEditor({
       </div>
 
       <div
-        className="border border-[var(--color-outline)] bg-white min-h-[240px] px-5 py-4 rounded-xl shadow-sm focus:outline-none cursor-text"
+        className="border border-outline bg-white min-h-[240px] px-5 py-4 rounded-xl shadow-sm focus:outline-none cursor-text"
         onClick={() => editor.commands.focus()}
       >
         <EditorContent editor={editor} className={EDITOR_STYLE} />
@@ -94,8 +94,8 @@ function FormatButton({
       onClick={onClick}
       className={`px-2 py-1 text-sm rounded-md font-body transition border ${
         active
-          ? "bg-[var(--color-primary)] text-[var(--color-on-primary)] border-transparent"
-          : "bg-white text-[var(--color-on-background)] border-[var(--color-outline)] hover:bg-[var(--color-primary-container)]"
+          ? "bg-primary text-on-primary border-transparent"
+          : "bg-white text-on-tertiary-container border-outline hover:bg-primary-container"
       }`}
     >
       {label}

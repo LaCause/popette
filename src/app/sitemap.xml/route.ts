@@ -9,9 +9,6 @@ export async function GET() {
     { path: "menu", priority: "0.9", changefreq: "weekly" },
     { path: "contact", priority: "0.8", changefreq: "monthly" },
     { path: "a-propos", priority: "0.7", changefreq: "yearly" },
-    // Ajouter d'autres pages si nécessaire, exclure /admin, /404 etc.
-    // Exemple conditionnel :
-    // ...(isProd ? [] : [{ path: 'preview', priority: '0.3', changefreq: 'never' }])
   ];
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>

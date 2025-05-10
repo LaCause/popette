@@ -4597,7 +4597,7 @@ export namespace Prisma {
     slug: string
     title: string
     date: Date
-    image: string
+    image: string | null
     excerpt: string
     content: string
     createdAt: Date
@@ -4676,7 +4676,7 @@ export namespace Prisma {
       slug: string
       title: string
       date: Date
-      image: string
+      image: string | null
       excerpt: string
       content: string
       createdAt: Date
@@ -5802,7 +5802,7 @@ export namespace Prisma {
     slug?: StringFilter<"Post"> | string
     title?: StringFilter<"Post"> | string
     date?: DateTimeFilter<"Post"> | Date | string
-    image?: StringFilter<"Post"> | string
+    image?: StringNullableFilter<"Post"> | string | null
     excerpt?: StringFilter<"Post"> | string
     content?: StringFilter<"Post"> | string
     createdAt?: DateTimeFilter<"Post"> | Date | string
@@ -5813,7 +5813,7 @@ export namespace Prisma {
     slug?: SortOrder
     title?: SortOrder
     date?: SortOrder
-    image?: SortOrder
+    image?: SortOrderInput | SortOrder
     excerpt?: SortOrder
     content?: SortOrder
     createdAt?: SortOrder
@@ -5827,7 +5827,7 @@ export namespace Prisma {
     NOT?: PostWhereInput | PostWhereInput[]
     title?: StringFilter<"Post"> | string
     date?: DateTimeFilter<"Post"> | Date | string
-    image?: StringFilter<"Post"> | string
+    image?: StringNullableFilter<"Post"> | string | null
     excerpt?: StringFilter<"Post"> | string
     content?: StringFilter<"Post"> | string
     createdAt?: DateTimeFilter<"Post"> | Date | string
@@ -5838,7 +5838,7 @@ export namespace Prisma {
     slug?: SortOrder
     title?: SortOrder
     date?: SortOrder
-    image?: SortOrder
+    image?: SortOrderInput | SortOrder
     excerpt?: SortOrder
     content?: SortOrder
     createdAt?: SortOrder
@@ -5857,7 +5857,7 @@ export namespace Prisma {
     slug?: StringWithAggregatesFilter<"Post"> | string
     title?: StringWithAggregatesFilter<"Post"> | string
     date?: DateTimeWithAggregatesFilter<"Post"> | Date | string
-    image?: StringWithAggregatesFilter<"Post"> | string
+    image?: StringNullableWithAggregatesFilter<"Post"> | string | null
     excerpt?: StringWithAggregatesFilter<"Post"> | string
     content?: StringWithAggregatesFilter<"Post"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
@@ -6029,7 +6029,7 @@ export namespace Prisma {
     slug: string
     title: string
     date: Date | string
-    image: string
+    image?: string | null
     excerpt?: string
     content: string
     createdAt?: Date | string
@@ -6040,7 +6040,7 @@ export namespace Prisma {
     slug: string
     title: string
     date: Date | string
-    image: string
+    image?: string | null
     excerpt?: string
     content: string
     createdAt?: Date | string
@@ -6050,7 +6050,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     excerpt?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6061,7 +6061,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     excerpt?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6072,7 +6072,7 @@ export namespace Prisma {
     slug: string
     title: string
     date: Date | string
-    image: string
+    image?: string | null
     excerpt?: string
     content: string
     createdAt?: Date | string
@@ -6082,7 +6082,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     excerpt?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6093,7 +6093,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     excerpt?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

@@ -9,8 +9,8 @@ const postSchema = z.object({
     message: "Date invalide",
   }),
   image: z.string().url(),
-  category: z.string().min(1),
   content: z.string().min(1),
+  excerpt: z.string().optional(),
 });
 
 export async function PUT(
@@ -19,8 +19,9 @@ export async function PUT(
 ) {
   const params = await props.params;
   const id = parseInt(params.id, 10);
-  if (isNaN(id))
+  if (isNaN(id)) {
     return NextResponse.json({ error: "ID invalide" }, { status: 400 });
+  }
 
   const body = await req.json();
   const parsed = postSchema.safeParse(body);
@@ -32,41 +33,48 @@ export async function PUT(
     );
   }
 
+  const { slug, title, date, image, content, excerpt = "" } = parsed.data;
+
   try {
     const updated = await prisma.post.update({
       where: { id },
       data: {
-        ...parsed.data,
-        date: new Date(parsed.data.date),
+        slug,
+        title,
+        date: new Date(date),
+        image,
+        excerpt,
+        content,
       },
     });
     return NextResponse.json(updated);
   } catch (error) {
-    console.log("BLOG ARTICLE API ERROR - PUT : ", error);
+    console.error("BLOG ARTICLE API ERROR - PUT:", error);
     return NextResponse.json(
-      { error: "Erreur modification post" },
+      { error: "Erreur lors de la mise à jour de l’article" },
       { status: 500 }
     );
   }
 }
 
-// DELETE post
+// DELETE /api/posts/[id]
 export async function DELETE(
   _req: NextRequest,
   props: { params: Promise<{ id: string }> }
 ) {
   const params = await props.params;
   const id = parseInt(params.id, 10);
-  if (isNaN(id))
+  if (isNaN(id)) {
     return NextResponse.json({ error: "ID invalide" }, { status: 400 });
+  }
 
   try {
     await prisma.post.delete({ where: { id } });
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.log("BLOG ARTICLE API ERROR - DELETE : ", error);
+    console.error("BLOG ARTICLE API ERROR - DELETE:", error);
     return NextResponse.json(
-      { error: "Erreur suppression post" },
+      { error: "Erreur lors de la suppression de l’article" },
       { status: 500 }
     );
   }

@@ -3,16 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import ArticleCard from "../ArticleCard/ArticleCard";
-
-interface Post {
-  id: number;
-  slug: string;
-  title: string;
-  date: string;
-  image: string;
-  category: string;
-  content: string;
-}
+import { Post } from "@/generated/prisma";
 
 export default function ArticleList() {
   const searchParams = useSearchParams();
@@ -24,7 +15,7 @@ export default function ArticleList() {
   useEffect(() => {
     fetch("/api/posts")
       .then((res) => res.json())
-      .then((data) => {
+      .then((data: Post[]) => {
         setPosts(data);
         setLoading(false);
       })
@@ -36,7 +27,8 @@ export default function ArticleList() {
 
   const filtered = useMemo(() => {
     if (!category) return posts;
-    return posts.filter((post) => post.category === category);
+    // Pas de champ "category" dans Post, donc aucun filtrage possible ici
+    return posts;
   }, [category, posts]);
 
   if (loading) {
@@ -60,9 +52,9 @@ export default function ArticleList() {
           key={post.slug}
           slug={post.slug}
           title={post.title}
-          image={post.image}
-          category={post.category}
-          content={post.content}
+          image={post.image ?? ""}
+          excerpt={post.excerpt}
+          date={new Date(post.date).toISOString()}
         />
       ))}
     </div>

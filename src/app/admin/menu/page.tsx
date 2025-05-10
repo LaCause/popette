@@ -1,6 +1,7 @@
 "use client";
 
 import { ResolvedImage } from "@/app/components/ResolvedImage/ResolvedImage";
+import { useToast } from "@/app/components/ToastContainer/ToastContainer";
 import { useEffect, useState } from "react";
 
 interface Category {
@@ -27,6 +28,7 @@ export default function AdminMenuPage() {
   const [categoryId, setCategoryId] = useState("");
   const [categories, setCategories] = useState<Category[]>([]);
   const [editId, setEditId] = useState<number | null>(null);
+  const { showToast } = useToast();
 
   const fetchItems = async () => {
     const res = await fetch("/api/dishes");
@@ -65,18 +67,27 @@ export default function AdminMenuPage() {
 
     const method = editId ? "PUT" : "POST";
     const endpoint = editId ? `/api/dishes/${editId}` : "/api/dishes";
-    console.log(method, endpoint, body);
 
-    await fetch(endpoint, {
+    const res = await fetch(endpoint, {
       method,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
 
-    resetForm();
-    fetchItems();
+    if (res.ok) {
+      showToast({
+        title: editId ? "Plat mis à jour" : "Plat ajouté",
+        variant: "success",
+      });
+      resetForm();
+      fetchItems();
+    } else {
+      showToast({
+        title: "Erreur lors de la soumission",
+        variant: "error",
+      });
+    }
   };
-
   const handleEdit = (item: MenuItem) => {
     setTitle(item.title);
     setDescription(item.description ?? "");
@@ -124,11 +135,12 @@ export default function AdminMenuPage() {
             onChange={(e) => setCategoryId(e.target.value)}
           >
             <option value="">Catégorie</option>
-            {categories.map((cat) => (
-              <option key={cat.id} value={cat.id}>
-                {cat.name}
-              </option>
-            ))}
+            {categories &&
+              categories.map((cat) => (
+                <option key={cat.id} value={cat.id}>
+                  {cat.name}
+                </option>
+              ))}
           </select>
           <textarea
             className="form-input md:col-span-2"
@@ -155,55 +167,54 @@ export default function AdminMenuPage() {
           )}
         </div>
       </section>
-
-      {/* Liste des plats */}
       <section>
         <h2 className="text-xl font-semibold text-gray-900 mb-4 tracking-tight">
           Plats existants
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {items.map((dish) => (
-            <div
-              key={dish.id}
-              className="border border-gray-200 p-4 space-y-2 bg-white shadow-sm"
-            >
-              <div className="flex justify-between items-center">
-                <h3 className="text-base font-medium">{dish.title}</h3>
-                <span className="text-sm font-semibold text-primary">
-                  {dish.price.toFixed(2)} €
-                </span>
+          {items &&
+            items.map((dish) => (
+              <div
+                key={dish.id}
+                className="border border-gray-200 p-4 space-y-2 bg-white shadow-sm"
+              >
+                <div className="flex justify-between items-center">
+                  <h3 className="text-base font-medium">{dish.title}</h3>
+                  <span className="text-sm font-semibold text-primary">
+                    {dish.price.toFixed(2)} €
+                  </span>
+                </div>
+
+                {dish.imageUrl && (
+                  <ResolvedImage
+                    src={dish.imageUrl}
+                    alt={dish.title}
+                    className="w-full h-36 object-cover"
+                  />
+                )}
+
+                <p className="text-sm text-gray-700">{dish.description}</p>
+
+                <div className="text-xs text-gray-500">
+                  Catégorie : {dish.category.name}
+                </div>
+
+                <div className="flex gap-3 pt-2 text-sm">
+                  <button
+                    onClick={() => handleEdit(dish)}
+                    className="text-blue-600 hover:underline"
+                  >
+                    Modifier
+                  </button>
+                  <button
+                    onClick={() => handleDelete(dish.id)}
+                    className="text-red-600 hover:underline"
+                  >
+                    Supprimer
+                  </button>
+                </div>
               </div>
-
-              {dish.imageUrl && (
-                <ResolvedImage
-                  src={dish.imageUrl}
-                  alt={dish.title}
-                  className="w-full h-36 object-cover"
-                />
-              )}
-
-              <p className="text-sm text-gray-700">{dish.description}</p>
-
-              <div className="text-xs text-gray-500">
-                Catégorie : {dish.category.name}
-              </div>
-
-              <div className="flex gap-3 pt-2 text-sm">
-                <button
-                  onClick={() => handleEdit(dish)}
-                  className="text-blue-600 hover:underline"
-                >
-                  Modifier
-                </button>
-                <button
-                  onClick={() => handleDelete(dish.id)}
-                  className="text-red-600 hover:underline"
-                >
-                  Supprimer
-                </button>
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
       </section>
     </div>
