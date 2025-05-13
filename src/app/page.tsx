@@ -4,6 +4,7 @@ import HeroSection from "./components/Hero/HeroSection/HeroSection";
 import MenuSection from "./components/Menu/MenuSection/MenuSection";
 import ContactSection from "./components/Contact/ContactSection/ContactSection";
 import AboutSection from "./components/About/AboutSection/AboutSection";
+import { getAllPosts } from "./lib/posts/post";
 
 export const metadata: Metadata = {
   title: SEO_HOME.title,
@@ -21,7 +22,43 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default async function Page() {
+  const menuItems = await getAllPosts(4);
+  const mockMenuItems = [
+    {
+      id: 1,
+      title: "Toast Avocat 🥑",
+      description:
+        "Pain de campagne, écrasé d’avocat, œuf poché, graines de courge, citron vert",
+      price: 8.5,
+      imageUrl: "https://placehold.co/600x400/000000/FFFFFF.png",
+      categoryId: 1,
+      createdAt: new Date(),
+      tags: ["Végétarien"],
+    },
+    {
+      id: 2,
+      title: "Pancakes Maison",
+      description: "Pancakes moelleux, sirop d’érable, fruits frais de saison",
+      price: 7.9,
+      imageUrl: "https://placehold.co/600x400/000000/FFFFFF.png",
+      categoryId: 1,
+      createdAt: new Date(),
+      tags: ["Végétarien", "Sans gluten"],
+    },
+    {
+      id: 3,
+      title: "Granola Bowl",
+      description:
+        "Granola croustillant, yaourt nature, fruits rouges, miel bio",
+      price: 6.5,
+      imageUrl: "https://placehold.co/600x400/000000/FFFFFF.png",
+      categoryId: 1,
+      createdAt: new Date(),
+      tags: ["Vegan", "Healthy"],
+    },
+  ];
+  console.log(menuItems);
   return (
     <>
       <script
@@ -36,7 +73,7 @@ export default function Page() {
         <AboutSection />
 
         {/* SECTION MENU */}
-        <MenuSection />
+        <MenuSection items={mockMenuItems} />
 
         {/* SECTION CONTACT */}
         <ContactSection />

@@ -10,7 +10,7 @@ export default function AboutSection() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Texte */}
         <div className="space-y-6">
-          <Title as="h2" size="lg">
+          <Title as="h2" size="xl">
             Notre histoire
           </Title>
           <p className="font-body text-base leading-relaxed text-on-primary-container/90">

@@ -1,40 +1,21 @@
-import { posts } from "@/app/constants/blog";
-import Image from "next/image";
-import Link from "next/link";
+import Title from "../../Title/Title";
+import ArticleCard from "../ArticleCard/ArticleCard";
+import { ArticleCardProps } from "../ArticleCard/ArticleCard.const";
 
-export const ArticleSuggestion = ({ exclude }: { exclude: string }) => {
-  const suggestions = posts.filter((p) => p.slug !== exclude).slice(0, 2);
+interface ArticleSuggestionProps {
+  relatedPosts: ArticleCardProps[];
+}
 
-  if (suggestions.length === 0) return null;
+export const ArticleSuggestion = (posts: ArticleSuggestionProps) => {
+  if (posts?.relatedPosts?.length === 0) return null;
 
   return (
     <div className="mt-16 border-t border-outline pt-8">
-      <h2 className="text-2xl font-title mb-6">Autres articles</h2>
+      <Title as="h2" size="xl" className="mb-6">
+        Autres articles
+      </Title>
       <div className="grid gap-6 sm:grid-cols-2">
-        {suggestions.map((p) => (
-          <Link
-            key={p.slug}
-            href={`/blog/${p.slug}`}
-            className="group block bg-tertiary-container rounded-xl overflow-hidden border border-outline hover:shadow transition"
-          >
-            <div className="relative w-full h-48">
-              <Image
-                src={p.image}
-                alt={p.title}
-                fill
-                className="object-cover group-hover:scale-105 transition"
-              />
-            </div>
-            <div className="p-4 space-y-1">
-              <h3 className="font-title text-lg group-hover:text-primary">
-                {p.title}
-              </h3>
-              <p className="text-sm text-on-tertiary-container/70 line-clamp-2">
-                {p.content.replace(/<[^>]+>/g, "").slice(0, 120)}…
-              </p>
-            </div>
-          </Link>
-        ))}
+        {posts?.relatedPosts?.map((p) => <ArticleCard key={p.slug} {...p} />)}
       </div>
     </div>
   );

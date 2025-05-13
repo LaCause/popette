@@ -23,13 +23,10 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      {/* SEO - JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: SEO_BLOG.jsonLd }}
       />
-
-      {/* Contenu principal */}
       <main
         className="bg-[var(--color-background)] text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16"
         role="main"

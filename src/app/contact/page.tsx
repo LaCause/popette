@@ -3,6 +3,16 @@ import { SEO_CONTACT } from "../constants/seo";
 import ContactBrowser from "../components/Contact/ContactBrowser/ContactBrowser";
 import { SectionHeader } from "../components/SectionHeader/SectionHeader";
 import Title from "../components/Title/Title";
+import {
+  POPETTE_ADDRESS,
+  POPETTE_EMAIL,
+  POPETTE_HOURS,
+  POPETTE_OPENED,
+  POPETTE_PHONE,
+  POPETTE_PHONE_LINK,
+  POPETTE_POSTAL_CODE,
+} from "../constants/general";
+import FaqSection from "../components/Faq/FaqSection/FaqSection";
 
 export const metadata: Metadata = {
   title: SEO_CONTACT.title,
@@ -60,7 +70,9 @@ export default function ContactPage() {
               <Title as="h3" size="sm" className="mb-2">
                 📍 Adresse
               </Title>
-              <p>12 rue du Brunch, 33120 Arcachon</p>
+              <p>
+                {POPETTE_ADDRESS}, {POPETTE_POSTAL_CODE}
+              </p>
             </div>
 
             <div>
@@ -68,8 +80,9 @@ export default function ContactPage() {
                 ⏰ Horaires
               </Title>
               <ul className="space-y-1">
-                <li>Mercredi à dimanche : 10h – 15h30</li>
-                <li>Fermé lundi et mardi</li>
+                <li>
+                  {POPETTE_OPENED} : {POPETTE_HOURS}
+                </li>
               </ul>
             </div>
 
@@ -77,14 +90,14 @@ export default function ContactPage() {
               <Title as="h3" size="sm" className="mb-2">
                 📞 Téléphone
               </Title>
-              <p>05 56 00 00 00</p>
+              <a href={`tel:${POPETTE_PHONE_LINK}`}>{POPETTE_PHONE}</a>
             </div>
 
             <div>
               <Title as="h3" size="sm" className="mb-2">
                 ✉️ Email
               </Title>
-              <p>contact@popette.com</p>
+              <p>{POPETTE_EMAIL}</p>
             </div>
 
             <div>
@@ -101,61 +114,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section className="max-w-3xl mx-auto space-y-6 pt-12 border-t border-outline">
-          <Title as="h2" size="md" className="text-center">
-            Questions fréquentes
-          </Title>
-          <div className="space-y-4 font-body text-sm">
-            <details className="border border-outline rounded-xl p-4">
-              <summary className="cursor-pointer font-semibold">
-                🕒 Quels sont vos horaires ?
-              </summary>
-              <p className="mt-2">
-                Nous sommes ouverts du mercredi au dimanche, de 10h à 15h30.
-                Fermé lundi et mardi.
-              </p>
-            </details>
-
-            <details className="border border-outline rounded-xl p-4">
-              <summary className="cursor-pointer font-semibold">
-                🥞 Faut-il réserver pour bruncher chez vous ?
-              </summary>
-              <p className="mt-2">
-                La réservation est fortement conseillée le week-end. Vous pouvez
-                réserver via notre page de réservation ou par téléphone.
-              </p>
-            </details>
-
-            <details className="border border-outline rounded-xl p-4">
-              <summary className="cursor-pointer font-semibold">
-                🌱 Proposez-vous des plats végétariens / sans gluten ?
-              </summary>
-              <p className="mt-2">
-                Oui, plusieurs options sont disponibles. N’hésitez pas à
-                demander à notre équipe sur place.
-              </p>
-            </details>
-
-            <details className="border border-outline rounded-xl p-4">
-              <summary className="cursor-pointer font-semibold">
-                🐶 Les chiens sont-ils acceptés ?
-              </summary>
-              <p className="mt-2">
-                Oui, en terrasse uniquement. Merci de garder votre compagnon
-                attaché.
-              </p>
-            </details>
-
-            <details className="border border-outline rounded-xl p-4">
-              <summary className="cursor-pointer font-semibold">
-                💳 Quels moyens de paiement acceptez-vous ?
-              </summary>
-              <p className="mt-2">
-                Carte bancaire, espèces, et titres-restaurant (carte ou papier).
-              </p>
-            </details>
-          </div>
-        </section>
+        <FaqSection />
       </main>
     </>
   );
