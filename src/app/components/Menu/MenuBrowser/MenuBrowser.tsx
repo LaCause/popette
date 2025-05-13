@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Category, MenuItem } from "@/generated/prisma";
 import { SectionHeader } from "../../SectionHeader/SectionHeader";
+import Title from "../../Title/Title";
 
 interface CategoryWithItems extends Category {
   items: MenuItem[];
@@ -125,12 +126,9 @@ export default function MenuBrowser({
                       className="space-y-4"
                     >
                       <header className="text-center">
-                        <h2
-                          id={`cat-${cat.id}`}
-                          className="typography-tertiary-l-bold tracking-widest text-primary"
-                        >
+                        <Title as="h2" size="lg">
                           {cat.name}
-                        </h2>
+                        </Title>
                         <div className="h-[2px] w-16 bg-[var(--color-tertiary)] mx-auto mt-2" />
                       </header>
 
@@ -146,15 +144,19 @@ export default function MenuBrowser({
                             role="listitem"
                           >
                             <div className="flex justify-between items-start">
-                              <h3 className="text-lg font-semibold font-title">
+                              <Title
+                                as="h3"
+                                size="md"
+                                className="tracking-widest"
+                              >
                                 {item.title}
-                              </h3>
+                              </Title>
                               <span className="text-sm font-body">
                                 {item.price.toFixed(2)} €
                               </span>
                             </div>
                             {item.description && (
-                              <p className="text-sm font-body text-on-tertiary-container/80">
+                              <p className="typography-primary-s text-on-tertiary-container/80">
                                 {item.description}
                               </p>
                             )}

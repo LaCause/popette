@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import ArticleCard from "../ArticleCard/ArticleCard";
 import { Post } from "@/generated/prisma";
+import Loader from "../../ui/Loader/Loader";
 
 export default function ArticleList() {
   const searchParams = useSearchParams();
@@ -32,11 +33,7 @@ export default function ArticleList() {
   }, [category, posts]);
 
   if (loading) {
-    return (
-      <p className="text-center text-sm text-gray-500">
-        Chargement des articles...
-      </p>
-    );
+    return <Loader />;
   }
 
   if (!filtered.length) {

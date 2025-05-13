@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 type TitleSize = "sm" | "md" | "lg" | "xl";
 type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
-interface TitleProps {
+interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
   size?: TitleSize;
   as?: HeadingTag;
   children: ReactNode;
@@ -23,9 +23,14 @@ export default function Title({
   as: Tag = "h1",
   children,
   className = "",
+  ...props
 }: TitleProps) {
   const baseClasses = "tracking-widest text-primary";
   const classes = `${sizeClasses[size]} ${baseClasses} ${className}`;
 
-  return <Tag className={classes}>{children}</Tag>;
+  return (
+    <Tag className={classes} {...props}>
+      {children}
+    </Tag>
+  );
 }

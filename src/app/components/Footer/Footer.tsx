@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Title from "../Title/Title";
+import { Facebook, Instagram } from "lucide-react";
 
 const navItems = [
   { href: "/", label: "Accueil" },
@@ -24,7 +25,25 @@ export default function Footer() {
               Popette
             </Link>
           </Title>
-          <p className="text-sm text-on-tertiary-container/70 mt-4">
+          <div className="inline-flex mt-4 gap-1.5">
+            <Link
+              href="https://www.instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              <Instagram className="w-6 h-6" />
+            </Link>
+            <Link
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              <Facebook className="w-6 h-6" />
+            </Link>
+          </div>
+          <p className="text-sm text-on-tertiary-container/70 mt-2">
             Brunch maison à Arcachon. Convivialité, produits frais, et bonne
             humeur au menu !
           </p>
@@ -54,17 +73,20 @@ export default function Footer() {
             Coordonnées
           </Title>
           <p>
-            12 rue du Brunch
+            10 Rue du Maréchal de Lattre de Tassigny
             <br />
             33120 Arcachon
           </p>
           <p className="mt-2">
-            <a href="tel:0556000000" className="hover:underline">
-              05 56 00 00 00
+            <a href="tel:0666128118" className="hover:underline">
+              06 66 12 81 18
             </a>
             <br />
-            <a href="mailto:contact@popette.com" className="hover:underline">
-              contact@popette.com
+            <a
+              href="mailto:popette.arcachon@gmail.com"
+              className="hover:underline"
+            >
+              popette.arcachon@gmail.com
             </a>
           </p>
         </address>
