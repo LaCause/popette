@@ -5,8 +5,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X, ArrowLeft, ArrowRight } from "lucide-react";
 import { IMAGE_TEST_URL } from "@/app/constants/dev";
 import { ResolvedImage } from "../../ResolvedImage/ResolvedImage";
+import { SectionHeader } from "../../SectionHeader/SectionHeader";
 
 const images = Array(8).fill(IMAGE_TEST_URL);
+images.push("https://placehold.co/600x400/000000/FFF.png");
 
 export default function GalleryBrowser() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -39,17 +41,12 @@ export default function GalleryBrowser() {
 
   return (
     <section className="max-w-6xl mx-auto space-y-8">
-      <div className="text-center">
-        <h1 className="text-4xl font-title font-semibold mb-4">
-          Galerie Popette
-        </h1>
-        <p className="text-base font-body text-[var(--color-on-background)]/80 max-w-2xl mx-auto">
-          Découvrez en images l’ambiance chaleureuse de notre restaurant, les
+      <SectionHeader
+        title="Galerie Popette"
+        description="Découvrez en images l’ambiance chaleureuse de notre restaurant, les
           assiettes colorées de nos brunchs maison, et quelques instants volés
-          en cuisine.
-        </p>
-      </div>
-
+          en cuisine."
+      />
       <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
         {images.map((src, idx) => (
           <div
@@ -87,21 +84,21 @@ export default function GalleryBrowser() {
               />
               <button
                 onClick={closeLightbox}
-                className="absolute top-4 right-4 text-white hover:text-[var(--color-primary)]"
+                className="absolute top-4 right-4 text-white hover:text-primary"
                 aria-label="Fermer la lightbox"
               >
                 <X size={32} />
               </button>
               <button
                 onClick={prevImage}
-                className="absolute left-2 top-1/2 -translate-y-1/2 text-white hover:text-[var(--color-primary)]"
+                className="absolute left-2 top-1/2 -translate-y-1/2 text-white hover:text-primary"
                 aria-label="Image précédente"
               >
                 <ArrowLeft size={32} />
               </button>
               <button
                 onClick={nextImage}
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-white hover:text-[var(--color-primary)]"
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-white hover:text-primary"
                 aria-label="Image suivante"
               >
                 <ArrowRight size={32} />

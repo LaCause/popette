@@ -18,6 +18,21 @@ const nextConfig: NextConfig = {
         hostname: "randomuser.me",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "source.unsplash.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.instagram.com",
+        pathname: "/**",
+      },
     ],
   },
 };

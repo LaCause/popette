@@ -1,6 +1,18 @@
 import { Metadata } from "next";
 import { SEO_CONTACT } from "../constants/seo";
 import ContactBrowser from "../components/Contact/ContactBrowser/ContactBrowser";
+import { SectionHeader } from "../components/SectionHeader/SectionHeader";
+import Title from "../components/Title/Title";
+import {
+  POPETTE_ADDRESS,
+  POPETTE_EMAIL,
+  POPETTE_HOURS,
+  POPETTE_OPENED,
+  POPETTE_PHONE,
+  POPETTE_PHONE_LINK,
+  POPETTE_POSTAL_CODE,
+} from "../constants/general";
+import FaqSection from "../components/Faq/FaqSection/FaqSection";
 
 export const metadata: Metadata = {
   title: SEO_CONTACT.title,
@@ -36,52 +48,65 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: SEO_CONTACT.jsonLd }}
       />
-      <main className="bg-[var(--color-background)] text-[var(--color-on-background)] py-16 px-6 sm:px-8 lg:px-16 space-y-16">
-        <section className="text-center max-w-2xl mx-auto space-y-4">
-          <h1 className="text-4xl font-title font-semibold">Contactez-nous</h1>
-          <p className="font-body text-[var(--color-on-background)]/80">
-            Une question sur notre menu, une demande spéciale, ou juste un petit
-            mot doux ? Notre équipe vous répondra avec plaisir.
-          </p>
-        </section>
+      <main className="bg-[var(--color-background)] text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16 space-y-16">
+        <SectionHeader
+          as="h1"
+          title="Contactez-nous"
+          description="Une question sur notre menu, une demande spéciale, ou juste un petit mot doux ? Notre équipe vous répondra avec plaisir."
+        />
 
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Formulaire à gauche */}
           <div className="space-y-6">
-            <h2 className="text-2xl font-title font-semibold">Écrivez-nous</h2>
+            <Title as="h2" size="md">
+              Écrivez-nous
+            </Title>
             <ContactBrowser />
           </div>
 
           {/* Infos pratiques à droite */}
           <div className="space-y-6 font-body text-sm">
             <div>
-              <h2 className="text-xl font-title mb-2">📍 Adresse</h2>
-              <p>12 rue du Brunch, 33120 Arcachon</p>
+              <Title as="h3" size="sm" className="mb-2">
+                📍 Adresse
+              </Title>
+              <p>
+                {POPETTE_ADDRESS}, {POPETTE_POSTAL_CODE}
+              </p>
             </div>
 
             <div>
-              <h2 className="text-xl font-title mb-2">⏰ Horaires</h2>
+              <Title as="h3" size="sm" className="mb-2">
+                ⏰ Horaires
+              </Title>
               <ul className="space-y-1">
-                <li>Mercredi à dimanche : 10h – 15h30</li>
-                <li>Fermé lundi et mardi</li>
+                <li>
+                  {POPETTE_OPENED} : {POPETTE_HOURS}
+                </li>
               </ul>
             </div>
 
             <div>
-              <h2 className="text-xl font-title mb-2">📞 Téléphone</h2>
-              <p>05 56 00 00 00</p>
+              <Title as="h3" size="sm" className="mb-2">
+                📞 Téléphone
+              </Title>
+              <a href={`tel:${POPETTE_PHONE_LINK}`}>{POPETTE_PHONE}</a>
             </div>
 
             <div>
-              <h2 className="text-xl font-title mb-2">✉️ Email</h2>
-              <p>contact@popette.com</p>
+              <Title as="h3" size="sm" className="mb-2">
+                ✉️ Email
+              </Title>
+              <p>{POPETTE_EMAIL}</p>
             </div>
 
             <div>
-              <h2 className="text-xl font-title mb-2">📌 Nous trouver</h2>
+              <Title as="h3" size="sm" className="mb-2">
+                📌 Nous trouver
+              </Title>
               <iframe
-                className="w-full h-64 rounded-xl border border-[var(--color-outline)]"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2938.5120791047064!2d-1.166060984538651!3d44.65600499621751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDM5JzIxLjYiTiAxwrAxMCcwOC4zIlc!5e0!3m2!1sfr!2sfr!4v1622475294207!5m2!1sfr!2sfr"
+                className="w-full h-64 rounded-xl border border-outline"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2873.089716893106!2d-1.163644284563808!3d44.654660779099265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd54c7c65b167c3d%3A0x258ac017e64c4d9d!2s10%20Rue%20du%20Mar%C3%A9chal%20de%20Lattre%20de%20Tassigny%2C%2033120%20Arcachon!5e0!3m2!1sfr!2sfr!4v1715618169155!5m2!1sfr!2sfr" // ton lien
                 loading="lazy"
                 allowFullScreen
               ></iframe>
@@ -89,61 +114,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section className="max-w-3xl mx-auto space-y-6 pt-12 border-t border-[var(--color-outline)]">
-          <h2 className="text-2xl font-title font-semibold text-center">
-            Questions fréquentes
-          </h2>
-          <div className="space-y-4 font-body text-sm">
-            <details className="border border-[var(--color-outline)] rounded-xl p-4">
-              <summary className="cursor-pointer font-semibold">
-                🕒 Quels sont vos horaires ?
-              </summary>
-              <p className="mt-2">
-                Nous sommes ouverts du mercredi au dimanche, de 10h à 15h30.
-                Fermé lundi et mardi.
-              </p>
-            </details>
-
-            <details className="border border-[var(--color-outline)] rounded-xl p-4">
-              <summary className="cursor-pointer font-semibold">
-                🥞 Faut-il réserver pour bruncher chez vous ?
-              </summary>
-              <p className="mt-2">
-                La réservation est fortement conseillée le week-end. Vous pouvez
-                réserver via notre page de réservation ou par téléphone.
-              </p>
-            </details>
-
-            <details className="border border-[var(--color-outline)] rounded-xl p-4">
-              <summary className="cursor-pointer font-semibold">
-                🌱 Proposez-vous des plats végétariens / sans gluten ?
-              </summary>
-              <p className="mt-2">
-                Oui, plusieurs options sont disponibles. N’hésitez pas à
-                demander à notre équipe sur place.
-              </p>
-            </details>
-
-            <details className="border border-[var(--color-outline)] rounded-xl p-4">
-              <summary className="cursor-pointer font-semibold">
-                🐶 Les chiens sont-ils acceptés ?
-              </summary>
-              <p className="mt-2">
-                Oui, en terrasse uniquement. Merci de garder votre compagnon
-                attaché.
-              </p>
-            </details>
-
-            <details className="border border-[var(--color-outline)] rounded-xl p-4">
-              <summary className="cursor-pointer font-semibold">
-                💳 Quels moyens de paiement acceptez-vous ?
-              </summary>
-              <p className="mt-2">
-                Carte bancaire, espèces, et titres-restaurant (carte ou papier).
-              </p>
-            </details>
-          </div>
-        </section>
+        <FaqSection />
       </main>
     </>
   );

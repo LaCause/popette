@@ -4,7 +4,14 @@ export async function GET() {
   const body = `User-agent: *
 Allow: /
 
-Sitemap: https://popette.com/sitemap.xml
+# Bloquer les dossiers internes de Next.js
+Disallow: /_next/
+Disallow: /api/
+Disallow: /static/
+Disallow: /fonts/
+Disallow: /server/
+
+Sitemap: https://popette-brunch.com/sitemap.xml
 `;
 
   return new NextResponse(body, {
