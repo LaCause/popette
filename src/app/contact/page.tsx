@@ -106,7 +106,7 @@ export default function ContactPage() {
               </Title>
               <iframe
                 className="w-full h-64 rounded-xl border border-outline"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2938.5120791047064!2d-1.166060984538651!3d44.65600499621751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDTCsDM5JzIxLjYiTiAxwrAxMCcwOC4zIlc!5e0!3m2!1sfr!2sfr!4v1622475294207!5m2!1sfr!2sfr"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2873.089716893106!2d-1.163644284563808!3d44.654660779099265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd54c7c65b167c3d%3A0x258ac017e64c4d9d!2s10%20Rue%20du%20Mar%C3%A9chal%20de%20Lattre%20de%20Tassigny%2C%2033120%20Arcachon!5e0!3m2!1sfr!2sfr!4v1715618169155!5m2!1sfr!2sfr" // ton lien
                 loading="lazy"
                 allowFullScreen
               ></iframe>
