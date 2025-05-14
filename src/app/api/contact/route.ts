@@ -51,10 +51,9 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Envoi email
     await resend.emails.send({
-      from: process.env.EMAIL_FROM!,
-      to: email,
+      from: "Popette Brunch <onboarding@resend.dev>",
+      to: process.env.RESEND_OWNER_EMAIL!,
       subject: "[Contact Popette] Nouveau message",
       react: ContactMail({ name, email, message }),
     });

@@ -7,4 +7,15 @@ export const contactSchema = z.object({
   company: z.string().optional(), // honeypot invisible
 });
 
+export const postSchema = z.object({
+  slug: z.string().min(1),
+  title: z.string().min(1),
+  date: z.string().refine((val) => !isNaN(Date.parse(val)), {
+    message: "Date invalide",
+  }),
+  image: z.string().url().optional(),
+  content: z.string().min(1),
+  excerpt: z.string().optional(), // facultatif
+});
+
 export type ContactFormData = z.infer<typeof contactSchema>;

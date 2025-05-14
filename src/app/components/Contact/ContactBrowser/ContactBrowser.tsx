@@ -1,6 +1,6 @@
 "use client";
 
-import { ContactFormData, contactSchema } from "@/app/lib/contactSchema";
+import { ContactFormData, contactSchema } from "@/app/lib/schemas/schemas";
 import { useState, useEffect } from "react";
 import { useToast } from "../../ToastContainer/ToastContainer";
 
@@ -106,7 +106,7 @@ export default function ContactBrowser() {
           name="name"
           type="text"
           placeholder="Votre prénom"
-          className="w-full px-4 py-3 rounded border border-[var(--color-outline)] bg-[var(--color-surface)]"
+          className="w-full px-4 py-3 rounded border border-outline bg-tertiary-container"
         />
         {errors.name && (
           <p className="text-red-600 text-sm mt-1">{errors.name}</p>
@@ -118,7 +118,7 @@ export default function ContactBrowser() {
           name="email"
           type="email"
           placeholder="Votre email"
-          className="w-full px-4 py-3 rounded border border-[var(--color-outline)] bg-[var(--color-surface)]"
+          className="w-full px-4 py-3 rounded border border-outline bg-tertiary-container"
         />
         {errors.email && (
           <p className="text-red-600 text-sm mt-1">{errors.email}</p>
@@ -130,7 +130,7 @@ export default function ContactBrowser() {
           name="message"
           rows={5}
           placeholder="Votre message"
-          className="w-full px-4 py-3 rounded border border-[var(--color-outline)] bg-[var(--color-surface)]"
+          className="w-full px-4 py-3 rounded border border-outline bg-tertiary-container"
         />
         {errors.message && (
           <p className="text-red-600 text-sm mt-1">{errors.message}</p>
@@ -140,7 +140,7 @@ export default function ContactBrowser() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className={`w-full font-semibold py-3 rounded transition flex items-center justify-center gap-2 ${status === "loading" ? "bg-[var(--color-primary)]/60 text-[var(--color-on-primary)] cursor-not-allowed" : "bg-[var(--color-primary)] text-[var(--color-on-primary)] hover:scale-105"}`}
+        className={`w-full font-semibold py-3 rounded transition flex items-center justify-center gap-2 ${status === "loading" ? "bg-primary/60 text-on-primary cursor-not-allowed" : "bg-primary text-on-primary hover:scale-105"}`}
       >
         {status === "loading" ? (
           <>

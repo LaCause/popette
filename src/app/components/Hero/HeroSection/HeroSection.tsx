@@ -10,13 +10,13 @@ export default function HeroSection() {
     <>
       <section
         ref={ref}
-        className="group relative min-h-[80vh] flex items-center justify-center text-center px-6 py-48 bg-[var(--color-tertiary-container)] text-[var(--color-on-primary-container)]"
+        className="group relative min-h-[80vh] flex items-center justify-center text-center px-6 bg-[var(--color-tertiary-container)] text-on-primary-container"
       >
         <div
-          className="absolute inset-0 z-0 bg-[url('/hero-food.svg')] bg-cover bg-center opacity-30"
+          className="absolute inset-0 z-0 bg-contain bg-center opacity-30"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 backdrop-blur-none group-hover:backdrop-blur-md transition-all z-10" />
+        <div className="absolute inset-0 bg-[url(/img/mountains.jpg)] backdrop-blur-none group-hover:backdrop-blur-xs transition-all z-10" />
         <motion.div
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
@@ -36,16 +36,16 @@ export default function HeroSection() {
             className="uppercase font-semibold"
           />
 
-          <div>
+          <div className="flex justify-center gap-x-6">
             <a
-              href="#menu"
-              className="inline-block rounded-full px-6 py-3 bg-[var(--color-primary)] text-[var(--color-on-primary)] font-body font-semibold text-sm uppercase shadow-md hover:scale-105 hover:shadow-lg transition"
+              href="/menu"
+              className="inline-block rounded-full px-6 py-3 bg-primary text-on-primary font-body font-semibold text-sm uppercase shadow-md hover:scale-105 hover:shadow-lg transition cursor-pointer"
             >
               Voir le menu
             </a>
             <a
-              href="#menu"
-              className="inline-block rounded-full px-6 py-3 bg-[var(--color-primary)] text-[var(--color-on-primary)] font-body font-semibold text-sm uppercase shadow-md hover:scale-105 hover:shadow-lg transition"
+              href="/contact"
+              className="inline-block rounded-full px-6 py-3 bg-primary text-on-primary font-body font-semibold text-sm uppercase shadow-md hover:scale-105 hover:shadow-lg transition cursor-pointer"
             >
               Contactez-nous
             </a>

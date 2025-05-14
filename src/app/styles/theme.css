@@ -27,19 +27,17 @@
 }
 
 @theme {
-  /* --color-primary: #df492c; */
-  /* --color-primary: #c16856; */
-  --color-primary: #b8503d; /* Rouge terracotta : profond, appétissant */
+  --color-primary: #df492d;
   --color-on-primary: #fffdfa;
-  --color-primary-container: #fbe9e6; /* Version pastel/crémeuse */
+  --color-primary-container: #fbe9e6;
   --color-on-primary-container: #3a120c;
 
-  --color-secondary: #3e2e2c; /* Chocolat noir, pour contraste et élégance */
+  --color-secondary: #3e2e2c;
   --color-on-secondary: #fffdfa;
   --color-secondary-container: #e9d9d6;
   --color-on-secondary-container: #24120f;
 
-  --color-tertiary: #dbb891; /* Beige caramel doux, évoque les viennoiseries ou le bois clair */
+  --color-tertiary: #dbb891;
   --color-on-tertiary: #3e2c20;
   --color-tertiary-container: #fff4eb;
   --color-on-tertiary-container: #7b4b35;
