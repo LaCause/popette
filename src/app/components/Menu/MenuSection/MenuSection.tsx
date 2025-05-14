@@ -36,7 +36,7 @@ export default function MenuSection({ items }: { items: MenuItem[] }) {
         <div className="text-center">
           <a
             href="/menu"
-            className="inline-block rounded-full px-8 py-3 bg-[var(--color-primary)] text-[var(--color-on-primary)] font-body font-semibold text-sm uppercase shadow hover:scale-105 transition"
+            className="inline-block rounded-full px-8 py-3 bg-primary text-on-primary font-body font-semibold text-sm uppercase shadow hover:scale-105 transition"
           >
             Voir le menu complet
           </a>

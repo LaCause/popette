@@ -1,16 +1,12 @@
 import Link from "next/link";
 import Title from "../Title/Title";
 import { Facebook, Instagram } from "lucide-react";
-
-const navItems = [
-  { href: "/", label: "Accueil" },
-  { href: "/about-us", label: "Notre histoire" },
-  { href: "/menu", label: "Menu" },
-  { href: "/contact", label: "Contact" },
-  { href: "/showcase", label: "Photos" },
-  { href: "/blog", label: "Blog" },
-  { href: "/mentions-legales", label: "Mentions légales" },
-];
+import {
+  POPETTE_ADDRESS,
+  POPETTE_EMAIL,
+  POPETTE_NAVIGATION,
+  POPETTE_POSTAL_CODE,
+} from "@/app/constants/general";
 
 export default function Footer() {
   return (
@@ -54,7 +50,7 @@ export default function Footer() {
             Navigation
           </Title>
           <ul className="space-y-1">
-            {navItems.map(({ href, label }) => (
+            {POPETTE_NAVIGATION.map(({ href, label }) => (
               <li key={href}>
                 <Link
                   href={href}
@@ -73,20 +69,17 @@ export default function Footer() {
             Coordonnées
           </Title>
           <p>
-            10 Rue du Maréchal de Lattre de Tassigny
+            {POPETTE_ADDRESS}
             <br />
-            33120 Arcachon
+            {POPETTE_POSTAL_CODE}
           </p>
           <p className="mt-2">
             <a href="tel:0666128118" className="hover:underline">
               06 66 12 81 18
             </a>
             <br />
-            <a
-              href="mailto:popette.arcachon@gmail.com"
-              className="hover:underline"
-            >
-              popette.arcachon@gmail.com
+            <a href={`mailto:${POPETTE_EMAIL}`} className="hover:underline">
+              {POPETTE_EMAIL}
             </a>
           </p>
         </address>

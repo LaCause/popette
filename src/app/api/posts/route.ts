@@ -1,17 +1,6 @@
 import { prisma } from "@/app/lib/prisma/prisma";
+import { postSchema } from "@/app/lib/schemas/schemas";
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
-
-const postSchema = z.object({
-  slug: z.string().min(1),
-  title: z.string().min(1),
-  date: z.string().refine((val) => !isNaN(Date.parse(val)), {
-    message: "Date invalide",
-  }),
-  image: z.string().url().optional(),
-  content: z.string().min(1),
-  excerpt: z.string().optional(), // facultatif
-});
 
 export async function GET() {
   try {
