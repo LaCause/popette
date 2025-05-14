@@ -28,7 +28,7 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: SEO_BLOG.jsonLd }}
       />
       <main
-        className="bg-[var(--color-background)] text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16"
+        className="bg-background text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16"
         role="main"
       >
         <SectionHeader

@@ -38,7 +38,7 @@ export default function MenuBrowser({
 
   return (
     <main
-      className="bg-[var(--color-background)] text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16"
+      className="bg-background text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16"
       role="main"
       aria-label="Navigation du menu"
     >

@@ -27,7 +27,7 @@ export default function AboutUsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: SEO_ABOUT.jsonLd }}
       />
-      <main className="bg-[var(--color-background)] text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16">
+      <main className="bg-background text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16">
         <div className="max-w-5xl mx-auto space-y-20">
           <SectionHeader
             as="h1"
