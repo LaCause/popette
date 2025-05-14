@@ -5,6 +5,7 @@ import Link from "next/link";
 import { X, Menu } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { signOut, useSession } from "next-auth/react";
+import { POPETTE_NAVIGATION } from "@/app/constants/general";
 
 export default function Navigation() {
   const [open, setOpen] = useState(false);
@@ -18,15 +19,6 @@ export default function Navigation() {
     document.addEventListener("keydown", handleEsc);
     return () => document.removeEventListener("keydown", handleEsc);
   }, []);
-
-  const navItems = [
-    { href: "/", label: "Accueil" },
-    { href: "/about-us", label: "Notre histoire" },
-    { href: "/menu", label: "Menu" },
-    { href: "/contact", label: "Contact" },
-    { href: "/showcase", label: "Photos" },
-    { href: "/blog", label: "Blog" },
-  ];
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 shadow backdrop-blur-md">
@@ -86,7 +78,7 @@ export default function Navigation() {
 
             <nav className="flex-1 flex items-center justify-center">
               <ul className="flex flex-col gap-10 font-title tracking-wide px-8">
-                {navItems.map((item, index) => (
+                {POPETTE_NAVIGATION.map((item, index) => (
                   <motion.li
                     key={item.href}
                     initial={{ opacity: 0, x: 20 }}

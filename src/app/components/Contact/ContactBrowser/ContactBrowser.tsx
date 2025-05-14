@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  ContactFormData,
-  contactSchema,
-} from "@/app/lib/schemas/contactSchema";
+import { ContactFormData, contactSchema } from "@/app/lib/schemas/schemas";
 import { useState, useEffect } from "react";
 import { useToast } from "../../ToastContainer/ToastContainer";
 
