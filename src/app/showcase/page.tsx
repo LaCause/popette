@@ -25,7 +25,7 @@ export default function ShowcasePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: SEO_GALLERY.jsonLd }}
       />
-      <main className="bg-[var(--color-background)] text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16">
+      <main className="bg-background text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16">
         <GalleryBrowser />
       </main>
     </>

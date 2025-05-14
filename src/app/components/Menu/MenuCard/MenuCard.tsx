@@ -11,7 +11,7 @@ export default function MenuCard({ item }: MenuCardProps) {
     <article
       itemScope
       itemType="https://schema.org/MenuItem"
-      className="flex flex-col h-full border rounded-xl bg-[var(--color-background)] text-[var(--color-on-background)] border-[var(--color-outline)] transition hover:shadow-md hover:scale-[1.01] duration-200"
+      className="flex flex-col h-full border rounded-xl bg-background text-[var(--color-on-background)] border-[var(--color-outline)] transition hover:shadow-md hover:scale-[1.01] duration-200"
     >
       {/* Image */}
       <div className="relative h-48 sm:h-52 w-full flex-shrink-0">

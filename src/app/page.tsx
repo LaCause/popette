@@ -38,7 +38,7 @@ export default async function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: SEO_HOME.jsonLd }}
       />
-      <main className="min-h-screen bg-[var(--color-background)]">
+      <main className="min-h-screen bg-background">
         {/* <HeroIllustration /> */}
         <HeroSection />
 
