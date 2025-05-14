@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation/Navigation";
 import { ToastProvider } from "./components/ToastContainer/ToastContainer";
 import "./globals.css";
 import { SessionProviderWrapper } from "./providers/sessionProvider";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: {
@@ -42,6 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased`}>
+        <Analytics />
         <SessionProviderWrapper>
           <Navigation />
           <ToastProvider>{children}</ToastProvider>

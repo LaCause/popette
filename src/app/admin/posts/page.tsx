@@ -76,8 +76,6 @@ export default function AdminPostsPage() {
       body: JSON.stringify(form),
     });
 
-    console.log("!!!!!!!!", res);
-
     if (res.ok) {
       resetForm();
       fetchPosts();

@@ -1,7 +1,7 @@
 import { Category, MenuItem } from "@/generated/prisma";
 import { SEO_MENU } from "../constants/seo";
 import MenuBrowser from "../components/Menu/MenuBrowser/MenuBrowser";
-import { prisma } from "../lib/prisma";
+import { prisma } from "../lib/prisma/prisma";
 
 type CategoryWithItems = Category & { items: MenuItem[] };
 

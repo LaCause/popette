@@ -1,5 +1,5 @@
 import { ArticleCardProps } from "@/app/components/Article/ArticleCard/ArticleCard.const";
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/app/lib/prisma/prisma";
 import { Post } from "@/generated/prisma";
 
 export async function getPostBySlug(slug: string) {
@@ -34,11 +34,10 @@ export async function getRelatedPosts(
   }));
 }
 
-export async function getAllPosts(limit?: number): Promise<Post[]> {
+export async function getAllPosts(): Promise<Post[]> {
   return prisma.post.findMany({
     orderBy: {
       date: "desc",
     },
-    take: limit,
   });
 }

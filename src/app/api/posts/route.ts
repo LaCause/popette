@@ -1,4 +1,4 @@
-import { prisma } from "@/app/lib/prisma";
+import { prisma } from "@/app/lib/prisma/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -30,7 +30,7 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  console.log(body);
+
   const parsed = postSchema.safeParse(body);
 
   if (!parsed.success) {
