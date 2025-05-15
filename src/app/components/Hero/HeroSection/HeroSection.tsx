@@ -16,7 +16,7 @@ export default function HeroSection() {
           className="absolute inset-0 z-0 bg-contain bg-center opacity-30"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-[url(/img/mountains.jpg)] backdrop-blur-none group-hover:backdrop-blur-xs transition-all z-10" />
+        <div className="absolute inset-0 backdrop-blur-none group-hover:backdrop-blur-xs transition-all z-10" />
         <motion.div
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
