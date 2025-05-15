@@ -1,6 +1,7 @@
 import GalleryBrowser from "../components/Gallery/GalleryBrowser/GalleryBrowser";
 import { Metadata } from "next";
 import { SEO_GALLERY } from "../constants/seo";
+import { POPETTE_DOMAIN } from "../constants/general";
 
 export const metadata: Metadata = {
   title: SEO_GALLERY.title,
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: SEO_GALLERY.title,
     description: SEO_GALLERY.description,
-    url: "https://popette-brunch.com",
+    url: POPETTE_DOMAIN,
     type: "website",
   },
   twitter: {
@@ -25,7 +26,7 @@ export default function ShowcasePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: SEO_GALLERY.jsonLd }}
       />
-      <main className="bg-[var(--color-background)] text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16">
+      <main className="bg-background text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16">
         <GalleryBrowser />
       </main>
     </>

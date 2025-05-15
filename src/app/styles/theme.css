@@ -26,6 +26,20 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Mulish";
+  src: url("../../fonts/Mulish/Mulish-VariableFont_wght.ttf");
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "YellowTail";
+  src: url("../../fonts/Yellowtail/Yellowtail-Regular.ttf");
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-primary: #df492d;
   --color-on-primary: #fffdfa;
@@ -50,9 +64,9 @@
   --color-outline: #dbc8c2;
   --color-shadow: 0 4px 24px rgba(75, 45, 35, 0.06);
 
-  --font-body: "Montserrat", sans-serif;
+  --font-body: "Mulish", sans-serif;
   --font-title: "Playfair Display", serif;
-  --font-logo: "Pacifico";
+  --font-logo: "YellowTail", cursive;
   --font-alt: "Dancing Script", cursive;
 
   --radius-xl: 2rem;
