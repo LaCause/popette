@@ -3,12 +3,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, ArrowLeft, ArrowRight } from "lucide-react";
-import { IMAGE_TEST_URL } from "@/app/constants/dev";
 import { ResolvedImage } from "../../ResolvedImage/ResolvedImage";
 import { SectionHeader } from "../../SectionHeader/SectionHeader";
+import { POPETTE_GALLERY_IMAGES } from "@/app/constants/general";
 
-const images = Array(8).fill(IMAGE_TEST_URL);
-images.push("https://placehold.co/600x400/000000/FFF.png");
+const images = POPETTE_GALLERY_IMAGES;
 
 export default function GalleryBrowser() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
