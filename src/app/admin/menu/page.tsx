@@ -98,7 +98,7 @@ export default function AdminMenuPage() {
   };
 
   const handleDelete = async (id: number) => {
-    await fetch(`/api/dishes/${id}`, { method: "DELETE" });
+    await fetch(`/api/menu/${id}`, { method: "DELETE" });
     fetchItems();
   };
 

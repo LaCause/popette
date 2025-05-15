@@ -5,6 +5,7 @@ import { SectionHeader } from "../components/SectionHeader/SectionHeader";
 import Title from "../components/Title/Title";
 import {
   POPETTE_ADDRESS,
+  POPETTE_DOMAIN,
   POPETTE_EMAIL,
   POPETTE_HOURS,
   POPETTE_OPENED,
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: SEO_CONTACT.title,
     description: SEO_CONTACT.description,
-    url: "https://popette-brunch.com",
+    url: POPETTE_DOMAIN,
     type: "website",
   },
   twitter: {

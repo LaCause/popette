@@ -1,6 +1,7 @@
 import GalleryBrowser from "../components/Gallery/GalleryBrowser/GalleryBrowser";
 import { Metadata } from "next";
 import { SEO_GALLERY } from "../constants/seo";
+import { POPETTE_DOMAIN } from "../constants/general";
 
 export const metadata: Metadata = {
   title: SEO_GALLERY.title,
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: SEO_GALLERY.title,
     description: SEO_GALLERY.description,
-    url: "https://popette-brunch.com",
+    url: POPETTE_DOMAIN,
     type: "website",
   },
   twitter: {

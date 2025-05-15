@@ -3,6 +3,7 @@ import { ResolvedImage } from "../components/ResolvedImage/ResolvedImage";
 import { SEO_ABOUT } from "../constants/seo";
 import Title from "../components/Title/Title";
 import { SectionHeader } from "../components/SectionHeader/SectionHeader";
+import { POPETTE_DOMAIN } from "../constants/general";
 
 export const metadata: Metadata = {
   title: SEO_ABOUT.title,
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: SEO_ABOUT.title,
     description: SEO_ABOUT.description,
-    url: "https://popette-brunch.com",
+    url: POPETTE_DOMAIN,
     type: "website",
   },
   twitter: {
