@@ -11,7 +11,7 @@ export default function ContactSection() {
   return (
     <section
       id="infos"
-      className="bg-tertiary-container py-16 px-6 sm:px-8 lg:px-16 text-on-primary-container"
+      className="bg-tertiary-container py-24 px-6 sm:px-8 lg:px-16 text-on-primary-container"
     >
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         {/* Colonne infos */}

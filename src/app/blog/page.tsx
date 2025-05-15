@@ -1,51 +1,36 @@
-import { Suspense } from "react";
-import ArticleList from "../components/Article/ArticleList/ArticleList";
-import { SEO_BLOG } from "../constants/seo";
+import { getAllPosts } from "@/app/lib/posts/post";
+import Title from "@/app/components/Title/Title";
 import { Metadata } from "next";
-import { SectionHeader } from "../components/SectionHeader/SectionHeader";
+import ArticleList from "../components/Article/ArticleList/ArticleList";
+import { Post } from "@/generated/prisma";
 
 export const metadata: Metadata = {
-  title: SEO_BLOG.title,
-  description: SEO_BLOG.description,
-  openGraph: {
-    title: SEO_BLOG.title,
-    description: SEO_BLOG.description,
-    url: "https://popette-brunch.com/blog",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: SEO_BLOG.title,
-    description: SEO_BLOG.description,
-  },
+  title: "Blog - Popette Brunch",
+  description: "Découvrez nos recettes, actus et coups de cœur brunch.",
 };
 
-export default function Page() {
+export type ClientPost = Omit<Post, "date" | "createdAt"> & {
+  date: string;
+};
+
+export default async function BlogPage() {
+  const rawPosts = await getAllPosts();
+  const posts: ClientPost[] = rawPosts.map((post) => ({
+    ...post,
+    date: post.date.toISOString(),
+  }));
+
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: SEO_BLOG.jsonLd }}
-      />
-      <main
-        className="bg-[var(--color-background)] text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16"
-        role="main"
-      >
-        <SectionHeader
-          as="h1"
-          title="Notre Actualité"
-          description="Découvrez toutes les recettes Popette : des idées brunch sucrées
-              et salées, simples, gourmandes et inspirées par les saisons. À
-              tester chez vous ou à venir savourer sur place."
-        />
-        <section className="max-w-5xl mx-auto space-y-10">
-          <Suspense
-            fallback={<p className="text-center text-sm">Chargement…</p>}
-          >
-            <ArticleList />
-          </Suspense>
-        </section>
-      </main>
-    </>
+    <main className="bg-background text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16">
+      <header className="text-center mb-12">
+        <Title as="h1" size="xl">
+          Le blog
+        </Title>
+        <p className="text-sm text-on-surface/70 max-w-2xl mx-auto mt-2">
+          Recettes, actualités, conseils brunch : tout l’univers Popette.
+        </p>
+      </header>
+      <ArticleList posts={posts} />
+    </main>
   );
 }

@@ -5,6 +5,7 @@ import { SectionHeader } from "../components/SectionHeader/SectionHeader";
 import Title from "../components/Title/Title";
 import {
   POPETTE_ADDRESS,
+  POPETTE_DOMAIN,
   POPETTE_EMAIL,
   POPETTE_HOURS,
   POPETTE_OPENED,
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: SEO_CONTACT.title,
     description: SEO_CONTACT.description,
-    url: "https://popette-brunch.com",
+    url: POPETTE_DOMAIN,
     type: "website",
   },
   twitter: {
@@ -48,7 +49,7 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: SEO_CONTACT.jsonLd }}
       />
-      <main className="bg-[var(--color-background)] text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16 space-y-16">
+      <main className="bg-background text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16 space-y-16">
         <SectionHeader
           as="h1"
           title="Contactez-nous"

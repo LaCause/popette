@@ -31,7 +31,7 @@ export default function AdminMenuPage() {
   const { showToast } = useToast();
 
   const fetchItems = async () => {
-    const res = await fetch("/api/dishes");
+    const res = await fetch("/api/menu");
     const data = await res.json();
     setItems(data);
   };
@@ -66,7 +66,7 @@ export default function AdminMenuPage() {
     };
 
     const method = editId ? "PUT" : "POST";
-    const endpoint = editId ? `/api/dishes/${editId}` : "/api/dishes";
+    const endpoint = editId ? `/api/menu/${editId}` : "/api/menu";
 
     const res = await fetch(endpoint, {
       method,
@@ -98,7 +98,7 @@ export default function AdminMenuPage() {
   };
 
   const handleDelete = async (id: number) => {
-    await fetch(`/api/dishes/${id}`, { method: "DELETE" });
+    await fetch(`/api/menu/${id}`, { method: "DELETE" });
     fetchItems();
   };
 

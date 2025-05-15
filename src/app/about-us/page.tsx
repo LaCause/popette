@@ -3,6 +3,7 @@ import { ResolvedImage } from "../components/ResolvedImage/ResolvedImage";
 import { SEO_ABOUT } from "../constants/seo";
 import Title from "../components/Title/Title";
 import { SectionHeader } from "../components/SectionHeader/SectionHeader";
+import { POPETTE_DOMAIN } from "../constants/general";
 
 export const metadata: Metadata = {
   title: SEO_ABOUT.title,
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: SEO_ABOUT.title,
     description: SEO_ABOUT.description,
-    url: "https://popette-brunch.com",
+    url: POPETTE_DOMAIN,
     type: "website",
   },
   twitter: {
@@ -27,7 +28,7 @@ export default function AboutUsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: SEO_ABOUT.jsonLd }}
       />
-      <main className="bg-[var(--color-background)] text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16">
+      <main className="bg-background text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16">
         <div className="max-w-5xl mx-auto space-y-20">
           <SectionHeader
             as="h1"
