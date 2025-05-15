@@ -5,6 +5,7 @@ import { ToastProvider } from "./components/ToastContainer/ToastContainer";
 import "./globals.css";
 import { SessionProviderWrapper } from "./providers/sessionProvider";
 import { Analytics } from "@vercel/analytics/next";
+import { POPETTE_DOMAIN } from "./constants/general";
 
 export const metadata: Metadata = {
   title: {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "Popette",
     type: "website",
     locale: "fr_FR",
-    url: "https://popette-brunch.com",
+    url: POPETTE_DOMAIN,
   },
   twitter: {
     card: "summary_large_image",

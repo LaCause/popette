@@ -6,7 +6,7 @@ import ContactSection from "./components/Contact/ContactSection/ContactSection";
 import AboutSection from "./components/About/AboutSection/AboutSection";
 import { getAllMenuItem } from "./lib/menu/menu";
 import { MenuItem } from "@/generated/prisma";
-import { Suspense } from "react";
+import { POPETTE_DOMAIN } from "./constants/general";
 
 export const metadata: Metadata = {
   title: SEO_HOME.title,
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: SEO_HOME.title,
     description: SEO_HOME.description,
-    url: "https://popette-brunch.com",
+    url: POPETTE_DOMAIN,
     type: "website",
   },
   twitter: {
@@ -29,6 +29,7 @@ export default async function Page() {
 
   try {
     menuItems = await getAllMenuItem(4);
+    console.log(menuItems);
   } catch (error) {
     console.error("[Page Home] Erreur lors de getAllMenuItem:", error);
   }
@@ -46,9 +47,7 @@ export default async function Page() {
         <AboutSection />
 
         {/* SECTION MENU */}
-        <Suspense fallback={<p className="text-center text-sm">Chargement…</p>}>
-          <MenuSection items={menuItems} />
-        </Suspense>
+        <MenuSection items={menuItems} />
 
         {/* SECTION CONTACT */}
         <ContactSection />
