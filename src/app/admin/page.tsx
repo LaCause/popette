@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ClipboardList, BookOpen } from "lucide-react";
+import { ClipboardList, BookOpen, GalleryThumbnails } from "lucide-react";
 
 const sections = [
   {
@@ -22,6 +22,12 @@ const sections = [
     href: "/admin/posts",
     icon: BookOpen,
     description: "Organisez vos articles.",
+  },
+  {
+    name: "Galerie",
+    href: "/admin/gallery",
+    icon: GalleryThumbnails,
+    description: "Organisez votre galerie.",
   },
 ];
 
