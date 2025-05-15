@@ -102,7 +102,7 @@ export default async function Page(props: {
   };
 
   return (
-    <main className="bg-background text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16">
+    <main className="bg-background text-on-tertiary-container py-20 px-6 sm:px-8 lg:px-16">
       <nav
         className="text-sm font-body text-on-tertiary-container/60 mb-6"
         aria-label="Fil d’Ariane"

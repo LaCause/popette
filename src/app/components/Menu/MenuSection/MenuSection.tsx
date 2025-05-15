@@ -5,15 +5,17 @@ import MenuCard from "../MenuCard/MenuCard";
 import Title from "../../Title/Title";
 
 export default function MenuSection({ items }: { items: MenuItem[] }) {
+  const isSingle = items.length === 1;
+
   return (
     <section
       id="menu"
-      className="bg-tertiary-container py-24 px-6 sm:px-8 lg:px-16 text-[var(--color-on-surface)]"
+      className="bg-tertiary-container pt-24 px-6 sm:px-8 lg:px-16 text-[var(--color-on-surface)]"
     >
       <div className="max-w-6xl mx-auto space-y-16">
         {/* Header */}
         <header className="text-center max-w-2xl mx-auto space-y-3">
-          <Title as="h2" size="lg">
+          <Title as="h2" size="xl">
             Notre menu
           </Title>
           <p className="text-[var(--color-on-surface)]/80 font-body text-base">
@@ -23,13 +25,16 @@ export default function MenuSection({ items }: { items: MenuItem[] }) {
         </header>
 
         {/* Liste des plats */}
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {items &&
-            items.map((item) => (
-              <li key={item.id}>
-                <MenuCard item={item} />
-              </li>
-            ))}
+        <ul
+          className={`grid gap-6 ${
+            isSingle ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"
+          }`}
+        >
+          {items.map((item) => (
+            <li key={item.id}>
+              <MenuCard item={item} />
+            </li>
+          ))}
         </ul>
 
         {/* CTA */}

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Category, MenuItem } from "@/generated/prisma";
 import { SectionHeader } from "../../SectionHeader/SectionHeader";
 import Title from "../../Title/Title";
+import MenuCard from "../MenuCard/MenuCard";
 
 interface CategoryWithItems extends Category {
   items: MenuItem[];
@@ -126,7 +127,7 @@ export default function MenuBrowser({
                       className="space-y-4"
                     >
                       <header className="text-center">
-                        <Title as="h2" size="lg">
+                        <Title as="h2" size="xl">
                           {cat.name}
                         </Title>
                         <div className="h-[2px] w-16 bg-[var(--color-tertiary)] mx-auto mt-2" />
@@ -143,23 +144,7 @@ export default function MenuBrowser({
                             className="border-b border-outline pb-4"
                             role="listitem"
                           >
-                            <div className="flex justify-between items-start">
-                              <Title
-                                as="h3"
-                                size="md"
-                                className="tracking-widest"
-                              >
-                                {item.title}
-                              </Title>
-                              <span className="text-sm font-body">
-                                {item.price.toFixed(2)} €
-                              </span>
-                            </div>
-                            {item.description && (
-                              <p className="typography-primary-s text-on-tertiary-container/80">
-                                {item.description}
-                              </p>
-                            )}
+                            <MenuCard item={item} variant="inline" />
                           </motion.li>
                         ))}
                       </ul>
@@ -178,19 +163,7 @@ export default function MenuBrowser({
                       className="border-b border-outline pb-4"
                       role="listitem"
                     >
-                      <div className="flex justify-between items-start">
-                        <h3 className="text-lg font-semibold font-title">
-                          {item.title}
-                        </h3>
-                        <span className="text-sm font-body">
-                          {item.price.toFixed(2)} €
-                        </span>
-                      </div>
-                      {item.description && (
-                        <p className="text-sm font-body text-on-tertiary-container/80">
-                          {item.description}
-                        </p>
-                      )}
+                      <MenuCard key={i} item={item} variant="inline" />
                     </motion.li>
                   ))}
                 </ul>

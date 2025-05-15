@@ -1,3 +1,5 @@
+import { IMAGE_TEST_URL } from "../dev";
+
 export const POPETTE_DOMAIN = "popette-brunch.com";
 export const POPETTE_OPENED = "Tout les jours";
 export const POPETTE_HOURS = "10h-18h tous les jours";
@@ -16,3 +18,5 @@ export const POPETTE_NAVIGATION = [
   { href: "/blog", label: "Blog" },
   { href: "/mentions-legales", label: "Mentions légales" },
 ];
+
+export const POPETTE_GALLERY_IMAGES = Array(13).fill(IMAGE_TEST_URL);

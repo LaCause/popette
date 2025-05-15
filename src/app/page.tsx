@@ -7,6 +7,7 @@ import AboutSection from "./components/About/AboutSection/AboutSection";
 import { getAllMenuItem } from "./lib/menu/menu";
 import { MenuItem } from "@/generated/prisma";
 import { POPETTE_DOMAIN } from "./constants/general";
+import GallerySection from "./components/Gallery/GallerySection/GallerySection";
 
 export const metadata: Metadata = {
   title: SEO_HOME.title,
@@ -29,7 +30,6 @@ export default async function Page() {
 
   try {
     menuItems = await getAllMenuItem(4);
-    console.log(menuItems);
   } catch (error) {
     console.error("[Page Home] Erreur lors de getAllMenuItem:", error);
   }
@@ -48,6 +48,8 @@ export default async function Page() {
 
         {/* SECTION MENU */}
         <MenuSection items={menuItems} />
+
+        <GallerySection />
 
         {/* SECTION CONTACT */}
         <ContactSection />
