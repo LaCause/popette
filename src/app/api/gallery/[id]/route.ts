@@ -4,10 +4,8 @@ import { prisma } from "@/app/lib/prisma/prisma";
 import { del } from "@vercel/blob";
 import { NextResponse } from "next/server";
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const id = parseInt(params.id);
   if (isNaN(id))
     return NextResponse.json({ error: "Invalid ID" }, { status: 400 });

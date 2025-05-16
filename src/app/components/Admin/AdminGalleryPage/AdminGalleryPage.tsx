@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useToast } from "../../ToastContainer/ToastContainer";
 import { FileInput } from "../../FileInput/FileInput";
+import { ResolvedImage } from "../../ResolvedImage/ResolvedImage";
 
 interface GalleryImage {
   id: number;
@@ -76,7 +76,7 @@ export default function AdminGalleryPage() {
 
         {file && (
           <div className="flex items-center space-x-4 mt-2">
-            <img
+            <ResolvedImage
               src={URL.createObjectURL(file)}
               alt="Aperçu"
               className="w-32 h-32 object-cover rounded-xl border border-outline"
@@ -125,7 +125,7 @@ export default function AdminGalleryPage() {
                 key={img.id}
                 className="relative group rounded-xl overflow-hidden shadow-sm bg-white"
               >
-                <img
+                <ResolvedImage
                   src={img.url}
                   alt={img.alt ?? ""}
                   className="w-full h-48 object-cover"
