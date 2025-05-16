@@ -5,27 +5,32 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X, ArrowLeft, ArrowRight } from "lucide-react";
 import { ResolvedImage } from "../../ResolvedImage/ResolvedImage";
 import { SectionHeader } from "../../SectionHeader/SectionHeader";
-import { POPETTE_GALLERY_IMAGES } from "@/app/constants/general";
+import { GalleryImage } from "@/generated/prisma";
 
-const images = POPETTE_GALLERY_IMAGES;
+interface GalleryBrowserProps {
+  images?: GalleryImage[];
+}
 
-export default function GalleryBrowser() {
+export default function GalleryBrowser({ images }: GalleryBrowserProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const hasImages = !!images && images.length > 0;
 
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
 
-  const nextImage = useCallback(
-    () => setLightboxIndex((i) => (i === null ? 0 : (i + 1) % images.length)),
-    []
-  );
+  const nextImage = useCallback(() => {
+    setLightboxIndex((i) => {
+      if (!hasImages) return null;
+      return i === null ? 0 : (i + 1) % images.length;
+    });
+  }, [images, hasImages]);
 
-  const prevImage = useCallback(
-    () =>
-      setLightboxIndex((i) =>
-        i === null ? 0 : (i - 1 + images.length) % images.length
-      ),
-    []
-  );
+  const prevImage = useCallback(() => {
+    setLightboxIndex((i) => {
+      if (!hasImages) return null;
+      return i === null ? 0 : (i - 1 + images.length) % images.length;
+    });
+  }, [images, hasImages]);
 
   useEffect(() => {
     const handleKeys = (e: KeyboardEvent) => {
@@ -38,6 +43,12 @@ export default function GalleryBrowser() {
     return () => document.removeEventListener("keydown", handleKeys);
   }, [lightboxIndex, closeLightbox, nextImage, prevImage]);
 
+  if (!hasImages) {
+    return (
+      <h1 className="typography-primary-xl-bold text-primary">Aucune image</h1>
+    );
+  }
+
   return (
     <section className="max-w-6xl mx-auto space-y-8">
       <SectionHeader
@@ -47,7 +58,7 @@ export default function GalleryBrowser() {
           en cuisine."
       />
       <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
-        {images.map((src, idx) => (
+        {images.map((image, idx) => (
           <div
             key={idx}
             className="w-full overflow-hidden rounded-xl shadow cursor-pointer"
@@ -55,7 +66,7 @@ export default function GalleryBrowser() {
             onClick={() => setLightboxIndex(idx)}
           >
             <ResolvedImage
-              src={src}
+              src={image.url}
               alt={`Photo ${idx + 1} du restaurant`}
               className="w-full h-auto object-cover transition duration-300 hover:scale-105"
             />
@@ -77,7 +88,7 @@ export default function GalleryBrowser() {
               onClick={(e) => e.stopPropagation()}
             >
               <ResolvedImage
-                src={images[lightboxIndex]}
+                src={images[lightboxIndex].url}
                 alt={`Photo ${lightboxIndex + 1}`}
                 className="w-full h-auto object-contain rounded-xl"
               />

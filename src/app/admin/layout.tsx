@@ -26,7 +26,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   const title = getTitleFromPath(pathname);
   return (
     <div className="py-20 px-6">
-      <div className="max-w-4xl mx-auto p-6 space-y-8">
+      <div className="mx-auto">
         {!isLogin && <h1 className="text-2xl font-bold mb-6">{title}</h1>}
         {children}
       </div>

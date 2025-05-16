@@ -33,6 +33,11 @@ const nextConfig: NextConfig = {
         hostname: "www.instagram.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "g5h0ukp15rn2n2m5.public.blob.vercel-storage.com",
+        pathname: "/**",
+      },
     ],
   },
 };

@@ -2,6 +2,7 @@ import GalleryBrowser from "../components/Gallery/GalleryBrowser/GalleryBrowser"
 import { Metadata } from "next";
 import { SEO_GALLERY } from "../constants/seo";
 import { POPETTE_DOMAIN } from "../constants/general";
+import { getAllImages } from "../lib/gallery/gallery";
 
 export const metadata: Metadata = {
   title: SEO_GALLERY.title,
@@ -19,7 +20,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ShowcasePage() {
+export default async function ShowcasePage() {
+  const images = await getAllImages();
   return (
     <>
       <script
@@ -27,7 +29,7 @@ export default function ShowcasePage() {
         dangerouslySetInnerHTML={{ __html: SEO_GALLERY.jsonLd }}
       />
       <main className="bg-background text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16">
-        <GalleryBrowser />
+        <GalleryBrowser images={images} />
       </main>
     </>
   );

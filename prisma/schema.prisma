@@ -50,3 +50,10 @@ model Post {
   content   String   // HTML brut
   createdAt DateTime @default(now())
 }
+
+model GalleryImage {
+  id        Int      @id @default(autoincrement())
+  url       String
+  alt       String?
+  createdAt DateTime @default(now())
+}
