@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FileInput } from "../../FileInput/FileInput";
-import { ResolvedImage } from "../../ResolvedImage/ResolvedImage";
-import { useToast } from "../../ToastContainer/ToastContainer";
-import Title from "../../Title/Title";
+import { FileInput } from "../../ui/FileInput/FileInput";
+import { ResolvedImage } from "../../ui/ResolvedImage/ResolvedImage";
+import { useToast } from "../../ui/ToastContainer/ToastContainer";
+import Title from "../../ui/Title/Title";
 
 interface GalleryImage {
   id: number;

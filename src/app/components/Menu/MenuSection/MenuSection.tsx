@@ -2,7 +2,7 @@
 
 import type { MenuItem } from "@/generated/prisma";
 import MenuCard from "../MenuCard/MenuCard";
-import Title from "../../Title/Title";
+import Title from "../../ui/Title/Title";
 
 export default function MenuSection({ items }: { items: MenuItem[] }) {
   const isSingle = items.length === 1;

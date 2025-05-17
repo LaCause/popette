@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Title from "../Title/Title";
+import Title from "../ui/Title/Title";
 import { Facebook, Instagram } from "lucide-react";
 import {
   POPETTE_ADDRESS,

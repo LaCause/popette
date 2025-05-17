@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import { ResolvedImage } from "../components/ResolvedImage/ResolvedImage";
+import { ResolvedImage } from "../components/ui/ResolvedImage/ResolvedImage";
 import { SEO_ABOUT } from "../constants/seo";
-import Title from "../components/Title/Title";
+import Title from "../components/ui/Title/Title";
 import { SectionHeader } from "../components/SectionHeader/SectionHeader";
 import { POPETTE_DOMAIN } from "../constants/general";
 

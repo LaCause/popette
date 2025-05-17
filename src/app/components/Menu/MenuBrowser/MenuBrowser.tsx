@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Category, MenuItem } from "@/generated/prisma";
 import { SectionHeader } from "../../SectionHeader/SectionHeader";
-import Title from "../../Title/Title";
+import Title from "../../ui/Title/Title";
 import MenuCard from "../MenuCard/MenuCard";
 
 interface CategoryWithItems extends Category {

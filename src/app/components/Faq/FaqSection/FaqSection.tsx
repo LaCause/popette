@@ -1,4 +1,4 @@
-import Title from "@/app/components/Title/Title";
+import Title from "@/app/components/ui/Title/Title";
 import FaqItem from "../FaqItem/FaqItem";
 
 export default function FaqSection() {

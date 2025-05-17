@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Footer from "./components/Footer/Footer";
 import Navigation from "./components/Navigation/Navigation";
-import { ToastProvider } from "./components/ToastContainer/ToastContainer";
+import { ToastProvider } from "./components/ui/ToastContainer/ToastContainer";
 import "./globals.css";
 import { SessionProviderWrapper } from "./providers/sessionProvider";
 import { Analytics } from "@vercel/analytics/next";
