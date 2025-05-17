@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import CurvedText from "../../ui/CurvedText/CurvedText";
-import { useToast } from "../../ui/ToastContainer/ToastContainer";
+import { Button } from "../../ui/Button/Button";
+import Link from "next/link";
 
 export default function HeroSection() {
   const ref = useRef<HTMLElement>(null); //
@@ -38,18 +39,12 @@ export default function HeroSection() {
           />
 
           <div className="flex flex-col sm:flex-row justify-center gap-y-4 sm:gap-x-6">
-            <a
-              href="/menu"
-              className="inline-block rounded-full px-6 py-3 bg-primary text-on-primary font-body font-semibold text-sm uppercase shadow-md hover:scale-105 hover:shadow-lg transition cursor-pointer text-center"
-            >
-              Voir le menu
-            </a>
-            <a
-              href="/contact"
-              className="inline-block rounded-full px-6 py-3 bg-primary text-on-primary font-body font-semibold text-sm uppercase shadow-md hover:scale-105 hover:shadow-lg transition cursor-pointer text-center"
-            >
-              Contactez-nous
-            </a>
+            <Button asChild size="lg">
+              <Link href="/menu">Voir le menu</Link>
+            </Button>
+            <Button asChild size="lg">
+              <Link href="/contact">Contactez-nous</Link>
+            </Button>
           </div>
         </motion.div>
       </section>

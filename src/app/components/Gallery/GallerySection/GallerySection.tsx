@@ -5,6 +5,7 @@ import { ResolvedImage } from "../../ui/ResolvedImage/ResolvedImage";
 import { SectionHeader } from "../../SectionHeader/SectionHeader";
 import { POPETTE_GALLERY_IMAGES } from "@/app/constants/general";
 import { useLightbox } from "../LightboxProvider/LightboxProvider";
+import { Button } from "../../ui/Button/Button";
 
 export default function GallerySection() {
   const { open } = useLightbox();
@@ -41,12 +42,9 @@ export default function GallerySection() {
           ))}
         </div>
         <div className="text-center">
-          <Link
-            href="/showcase"
-            className="inline-block rounded-full px-8 py-3 bg-primary text-on-primary font-body font-semibold text-sm uppercase shadow hover:scale-105 transition"
-          >
-            Voir la galerie complète
-          </Link>
+          <Button asChild size="lg">
+            <Link href="/showcase">Voir la galerie complète</Link>
+          </Button>
         </div>
       </div>
     </section>

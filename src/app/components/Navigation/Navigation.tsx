@@ -24,7 +24,7 @@ export default function Navigation() {
     <header className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 shadow backdrop-blur-md">
       <Link
         href="/"
-        className="typography-secondary-m text-3xl text-primary tracking-wider"
+        className="typography-secondary-xl text-primary tracking-wider"
       >
         Popette
       </Link>
@@ -67,7 +67,7 @@ export default function Navigation() {
             aria-modal="true"
           >
             <div className="flex justify-between items-center px-6 py-4 border-b border-outline">
-              <span className="font-logo text-3xl text-primary tracking-wider">
+              <span className="typography-secondary-xl text-primary tracking-wider">
                 Popette
               </span>
               <button
