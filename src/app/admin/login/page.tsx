@@ -1,5 +1,4 @@
 import AdminLoginPage from "@/app/components/Admin/AdminLoginPage/AdminLoginPage";
-import Title from "@/app/components/ui/Title/Title";
 
 export default function AdminLogin() {
   return (

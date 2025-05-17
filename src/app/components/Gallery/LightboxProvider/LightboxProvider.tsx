@@ -1,4 +1,3 @@
-// components/Lightbox/LightboxProvider.tsx
 "use client";
 
 import {
@@ -41,12 +40,15 @@ export function LightboxProvider({ children }: { children: React.ReactNode }) {
     setIndex(startIndex);
   };
 
-  const close = () => setIndex(null);
+  const close = useCallback(() => setIndex(null), []);
 
-  const next = () =>
+  const next = useCallback(() => {
     setIndex((i) => (i === null ? 0 : (i + 1) % images.length));
-  const prev = () =>
+  }, [images.length]);
+
+  const prev = useCallback(() => {
     setIndex((i) => (i === null ? 0 : (i - 1 + images.length) % images.length));
+  }, [images.length]);
 
   useEffect(() => {
     const handleKeys = (e: KeyboardEvent) => {
@@ -57,7 +59,7 @@ export function LightboxProvider({ children }: { children: React.ReactNode }) {
     };
     document.addEventListener("keydown", handleKeys);
     return () => document.removeEventListener("keydown", handleKeys);
-  }, [index, images.length]);
+  }, [index, images.length, close, next, prev]);
 
   return (
     <LightboxContext.Provider value={{ open, close }}>
