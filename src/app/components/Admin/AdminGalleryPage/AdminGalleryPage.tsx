@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FileInput } from "../../FileInput/FileInput";
 import { ResolvedImage } from "../../ResolvedImage/ResolvedImage";
+import { useToast } from "../../ToastContainer/ToastContainer";
+import Title from "../../Title/Title";
 
 interface GalleryImage {
   id: number;
@@ -12,6 +14,7 @@ interface GalleryImage {
 }
 
 export default function AdminGalleryPage() {
+  const { showToast } = useToast();
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [file, setFile] = useState<File | null>(null);
   const [alt, setAlt] = useState("");
@@ -34,10 +37,17 @@ export default function AdminGalleryPage() {
       body: formData,
     });
 
+    if (res.status === 400) {
+      const error = await res.json();
+      showToast({ title: error.error, variant: "error" });
+      return;
+    }
+
     if (res.ok) {
       setFile(null);
       setAlt("");
       fetchImages();
+      showToast({ title: "Image ajoutée", variant: "success" });
     }
   };
 
@@ -47,6 +57,7 @@ export default function AdminGalleryPage() {
     const res = await fetch(`/api/gallery/${id}`, { method: "DELETE" });
     if (res.ok) {
       fetchImages();
+      showToast({ title: "Image supprimée", variant: "success" });
     }
   };
 
@@ -56,24 +67,12 @@ export default function AdminGalleryPage() {
 
   return (
     <div className="p-6 max-w-5xl mx-auto space-y-10">
-      <section className="bg-white p-6 rounded-xl shadow-md space-y-4">
-        <h1 className="text-2xl font-title text-on-surface">
+      <section className="bg-white p-6 rounded-xl shadow-md space-y-4 text-center">
+        <Title as="h1" size="xl">
           Ajouter une image
-        </h1>
-
+        </Title>
         <FileInput onChange={(file) => setFile(file)} />
-        {/* <label className="block">
-          <span className="block text-sm font-medium text-on-surface mb-1">
-            Fichier
-          </span>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-            className="block w-full text-sm text-on-surface border border-outline rounded p-2"
-          />
-        </label> */}
-
+        <br />
         {file && (
           <div className="flex items-center space-x-4 mt-2">
             <ResolvedImage
@@ -90,7 +89,6 @@ export default function AdminGalleryPage() {
             />
           </div>
         )}
-
         <motion.button
           onClick={handleUpload}
           disabled={!file}
@@ -113,7 +111,6 @@ export default function AdminGalleryPage() {
           />
         </motion.button>
       </section>
-
       <section>
         <h2 className="text-xl font-semibold text-on-surface mb-4">Galerie</h2>
         {images.length === 0 ? (
