@@ -126,7 +126,7 @@ export default async function Page(props: {
 
       <article className="max-w-3xl mx-auto space-y-8">
         <header className="space-y-4">
-          <Title className="typography-tertiary-xl-bold" as="h1">
+          <Title className="typography-secondary-xl-bold" as="h1">
             {post.title}
           </Title>
           <p className="typography-primary-m text-on-tertiary-container/70">

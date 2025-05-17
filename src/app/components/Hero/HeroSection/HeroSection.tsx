@@ -23,11 +23,11 @@ export default function HeroSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="relative z-20 max-w-3xl space-y-8"
         >
-          <h1 className="font-logo text-8xl sm:text-9xl md:text-[200px] tracking-wide leading-tight drop-shadow-sm text-primary">
+          <h1 className="typography-secondary-xl text-8xl sm:text-9xl md:text-[200px] tracking-wide leading-tight drop-shadow-sm text-primary">
             Popette
           </h1>
 
-          <span className="font-logo text-primary text-6xl tracking-wide leading-tight">
+          <span className="typography-primary-m uppercase text-primary text-3xl tracking-widest leading-tight">
             Brunch
           </span>
 

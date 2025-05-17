@@ -12,10 +12,10 @@ interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
 }
 
 const sizeClasses: Record<TitleSize, string> = {
-  sm: "typography-tertiary-s-bold",
-  md: "typography-tertiary-m-bold",
-  lg: "typography-tertiary-l-bold",
-  xl: "typography-tertiary-xl-bold",
+  sm: "typography-secondary-s-bold",
+  md: "typography-secondary-m-bold",
+  lg: "typography-secondary-l-bold",
+  xl: "typography-secondary-xl-bold",
 };
 
 export default function Title({
