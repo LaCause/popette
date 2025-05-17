@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import CurvedText from "../../ui/CurvedText/CurvedText";
+import { useToast } from "../../ui/ToastContainer/ToastContainer";
 
 export default function HeroSection() {
   const ref = useRef<HTMLElement>(null); //

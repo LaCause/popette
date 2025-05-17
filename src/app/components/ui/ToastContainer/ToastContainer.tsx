@@ -1,6 +1,8 @@
 "use client";
+
 import * as Toast from "@radix-ui/react-toast";
 import { createContext, useContext, useState } from "react";
+import { CheckCircle, XCircle } from "lucide-react";
 
 export type ToastVariant = "success" | "error";
 
@@ -46,21 +48,30 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         <Toast.Root
           open={toast.open}
           onOpenChange={(open) => setToast((prev) => ({ ...prev, open }))}
-          className={`fixed bottom-4 right-4 z-50 max-w-sm rounded-xl px-4 py-3 shadow-lg text-sm
-            ${
-              toast.variant === "success"
-                ? "bg-green-100 text-green-800 border border-green-300"
-                : "bg-red-100 text-red-800 border border-red-300"
-            }`}
+          className="fixed bottom-4 right-4 z-50 w-full max-w-sm rounded-2xl border border-outline bg-surface px-5 py-4 shadow-xl text-on-surface backdrop-blur-sm transition-all data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in"
         >
-          <Toast.Title className="font-semibold mb-1">
-            {toast.title}
-          </Toast.Title>
-          {toast.description && (
-            <Toast.Description>{toast.description}</Toast.Description>
-          )}
+          <div className="flex items-start gap-3">
+            <div className="mt-0.5">
+              {toast.variant === "success" ? (
+                <CheckCircle className="text-green-600 w-5 h-5" />
+              ) : (
+                <XCircle className="text-red-600 w-5 h-5" />
+              )}
+            </div>
+
+            <div className="flex-1">
+              <Toast.Title className="font-title text-base text-on-surface font-semibold">
+                {toast.title}
+              </Toast.Title>
+              {toast.description && (
+                <Toast.Description className="text-sm text-on-surface/80 mt-1">
+                  {toast.description}
+                </Toast.Description>
+              )}
+            </div>
+          </div>
         </Toast.Root>
-        <Toast.Viewport className="fixed bottom-0 right-0 p-4 z-50" />
+        <Toast.Viewport className="fixed bottom-0 right-0 p-4 z-50 flex flex-col gap-2" />
       </Toast.Provider>
     </ToastContext.Provider>
   );
