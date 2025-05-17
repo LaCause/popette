@@ -1,4 +1,4 @@
-import Title from "../components/Title/Title";
+import Title from "../components/ui/Title/Title";
 
 export default function MentionsLegales() {
   return (

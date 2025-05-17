@@ -40,18 +40,10 @@ export default async function Page() {
         dangerouslySetInnerHTML={{ __html: SEO_HOME.jsonLd }}
       />
       <main className="min-h-screen bg-background">
-        {/* <HeroIllustration /> */}
         <HeroSection />
-
-        {/* ABOUT US */}
         <AboutSection />
-
-        {/* SECTION MENU */}
         <MenuSection items={menuItems} />
-
         <GallerySection />
-
-        {/* SECTION CONTACT */}
         <ContactSection />
       </main>
     </>

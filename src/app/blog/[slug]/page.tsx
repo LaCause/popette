@@ -5,7 +5,7 @@ import { ArticleBody } from "@/app/components/Article/ArticleBody/ArticleBody";
 import { ArticleSuggestion } from "@/app/components/Article/ArticleSuggestion/ArticleSuggestion";
 import { SEOJsonLd } from "@/app/components/JsonLd/SEOJsonLd/SEOJsonLd";
 import { getPostBySlug, getRelatedPosts } from "@/app/lib/posts/post";
-import Title from "@/app/components/Title/Title";
+import Title from "@/app/components/ui/Title/Title";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;

@@ -1,7 +1,7 @@
 "use client";
 
 import { MenuItem } from "@/generated/prisma";
-import Title from "../../Title/Title";
+import Title from "../../ui/Title/Title";
 import Image from "next/image";
 
 interface MenuCardProps {

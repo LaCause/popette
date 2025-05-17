@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ResolvedImage } from "../../ResolvedImage/ResolvedImage";
+import { ResolvedImage } from "../../ui/ResolvedImage/ResolvedImage";
 import { SectionHeader } from "../../SectionHeader/SectionHeader";
 import { POPETTE_GALLERY_IMAGES } from "@/app/constants/general";
 

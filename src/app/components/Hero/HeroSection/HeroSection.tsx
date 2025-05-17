@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRef } from "react";
-import CurvedText from "../../CurvedText/CurvedText";
+import CurvedText from "../../ui/CurvedText/CurvedText";
 
 export default function HeroSection() {
   const ref = useRef<HTMLElement>(null); //

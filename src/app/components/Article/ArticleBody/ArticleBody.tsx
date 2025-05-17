@@ -1,6 +1,6 @@
 "use client";
 
-import { EDITOR_STYLE } from "../../TiptapEditor/TiptabEditor.const";
+import { EDITOR_STYLE } from "../../ui/TiptapEditor/TiptabEditor.const";
 
 interface ArticleBodyProps {
   html: string;

@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, ArrowLeft, ArrowRight } from "lucide-react";
-import { ResolvedImage } from "../../ResolvedImage/ResolvedImage";
+import { ResolvedImage } from "../../ui/ResolvedImage/ResolvedImage";
 import { SectionHeader } from "../../SectionHeader/SectionHeader";
 import { GalleryImage } from "@/generated/prisma";
 

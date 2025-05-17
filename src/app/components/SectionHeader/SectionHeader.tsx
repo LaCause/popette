@@ -1,6 +1,6 @@
 import slugify from "slugify";
 import { type HTMLAttributes } from "react";
-import Title from "../Title/Title";
+import Title from "../ui/Title/Title";
 
 type HeadingTag = "h1" | "h2" | "h3" | "h4";
 

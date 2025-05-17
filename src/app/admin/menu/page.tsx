@@ -1,7 +1,7 @@
 "use client";
 
-import { ResolvedImage } from "@/app/components/ResolvedImage/ResolvedImage";
-import { useToast } from "@/app/components/ToastContainer/ToastContainer";
+import { ResolvedImage } from "@/app/components/ui/ResolvedImage/ResolvedImage";
+import { useToast } from "@/app/components/ui/ToastContainer/ToastContainer";
 import { useEffect, useState } from "react";
 
 interface Category {

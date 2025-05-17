@@ -1,5 +1,5 @@
-import { ResolvedImage } from "../../ResolvedImage/ResolvedImage";
-import Title from "../../Title/Title";
+import { ResolvedImage } from "../../ui/ResolvedImage/ResolvedImage";
+import Title from "../../ui/Title/Title";
 
 export default function AboutSection() {
   return (
