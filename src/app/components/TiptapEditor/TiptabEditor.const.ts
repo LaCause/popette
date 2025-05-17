@@ -5,4 +5,5 @@ export const EDITOR_STYLE = `
     [&_h2]:text-2xl [&_h2]:mb-3 [&_h2]:text-primary [&_h2]:font-logo
     [&_h3]:text-xl [&_h3]:mb-2 [&_h3]:text-primary [&_h3]:font-logo
     [&_p]:font-body
+    [&_p]:mb-4
   `;
