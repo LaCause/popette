@@ -1,32 +1,4 @@
 @font-face {
-  font-family: "Pacifico";
-  src: url("../../fonts/Pacifico/Pacifico-Regular.ttf");
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "MontSerrat";
-  src: url("../../fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Playfair Display";
-  src: url("../../fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf");
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Dancing";
-  src: url("../../fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf");
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Mulish";
   src: url("../../fonts/Mulish/Mulish-VariableFont_wght.ttf");
   font-style: normal;
@@ -64,10 +36,8 @@
   --color-outline: #dbc8c2;
   --color-shadow: 0 4px 24px rgba(75, 45, 35, 0.06);
 
-  --font-body: "Mulish", sans-serif;
-  --font-title: "Playfair Display", serif;
-  --font-logo: "YellowTail", cursive;
-  --font-alt: "Dancing Script", cursive;
+  --font-primary: "Mulish", sans-serif;
+  --font-secondary: "YellowTail", cursive;
 
   --radius-xl: 2rem;
 }

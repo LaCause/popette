@@ -26,7 +26,7 @@ export function SectionHeader({
       className={`text-center space-y-4 py-4 ${className ?? ""}`}
       {...rest}
     >
-      <Title id={headingId} as={as} className="typography-tertiary-xl-bold">
+      <Title id={headingId} as={as} className="typography-secondary-xl-bold">
         {title}
       </Title>
       {description && (
