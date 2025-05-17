@@ -6,6 +6,7 @@ import "./globals.css";
 import { SessionProviderWrapper } from "./providers/sessionProvider";
 import { Analytics } from "@vercel/analytics/next";
 import { POPETTE_DOMAIN } from "./constants/general";
+import { LightboxProvider } from "./components/Gallery/LightboxProvider/LightboxProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -46,8 +47,10 @@ export default function RootLayout({
       <body className={`antialiased`}>
         <Analytics />
         <SessionProviderWrapper>
-          <Navigation />
-          <ToastProvider>{children}</ToastProvider>
+          <LightboxProvider>
+            <Navigation />
+            <ToastProvider>{children}</ToastProvider>
+          </LightboxProvider>
         </SessionProviderWrapper>
         <Footer />
       </body>
