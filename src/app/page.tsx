@@ -27,7 +27,13 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   let menuItems: MenuItem[] = [];
+  const isMaintenanceMode = process.env.MAINTENANCE_MODE === "yes";
 
+  console.log(
+    "isMaintenanceMode : ",
+    isMaintenanceMode,
+    process.env.MAINTENANCE_MODE
+  );
   try {
     menuItems = await getAllMenuItem(4);
   } catch (error) {

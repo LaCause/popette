@@ -2,7 +2,7 @@ import Title from "../components/ui/Title/Title";
 
 export default function MentionsLegales() {
   return (
-    <section className="max-w-4xl mx-auto px-4 py-20 text-[var(--color-on-background)] font-body space-y-8">
+    <section className="max-w-4xl mx-auto px-4 py-20 text-on-background font-body space-y-8">
       <Title as="h1" size="lg">
         Mentions légales
       </Title>

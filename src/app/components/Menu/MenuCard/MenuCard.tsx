@@ -13,7 +13,7 @@ export default function MenuCard({ item, variant = "default" }: MenuCardProps) {
   const isInline = variant === "inline";
 
   const containerClass =
-    "border rounded-xl bg-background text-[var(--color-on-background)] border-[var(--color-outline)]";
+    "border rounded-xl bg-background text-on-background border-outline";
 
   const layoutClass = isInline
     ? "flex gap-4 items-start"
@@ -61,7 +61,7 @@ export default function MenuCard({ item, variant = "default" }: MenuCardProps) {
           {item.description && (
             <p
               itemProp="description"
-              className="font-body text-sm sm:text-base text-[var(--color-on-background)]/80 leading-relaxed"
+              className="font-body text-sm sm:text-base text-on-background/80 leading-relaxed"
             >
               {item.description}
             </p>

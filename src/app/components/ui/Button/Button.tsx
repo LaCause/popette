@@ -35,7 +35,7 @@ export const Button = forwardRef<
     const variantStyles: Record<ButtonVariant, string> = {
       default: "bg-primary text-on-primary hover:scale-105 hover:shadow-lg",
       outline:
-        "border border-[var(--color-outline)] text-on-surface bg-transparent hover:bg-[var(--color-tertiary-container)]",
+        "border border-outline text-on-surface bg-transparent hover:bg-[var(--color-tertiary-container)]",
       ghost: "bg-transparent text-primary hover:underline",
     };
 

@@ -27,7 +27,7 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="w-full max-w-md space-y-6 bg-white border border-[var(--color-outline)] rounded-2xl shadow-xl p-8">
+    <div className="w-full max-w-md space-y-6 bg-white border border-outline rounded-2xl shadow-xl p-8">
       <div className="text-center space-y-2">
         <h1
           id="admin-login-title"
