@@ -14,6 +14,7 @@ import {
   POPETTE_POSTAL_CODE,
 } from "../constants/general";
 import FaqSection from "../components/Faq/FaqSection/FaqSection";
+import ItineraryLinks from "../components/ui/ItineraryLinks/ItineraryLinks";
 
 export const metadata: Metadata = {
   title: SEO_CONTACT.title,
@@ -54,8 +55,25 @@ export default function ContactPage() {
           as="h1"
           title="Contactez-nous"
           description="Une question sur notre menu, une demande spéciale, ou juste un petit mot doux ? Notre équipe vous répondra avec plaisir."
+          className="mb-3"
         />
-
+        <section className="space-y-6 bg-surface border border-outline rounded-xl p-6 sm:hidden">
+          <Title
+            as="h2"
+            size="md"
+            variant="primary"
+            className="font-bold inline-flex items-center gap-2 text-secondary"
+          >
+            <span className="text-2xl">🚗</span>
+            Itinéraire depuis votre téléphone
+          </Title>
+          <p className="text-on-surface/80">
+            Retrouvez-nous en un clic à Arcachon :
+            <br />
+            <strong>{POPETTE_ADDRESS}</strong>
+          </p>
+          <ItineraryLinks />
+        </section>
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Formulaire à gauche */}
           <div className="space-y-6">
@@ -114,7 +132,6 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-
         <FaqSection />
       </main>
     </>

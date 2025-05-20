@@ -29,7 +29,6 @@ export const metadata: Metadata = {
 export default async function Page() {
   let menuItems: MenuItem[] = [];
   let galleryItems: GalleryImage[] = [];
-  const isMaintenanceMode = process.env.MAINTENANCE_MODE === "yes";
 
   try {
     galleryItems = await getAllImages(3);
