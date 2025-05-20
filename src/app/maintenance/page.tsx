@@ -2,11 +2,7 @@ import Link from "next/link";
 import { Button } from "../components/ui/Button/Button";
 import CurvedText from "../components/ui/CurvedText/CurvedText";
 import Title from "../components/ui/Title/Title";
-import {
-  POPETTE_EMAIL_LINK,
-  POPETTE_INSTAGRAM,
-  POPETTE_PHONE_LINK,
-} from "../constants/general";
+import { POPETTE_EMAIL_LINK, POPETTE_INSTAGRAM } from "../constants/general";
 
 export default function MaintenancePage() {
   return (
