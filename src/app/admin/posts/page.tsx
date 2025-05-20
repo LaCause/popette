@@ -84,7 +84,10 @@ export default function AdminPostsPage() {
         variant: "success",
       });
     } else {
-      console.error("Erreur lors de la soumission");
+      showToast({
+        title: "Erreur lors de la soumission",
+        variant: "error",
+      });
     }
   };
 

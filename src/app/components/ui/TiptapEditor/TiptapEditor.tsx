@@ -3,21 +3,28 @@
 import { useEffect } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import Underline from "@tiptap/extension-underline";
+import Link from "@tiptap/extension-link";
 import { EDITOR_STYLE } from "./TiptabEditor.const";
 
-export default function TiptapEditor({
-  content,
-  onChange,
-}: {
+interface TiptapEditorProps {
   content: string;
   onChange: (html: string) => void;
-}) {
+}
+
+export default function TiptapEditor({ content, onChange }: TiptapEditorProps) {
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [
+      StarterKit,
+      Underline,
+      Link.configure({
+        openOnClick: true,
+        linkOnPaste: true,
+        autolink: true,
+      }),
+    ],
     content,
-    onUpdate: ({ editor }) => {
-      onChange(editor.getHTML());
-    },
+    onUpdate: ({ editor }) => onChange(editor.getHTML()),
   });
 
   useEffect(() => {
@@ -28,50 +35,79 @@ export default function TiptapEditor({
 
   if (!editor) return null;
 
+  const setLink = () => {
+    const previousUrl = editor.getAttributes("link").href;
+    const url = window.prompt(
+      "Entrez l’URL du lien :",
+      previousUrl || "https://"
+    );
+
+    if (url === null) return;
+
+    if (url === "") {
+      editor.chain().focus().extendMarkRange("link").unsetLink().run();
+      return;
+    }
+
+    editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
+  };
+
   return (
     <div className="space-y-3">
       {/* Toolbar */}
-      <div className="flex flex-wrap gap-2 bg-tertiary-container p-3 border border-outline rounded-xl shadow-sm">
-        <FormatButton
+      <div className="flex flex-wrap gap-2 bg-tertiary-container p-3 border border-outline rounded-2xl shadow-sm">
+        <ToolbarButton
           label="Gras"
-          active={editor.isActive("bold")}
           onClick={() => editor.chain().focus().toggleBold().run()}
+          active={editor.isActive("bold")}
         />
-        <FormatButton
+        <ToolbarButton
           label="Italique"
-          active={editor.isActive("italic")}
           onClick={() => editor.chain().focus().toggleItalic().run()}
+          active={editor.isActive("italic")}
         />
-        <FormatButton
+        <ToolbarButton
+          label="Souligné"
+          onClick={() => editor.chain().focus().toggleUnderline().run()}
+          active={editor.isActive("underline")}
+        />
+        <ToolbarButton
           label="Titre"
-          active={editor.isActive("heading", { level: 2 })}
           onClick={() =>
             editor.chain().focus().toggleHeading({ level: 2 }).run()
           }
+          active={editor.isActive("heading", { level: 2 })}
         />
-        <FormatButton
+        <ToolbarButton
           label="Liste"
-          active={editor.isActive("bulletList")}
           onClick={() => editor.chain().focus().toggleBulletList().run()}
+          active={editor.isActive("bulletList")}
         />
-        <FormatButton
+        <ToolbarButton
+          label="Lien"
+          onClick={setLink}
+          active={editor.isActive("link")}
+        />
+        <ToolbarButton
           label="Paragraphe"
-          active={editor.isActive("paragraph")}
           onClick={() => editor.chain().focus().setParagraph().run()}
+          active={editor.isActive("paragraph")}
         />
-        <FormatButton
+        <ToolbarButton
           label="↺"
           onClick={() => editor.chain().focus().undo().run()}
         />
-        <FormatButton
+        <ToolbarButton
           label="↻"
           onClick={() => editor.chain().focus().redo().run()}
         />
       </div>
 
+      {/* Editor */}
       <div
-        className="border border-outline bg-white min-h-[240px] px-5 py-4 rounded-xl shadow-sm focus:outline-none cursor-text"
+        className="border border-outline bg-white min-h-[240px] px-5 py-4 rounded-2xl shadow-sm focus:outline-none cursor-text"
         onClick={() => editor.commands.focus()}
+        aria-label="Éditeur de contenu"
       >
         <EditorContent editor={editor} className={EDITOR_STYLE} />
       </div>
@@ -79,20 +115,21 @@ export default function TiptapEditor({
   );
 }
 
-function FormatButton({
+function ToolbarButton({
   label,
-  active,
   onClick,
+  active,
 }: {
   label: string;
-  active?: boolean;
   onClick: () => void;
+  active?: boolean;
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className={`px-2 py-1 text-sm rounded-md font-body transition border ${
+      aria-pressed={active}
+      className={`px-3 py-1.5 text-sm rounded-full font-body transition border outline-none focus:ring-2 focus:ring-primary/50 ${
         active
           ? "bg-primary text-on-primary border-transparent"
           : "bg-white text-on-tertiary-container border-outline hover:bg-primary-container"

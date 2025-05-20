@@ -7,7 +7,6 @@ export default function MaintenancePage() {
   return (
     <main className="min-h-screen flex items-center justify-center bg-tertiary-container px-6">
       <div className="max-w-xl mx-auto text-center space-y-8">
-        {/* Logo ou nom stylisé */}
         <Title
           as="h1"
           className="text-5xl sm:text-9xl tracking-wide drop-shadow"
