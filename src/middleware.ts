@@ -6,6 +6,7 @@ const maintenanceEnabled = process.env.MAINTENANCE_MODE === "true";
 const allowList = [
   "/maintenance",
   "/admin/login",
+  "/admin",
   "/api",
   "/_next",
   "/favicon.ico",
