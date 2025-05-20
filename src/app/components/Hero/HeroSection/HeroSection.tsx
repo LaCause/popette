@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import { useRef } from "react";
-import CurvedText from "../../CurvedText/CurvedText";
+import CurvedText from "../../ui/CurvedText/CurvedText";
+import { Button } from "../../ui/Button/Button";
+import Link from "next/link";
 
 export default function HeroSection() {
   const ref = useRef<HTMLElement>(null); //
@@ -23,11 +25,11 @@ export default function HeroSection() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="relative z-20 max-w-3xl space-y-8"
         >
-          <h1 className="font-logo text-8xl sm:text-9xl md:text-[200px] tracking-wide leading-tight drop-shadow-sm text-primary">
+          <h1 className="typography-secondary-xl text-8xl sm:text-9xl md:text-[200px] tracking-wide leading-tight drop-shadow-sm text-primary">
             Popette
           </h1>
 
-          <span className="font-logo text-primary text-6xl tracking-wide leading-tight">
+          <span className="typography-primary-m uppercase text-primary text-3xl tracking-widest leading-tight">
             Brunch
           </span>
 
@@ -37,18 +39,12 @@ export default function HeroSection() {
           />
 
           <div className="flex flex-col sm:flex-row justify-center gap-y-4 sm:gap-x-6">
-            <a
-              href="/menu"
-              className="inline-block rounded-full px-6 py-3 bg-primary text-on-primary font-body font-semibold text-sm uppercase shadow-md hover:scale-105 hover:shadow-lg transition cursor-pointer text-center"
-            >
-              Voir le menu
-            </a>
-            <a
-              href="/contact"
-              className="inline-block rounded-full px-6 py-3 bg-primary text-on-primary font-body font-semibold text-sm uppercase shadow-md hover:scale-105 hover:shadow-lg transition cursor-pointer text-center"
-            >
-              Contactez-nous
-            </a>
+            <Button asChild size="lg">
+              <Link href="/menu">Voir le menu</Link>
+            </Button>
+            <Button asChild size="lg">
+              <Link href="/contact">Contactez-nous</Link>
+            </Button>
           </div>
         </motion.div>
       </section>

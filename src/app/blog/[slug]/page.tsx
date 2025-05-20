@@ -5,7 +5,7 @@ import { ArticleBody } from "@/app/components/Article/ArticleBody/ArticleBody";
 import { ArticleSuggestion } from "@/app/components/Article/ArticleSuggestion/ArticleSuggestion";
 import { SEOJsonLd } from "@/app/components/JsonLd/SEOJsonLd/SEOJsonLd";
 import { getPostBySlug, getRelatedPosts } from "@/app/lib/posts/post";
-import Title from "@/app/components/Title/Title";
+import Title from "@/app/components/ui/Title/Title";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
@@ -126,7 +126,7 @@ export default async function Page(props: {
 
       <article className="max-w-3xl mx-auto space-y-8">
         <header className="space-y-4">
-          <Title className="typography-tertiary-xl-bold" as="h1">
+          <Title className="typography-secondary-xl-bold" as="h1">
             {post.title}
           </Title>
           <p className="typography-primary-m text-on-tertiary-container/70">

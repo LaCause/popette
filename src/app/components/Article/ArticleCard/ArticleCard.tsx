@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Title from "../../Title/Title";
+import Title from "../../ui/Title/Title";
 import { ArticleCardProps } from "./ArticleCard.const";
 
 interface Props extends ArticleCardProps {

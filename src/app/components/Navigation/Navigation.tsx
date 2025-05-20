@@ -22,7 +22,10 @@ export default function Navigation() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 shadow backdrop-blur-md">
-      <Link href="/" className="font-logo text-3xl text-primary tracking-wider">
+      <Link
+        href="/"
+        className="typography-secondary-xl text-primary tracking-wider"
+      >
         Popette
       </Link>
 
@@ -64,7 +67,7 @@ export default function Navigation() {
             aria-modal="true"
           >
             <div className="flex justify-between items-center px-6 py-4 border-b border-outline">
-              <span className="font-logo text-3xl text-primary tracking-wider">
+              <span className="typography-secondary-xl text-primary tracking-wider">
                 Popette
               </span>
               <button
@@ -88,7 +91,7 @@ export default function Navigation() {
                     <Link
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="block hover:text-primary transition typography-tertiary-xl-bold text-center"
+                      className="block hover:text-primary transition typography-secondary-xl-bold text-center"
                     >
                       {item.label}
                     </Link>

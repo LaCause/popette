@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { SEO_CONTACT } from "../constants/seo";
 import ContactBrowser from "../components/Contact/ContactBrowser/ContactBrowser";
 import { SectionHeader } from "../components/SectionHeader/SectionHeader";
-import Title from "../components/Title/Title";
+import Title from "../components/ui/Title/Title";
 import {
   POPETTE_ADDRESS,
   POPETTE_DOMAIN,

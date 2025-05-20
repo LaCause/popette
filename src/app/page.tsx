@@ -27,7 +27,13 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   let menuItems: MenuItem[] = [];
+  const isMaintenanceMode = process.env.MAINTENANCE_MODE === "yes";
 
+  console.log(
+    "isMaintenanceMode : ",
+    isMaintenanceMode,
+    process.env.MAINTENANCE_MODE
+  );
   try {
     menuItems = await getAllMenuItem(4);
   } catch (error) {
@@ -40,18 +46,10 @@ export default async function Page() {
         dangerouslySetInnerHTML={{ __html: SEO_HOME.jsonLd }}
       />
       <main className="min-h-screen bg-background">
-        {/* <HeroIllustration /> */}
         <HeroSection />
-
-        {/* ABOUT US */}
         <AboutSection />
-
-        {/* SECTION MENU */}
         <MenuSection items={menuItems} />
-
         <GallerySection />
-
-        {/* SECTION CONTACT */}
         <ContactSection />
       </main>
     </>

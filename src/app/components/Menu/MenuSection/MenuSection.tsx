@@ -2,7 +2,9 @@
 
 import type { MenuItem } from "@/generated/prisma";
 import MenuCard from "../MenuCard/MenuCard";
-import Title from "../../Title/Title";
+import Title from "../../ui/Title/Title";
+import { Button } from "../../ui/Button/Button";
+import Link from "next/link";
 
 export default function MenuSection({ items }: { items: MenuItem[] }) {
   const isSingle = items.length === 1;
@@ -39,12 +41,9 @@ export default function MenuSection({ items }: { items: MenuItem[] }) {
 
         {/* CTA */}
         <div className="text-center">
-          <a
-            href="/menu"
-            className="inline-block rounded-full px-8 py-3 bg-primary text-on-primary font-body font-semibold text-sm uppercase shadow hover:scale-105 transition"
-          >
-            Voir le menu complet
-          </a>
+          <Button size="lg" asChild>
+            <Link href="/menu">Voir le menu complet</Link>
+          </Button>
         </div>
       </div>
     </section>
