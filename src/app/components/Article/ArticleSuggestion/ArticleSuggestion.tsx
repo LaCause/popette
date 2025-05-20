@@ -1,4 +1,4 @@
-import Title from "../../Title/Title";
+import Title from "../../ui/Title/Title";
 import ArticleCard from "../ArticleCard/ArticleCard";
 import { ArticleCardProps } from "../ArticleCard/ArticleCard.const";
 

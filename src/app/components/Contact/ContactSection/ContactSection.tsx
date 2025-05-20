@@ -5,7 +5,7 @@ import {
   POPETTE_PHONE,
   POPETTE_POSTAL_CODE,
 } from "@/app/constants/general";
-import Title from "../../Title/Title";
+import Title from "../../ui/Title/Title";
 
 export default function ContactSection() {
   return (

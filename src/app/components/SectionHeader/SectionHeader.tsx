@@ -1,6 +1,6 @@
 import slugify from "slugify";
 import { type HTMLAttributes } from "react";
-import Title from "../Title/Title";
+import Title from "../ui/Title/Title";
 
 type HeadingTag = "h1" | "h2" | "h3" | "h4";
 
@@ -26,7 +26,7 @@ export function SectionHeader({
       className={`text-center space-y-4 py-4 ${className ?? ""}`}
       {...rest}
     >
-      <Title id={headingId} as={as} className="typography-tertiary-xl-bold">
+      <Title id={headingId} as={as} className="typography-secondary-xl-bold">
         {title}
       </Title>
       {description && (

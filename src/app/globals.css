@@ -1,10 +1,8 @@
 @import "tailwindcss";
 
 @import "./styles/theme.css";
-@import "./styles/fonts/montserrat.css";
-@import "./styles/fonts/playfair.css";
-@import "./styles/fonts/pacifico.css";
-@import "./styles/fonts/dancing.css";
+@import "./styles/fonts/primary.css";
+@import "./styles/fonts/secondary.css";
 
 .form-input {
   @apply border border-gray-300 px-3 py-2 text-sm text-gray-800 w-full focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition rounded-sm;

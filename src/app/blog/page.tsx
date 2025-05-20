@@ -1,5 +1,5 @@
 import { getAllPosts } from "@/app/lib/posts/post";
-import Title from "@/app/components/Title/Title";
+import Title from "@/app/components/ui/Title/Title";
 import { Metadata } from "next";
 import ArticleList from "../components/Article/ArticleList/ArticleList";
 import { Post } from "@/generated/prisma";

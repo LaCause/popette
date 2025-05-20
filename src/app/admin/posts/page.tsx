@@ -1,8 +1,8 @@
 "use client";
 
 import ArticleCard from "@/app/components/Article/ArticleCard/ArticleCard";
-import TiptapEditor from "@/app/components/TiptapEditor/TiptapEditor";
-import { useToast } from "@/app/components/ToastContainer/ToastContainer";
+import TiptapEditor from "@/app/components/ui/TiptapEditor/TiptapEditor";
+import { useToast } from "@/app/components/ui/ToastContainer/ToastContainer";
 import { Post } from "@/generated/prisma";
 import { useEffect, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
