@@ -34,7 +34,7 @@ export default function MenuSection({ items }: { items: MenuItem[] }) {
         >
           {items.map((item) => (
             <li key={item.id}>
-              <MenuCard item={item} />
+              <MenuCard item={item} hideImage />
             </li>
           ))}
         </ul>

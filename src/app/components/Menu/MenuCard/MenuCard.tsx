@@ -7,53 +7,58 @@ import Image from "next/image";
 interface MenuCardProps {
   item: MenuItem & { tags?: string[] };
   variant?: "default" | "inline";
+  hideImage?: boolean;
 }
 
-export default function MenuCard({ item, variant = "default" }: MenuCardProps) {
+export default function MenuCard({
+  item,
+  variant = "default",
+  hideImage = false,
+}: MenuCardProps) {
   const isInline = variant === "inline";
+  const hasImage = !!item.imageUrl && !hideImage;
 
-  const containerClass =
-    "border rounded-xl bg-background text-on-background border-outline";
+  const containerClass = `border rounded-xl bg-background text-on-background border-outline ${
+    isInline ? "flex items-start gap-4" : "flex flex-col h-full"
+  }`;
 
-  const layoutClass = isInline
-    ? "flex gap-4 items-start"
-    : "flex flex-col h-full";
+  const contentClass = `${
+    isInline
+      ? "flex flex-col justify-between gap-3 py-2 pr-4"
+      : "flex flex-col justify-between gap-3 px-4 py-4 sm:px-5 sm:py-4"
+  } flex-1`;
 
   const imageWrapperClass = isInline
     ? "relative w-32 h-32 flex-shrink-0 overflow-hidden rounded-l-xl"
     : "relative w-full h-48 sm:h-52 overflow-hidden rounded-t-xl";
 
-  const contentClass = isInline
-    ? "flex flex-col justify-between gap-3 flex-1 py-2 pr-4"
-    : "flex flex-col justify-between gap-3 px-4 py-4 sm:px-5 sm:py-4 flex-1";
-
   return (
     <article
       itemScope
       itemType="https://schema.org/MenuItem"
-      className={`${containerClass} ${layoutClass}`}
+      className={containerClass}
     >
-      {/* Image */}
-      <div className={imageWrapperClass}>
-        {item.imageUrl && (
+      {/* Image (facultative) */}
+      {hasImage && (
+        <div className={imageWrapperClass}>
           <Image
-            src={item.imageUrl}
+            src={item.imageUrl!}
             alt={item.title}
             fill
             itemProp="image"
             className="object-cover object-center w-full h-full"
           />
-        )}
-      </div>
+        </div>
+      )}
 
-      {/* Infos */}
-      <div className={contentClass}>
+      {/* Contenu */}
+      <div className={`${contentClass} ${!hasImage && isInline ? "pl-4" : ""}`}>
         <header className="space-y-1">
           <Title
             itemProp="name"
             as="h3"
             size="lg"
-            className="transition-colors duration-200 group-hover:text-primary"
+            className="transition-colors duration-200 font-bold text-primary"
           >
             {item.title}
           </Title>

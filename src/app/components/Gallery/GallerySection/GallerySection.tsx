@@ -4,15 +4,23 @@ import Link from "next/link";
 import { ResolvedImage } from "../../ui/ResolvedImage/ResolvedImage";
 import { SectionHeader } from "../../SectionHeader/SectionHeader";
 import { POPETTE_GALLERY_IMAGES } from "@/app/constants/general";
-import { useLightbox } from "../LightboxProvider/LightboxProvider";
+import {
+  LightboxImage,
+  useLightbox,
+} from "../LightboxProvider/LightboxProvider";
 import { Button } from "../../ui/Button/Button";
+import { GalleryImage } from "@/generated/prisma";
 
-export default function GallerySection() {
+interface GallerySectionInterface {
+  images: GalleryImage[];
+}
+
+export default function GallerySection({ images }: GallerySectionInterface) {
   const { open } = useLightbox();
 
-  const images = POPETTE_GALLERY_IMAGES.slice(0, 2).map((url) => ({
-    url,
-    alt: "Photo du restaurant Popette",
+  const galleryImages: LightboxImage[] = images.map((img) => ({
+    url: img.url,
+    alt: img.alt ?? "Image galerie",
   }));
 
   return (
@@ -26,16 +34,16 @@ export default function GallerySection() {
           description="Ambiance, brunchs maison, café latté et pâtisseries : découvrez en images l’univers chaleureux de Popette au cœur d’Arcachon."
         />
         <div className="columns-2 md:columns-3 gap-4 space-y-4">
-          {images.map((img, idx) => (
+          {galleryImages.map((img, idx) => (
             <div
               key={idx}
               className="overflow-hidden rounded-xl shadow cursor-pointer"
               style={{ breakInside: "avoid" }}
-              onClick={() => open(images, idx)}
+              onClick={() => open(galleryImages, idx)}
             >
               <ResolvedImage
                 src={img.url}
-                alt={img.alt}
+                alt={img.alt ?? "Image galerie"}
                 className="w-full h-auto object-cover transition duration-300 hover:scale-105"
               />
             </div>

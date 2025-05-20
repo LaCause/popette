@@ -5,9 +5,10 @@ import MenuSection from "./components/Menu/MenuSection/MenuSection";
 import ContactSection from "./components/Contact/ContactSection/ContactSection";
 import AboutSection from "./components/About/AboutSection/AboutSection";
 import { getAllMenuItem } from "./lib/menu/menu";
-import { MenuItem } from "@/generated/prisma";
+import { GalleryImage, MenuItem } from "@/generated/prisma";
 import { POPETTE_DOMAIN } from "./constants/general";
 import GallerySection from "./components/Gallery/GallerySection/GallerySection";
+import { getAllImages } from "./lib/gallery/gallery";
 
 export const metadata: Metadata = {
   title: SEO_HOME.title,
@@ -27,15 +28,17 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   let menuItems: MenuItem[] = [];
+  let galleryItems: GalleryImage[] = [];
   const isMaintenanceMode = process.env.MAINTENANCE_MODE === "yes";
 
-  console.log(
-    "isMaintenanceMode : ",
-    isMaintenanceMode,
-    process.env.MAINTENANCE_MODE
-  );
   try {
-    menuItems = await getAllMenuItem(4);
+    galleryItems = await getAllImages(3);
+  } catch (error) {
+    console.error("[Page Home] Erreur lors de getAllImages:", error);
+  }
+
+  try {
+    menuItems = await getAllMenuItem(2);
   } catch (error) {
     console.error("[Page Home] Erreur lors de getAllMenuItem:", error);
   }
@@ -49,7 +52,7 @@ export default async function Page() {
         <HeroSection />
         <AboutSection />
         <MenuSection items={menuItems} />
-        <GallerySection />
+        <GallerySection images={galleryItems} />
         <ContactSection />
       </main>
     </>

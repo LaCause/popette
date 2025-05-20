@@ -127,7 +127,7 @@ export default function MenuBrowser({
                       className="space-y-4"
                     >
                       <header className="text-center">
-                        <Title as="h2" size="xl">
+                        <Title as="h2" size="xl" className="font-bold">
                           {cat.name}
                         </Title>
                         <div className="h-[2px] w-16 bg-[var(--color-tertiary)] mx-auto mt-2" />
@@ -144,7 +144,7 @@ export default function MenuBrowser({
                             className="border-b border-outline pb-4"
                             role="listitem"
                           >
-                            <MenuCard item={item} variant="inline" />
+                            <MenuCard item={item} variant="inline" hideImage />
                           </motion.li>
                         ))}
                       </ul>
@@ -163,7 +163,12 @@ export default function MenuBrowser({
                       className="border-b border-outline pb-4"
                       role="listitem"
                     >
-                      <MenuCard key={i} item={item} variant="inline" />
+                      <MenuCard
+                        key={i}
+                        item={item}
+                        variant="inline"
+                        hideImage
+                      />
                     </motion.li>
                   ))}
                 </ul>
