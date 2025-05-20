@@ -1,6 +1,7 @@
 "use client";
 
 import ArticleCard from "@/app/components/Article/ArticleCard/ArticleCard";
+import { GalleryPicker } from "@/app/components/Gallery/GalleryPicker/GalleryPicker";
 import TiptapEditor from "@/app/components/ui/TiptapEditor/TiptapEditor";
 import { useToast } from "@/app/components/ui/ToastContainer/ToastContainer";
 import { Post } from "@/generated/prisma";
@@ -153,11 +154,9 @@ export default function AdminPostsPage() {
             onChange={(e) => setForm({ ...form, excerpt: e.target.value })}
             className="form-input md:col-span-2"
           />
-          <input
-            placeholder="URL de l’image"
-            value={form.image ?? ""}
-            onChange={(e) => setForm({ ...form, image: e.target.value })}
-            className="form-input md:col-span-2"
+          <GalleryPicker
+            value={form.image!}
+            onSelect={(url) => setForm((f) => ({ ...f, image: url }))}
           />
           <div className="md:col-span-2">
             <label className="block text-sm font-medium text-gray-700 mb-1">
