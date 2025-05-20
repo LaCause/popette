@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Title from "../ui/Title/Title";
-import { Facebook, Instagram } from "lucide-react";
+import { Instagram } from "lucide-react";
 import {
   POPETTE_ADDRESS,
   POPETTE_EMAIL,
+  POPETTE_INSTAGRAM,
   POPETTE_NAVIGATION,
+  POPETTE_PHONE_LINK,
   POPETTE_POSTAL_CODE,
 } from "@/app/constants/general";
 
@@ -23,20 +25,12 @@ export default function Footer() {
           </Title>
           <div className="inline-flex mt-4 gap-1.5">
             <Link
-              href="https://www.instagram.com"
+              href={POPETTE_INSTAGRAM}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               <Instagram className="w-6 h-6" />
-            </Link>
-            <Link
-              href="https://www.facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            >
-              <Facebook className="w-6 h-6" />
             </Link>
           </div>
           <p className="text-sm text-on-tertiary-container/70 mt-2">
@@ -74,7 +68,7 @@ export default function Footer() {
             {POPETTE_POSTAL_CODE}
           </p>
           <p className="mt-2">
-            <a href="tel:0666128118" className="hover:underline">
+            <a href={POPETTE_PHONE_LINK} className="hover:underline">
               06 66 12 81 18
             </a>
             <br />

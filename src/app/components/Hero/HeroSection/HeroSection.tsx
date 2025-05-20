@@ -42,7 +42,7 @@ export default function HeroSection() {
             <Button asChild size="lg">
               <Link href="/menu">Voir le menu</Link>
             </Button>
-            <Button asChild size="lg">
+            <Button asChild variant="outline" size="lg">
               <Link href="/contact">Contactez-nous</Link>
             </Button>
           </div>
