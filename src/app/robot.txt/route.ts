@@ -10,6 +10,7 @@ Disallow: /api/
 Disallow: /static/
 Disallow: /fonts/
 Disallow: /server/
+Disallow: /admin
 
 Sitemap: https://popette-brunch.com/sitemap.xml
 `;

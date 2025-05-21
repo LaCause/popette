@@ -1,4 +1,3 @@
-// app/menu/layout.tsx
 import type { Metadata } from "next";
 import { OG_IMAGE_URL } from "../constants/seo";
 
