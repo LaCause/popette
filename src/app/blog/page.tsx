@@ -21,7 +21,7 @@ export default async function BlogPage() {
   }));
 
   return (
-    <main className="bg-background text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16">
+    <main className="bg-background text-on-tertiary-container py-20 px-6 sm:px-8 lg:px-16">
       <header className="text-center mb-12">
         <Title as="h1" size="xl">
           Le blog

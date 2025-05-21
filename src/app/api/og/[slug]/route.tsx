@@ -1,17 +1,16 @@
-import { posts } from "@/app/constants/blog";
+import { getPostBySlug } from "@/app/lib/posts/post";
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 
-export const runtime = "edge";
+export async function GET(req: NextRequest) {
+  const url = req.nextUrl;
+  const slug = url.pathname.split("/").pop();
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export async function GET(req: NextRequest, context: any) {
-  const slug = (await context.params)?.slug;
-  const post = posts.find((p) => p.slug === slug);
+  if (!slug) return new Response(null, { status: 404 });
 
-  if (!post) {
-    return new Response("Not found", { status: 404 });
-  }
+  const post = await getPostBySlug(slug);
+
+  if (!post) return new Response(null, { status: 404 });
 
   return new ImageResponse(
     (
@@ -40,7 +39,7 @@ export async function GET(req: NextRequest, context: any) {
             letterSpacing: 1,
           }}
         >
-          {post.category}
+          {post.excerpt}
         </div>
 
         <div
