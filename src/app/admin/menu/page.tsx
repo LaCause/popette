@@ -1,5 +1,6 @@
 "use client";
 
+import GalleryPicker from "@/app/components/Gallery/GalleryPicker/GalleryPicker";
 import { ResolvedImage } from "@/app/components/ui/ResolvedImage/ResolvedImage";
 import { useToast } from "@/app/components/ui/ToastContainer/ToastContainer";
 import { useEffect, useState } from "react";
@@ -24,7 +25,7 @@ export default function AdminMenuPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState("https://placehold.co/600x400.png");
   const [categoryId, setCategoryId] = useState("");
   const [categories, setCategories] = useState<Category[]>([]);
   const [editId, setEditId] = useState<number | null>(null);
@@ -123,12 +124,7 @@ export default function AdminMenuPage() {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
-          <input
-            className="form-input"
-            placeholder="URL de l'image"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-          />
+          <GalleryPicker value={imageUrl} onSelect={setImageUrl} />
           <select
             className="form-input"
             value={categoryId}

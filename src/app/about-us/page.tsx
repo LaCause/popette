@@ -3,7 +3,7 @@ import { ResolvedImage } from "../components/ui/ResolvedImage/ResolvedImage";
 import { SEO_ABOUT } from "../constants/seo";
 import Title from "../components/ui/Title/Title";
 import { SectionHeader } from "../components/SectionHeader/SectionHeader";
-import { POPETTE_DOMAIN } from "../constants/general";
+import { PAGE_ABOUT_US_IMAGE, POPETTE_DOMAIN } from "../constants/general";
 
 export const metadata: Metadata = {
   title: SEO_ABOUT.title,
@@ -56,7 +56,7 @@ export default function AboutUsPage() {
             </div>
             <div className="overflow-hidden">
               <ResolvedImage
-                src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092"
+                src={PAGE_ABOUT_US_IMAGE}
                 alt="Cuisine Popette"
                 className="w-full h-full object-cover hover:scale-105 transition duration-300"
               />

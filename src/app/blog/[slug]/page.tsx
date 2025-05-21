@@ -23,18 +23,13 @@ export async function generateMetadata(props: {
     openGraph: {
       title: post.title,
       description,
-      images: [
-        {
-          url: `https://popette.brunch/api/og/${post.slug}`,
-          alt: post.title,
-        },
-      ],
+      images: [`/api/og/${params.slug}`],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description,
-      images: [`https://popette.brunch/api/og/${post.slug}`],
+      images: [`/api/og/${params.slug}`],
     },
   };
 }

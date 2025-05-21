@@ -29,12 +29,11 @@ export default function GalleryBrowser({ images }: GalleryBrowserProps) {
         title="Galerie Popette"
         description="Découvrez en images l’ambiance chaleureuse de notre restaurant, les assiettes colorées de nos brunchs maison, et quelques instants volés en cuisine."
       />
-      <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {images.map((image, idx) => (
           <div
             key={image.id}
-            className="w-full overflow-hidden rounded-xl shadow cursor-pointer"
-            style={{ breakInside: "avoid" }}
+            className="overflow-hidden rounded-xl shadow cursor-pointer"
             onClick={() => open(lightboxImages, idx)}
           >
             <ResolvedImage
