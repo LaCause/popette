@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { SEO_HOME } from "./constants/seo";
+import { OG_IMAGE_URL, SEO_HOME } from "./constants/seo";
 import HeroSection from "./components/Hero/HeroSection/HeroSection";
 import MenuSection from "./components/Menu/MenuSection/MenuSection";
 import ContactSection from "./components/Contact/ContactSection/ContactSection";
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   description: SEO_HOME.description,
   openGraph: {
     title: SEO_HOME.title,
+    images: [OG_IMAGE_URL],
     description: SEO_HOME.description,
     url: POPETTE_DOMAIN,
     type: "website",
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: SEO_HOME.title,
     description: SEO_HOME.description,
+    images: [OG_IMAGE_URL],
   },
 };
 

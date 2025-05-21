@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGE_URL } from "../constants/seo";
 
 export const metadata: Metadata = {
   title: "Contact – Popette, brunch maison à Arcachon",
@@ -12,14 +13,7 @@ export const metadata: Metadata = {
     description: "Toutes les informations pour contacter Popette à Arcachon.",
     url: "https://popette.com/contact",
     siteName: "Popette",
-    images: [
-      {
-        url: "https://popette.com/images/og-contact.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Entrée du restaurant Popette",
-      },
-    ],
+    images: [OG_IMAGE_URL],
     locale: "fr_FR",
     type: "website",
   },

@@ -1,5 +1,6 @@
 // app/menu/layout.tsx
 import type { Metadata } from "next";
+import { OG_IMAGE_URL } from "../constants/seo";
 
 export const metadata: Metadata = {
   title: "Carte & Menu – Popette",
@@ -14,14 +15,7 @@ export const metadata: Metadata = {
       "Notre menu brunch maison à Arcachon : options salées, sucrées et végétariennes.",
     url: "https://popette.com/menu",
     siteName: "Popette",
-    images: [
-      {
-        url: "https://popette.com/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Carte & Menu – Popette",
-      },
-    ],
+    images: [OG_IMAGE_URL],
     locale: "fr_FR",
     type: "website",
   },

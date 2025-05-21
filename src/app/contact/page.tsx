@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { SEO_CONTACT } from "../constants/seo";
+import { OG_IMAGE_URL, SEO_CONTACT } from "../constants/seo";
 import ContactBrowser from "../components/Contact/ContactBrowser/ContactBrowser";
 import { SectionHeader } from "../components/SectionHeader/SectionHeader";
 import Title from "../components/ui/Title/Title";
@@ -23,12 +23,14 @@ export const metadata: Metadata = {
     title: SEO_CONTACT.title,
     description: SEO_CONTACT.description,
     url: POPETTE_DOMAIN,
+    images: [OG_IMAGE_URL],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: SEO_CONTACT.title,
     description: SEO_CONTACT.description,
+    images: [OG_IMAGE_URL],
   },
 };
 
