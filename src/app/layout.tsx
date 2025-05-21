@@ -15,6 +15,21 @@ export const metadata: Metadata = {
   },
   description:
     "Popette est un restaurant brunch en plein cœur d’Arcachon. Fait maison, coffee shop, pâtisseries artisanales et service en continu.",
+  alternates: {
+    canonical: "/",
+    languages: {
+      fr: "/",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
   openGraph: {
     siteName: "Popette",
     type: "website",
@@ -43,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body className={`antialiased`}>
         <Analytics />
         <SessionProviderWrapper>

@@ -15,6 +15,11 @@ const allowList = [
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const res = NextResponse.next();
+
+  if (request.nextUrl.pathname.startsWith("/admin")) {
+    res.headers.set("X-Robots-Tag", "noindex, nofollow");
+  }
 
   const isAdminRoute =
     pathname.startsWith("/admin") && !pathname.startsWith("/admin/login");
@@ -38,5 +43,5 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  return NextResponse.next();
+  return res;
 }

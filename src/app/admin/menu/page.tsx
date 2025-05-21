@@ -100,8 +100,19 @@ export default function AdminMenuPage() {
 
   const handleDelete = async (id: number) => {
     await fetch(`/api/menu/${id}`, { method: "DELETE" });
+    showToast({ title: "Plat supprimé", variant: "success" });
     fetchItems();
   };
+
+  const itemsByCategory = items.reduce<Record<string, MenuItem[]>>(
+    (acc, item) => {
+      const cat = item.category.name;
+      if (!acc[cat]) acc[cat] = [];
+      acc[cat].push(item);
+      return acc;
+    },
+    {}
+  );
 
   return (
     <div className="max-w-5xl mx-auto p-6 space-y-12">
@@ -163,55 +174,73 @@ export default function AdminMenuPage() {
           )}
         </div>
       </section>
-      <section>
-        <h2 className="text-xl font-semibold text-gray-900 mb-4 tracking-tight">
-          Plats existants
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {items &&
-            items.map((dish) => (
-              <div
-                key={dish.id}
-                className="border border-gray-200 p-4 space-y-2 bg-white shadow-sm"
-              >
-                <div className="flex justify-between items-center">
-                  <h3 className="text-base font-medium">{dish.title}</h3>
-                  <span className="text-sm font-semibold text-primary">
-                    {dish.price.toFixed(2)} €
-                  </span>
-                </div>
 
-                {dish.imageUrl && (
-                  <ResolvedImage
-                    src={dish.imageUrl}
-                    alt={dish.title}
-                    className="w-full h-36 object-cover"
-                  />
-                )}
+      <section className="space-y-12">
+        <h2 className="text-2xl font-title text-on-surface">Plats existants</h2>
 
-                <p className="text-sm text-gray-700">{dish.description}</p>
-
-                <div className="text-xs text-gray-500">
-                  Catégorie : {dish.category.name}
-                </div>
-
-                <div className="flex gap-3 pt-2 text-sm">
-                  <button
-                    onClick={() => handleEdit(dish)}
-                    className="text-blue-600 hover:underline"
-                  >
-                    Modifier
-                  </button>
-                  <button
-                    onClick={() => handleDelete(dish.id)}
-                    className="text-red-600 hover:underline"
-                  >
-                    Supprimer
-                  </button>
-                </div>
+        {Object.entries(itemsByCategory).map(
+          ([categoryName, categoryItems]) => (
+            <div key={categoryName} className="space-y-6">
+              {/* Titre de catégorie stylé */}
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-10 bg-primary rounded-full" />
+                <h3 className="text-xl font-semibold text-primary tracking-wide">
+                  {categoryName}
+                </h3>
               </div>
-            ))}
-        </div>
+
+              {/* Grille des plats */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {categoryItems.map((dish) => (
+                  <div
+                    key={dish.id}
+                    className="rounded-xl overflow-hidden border border-outline bg-surface shadow-sm hover:shadow-md transition flex flex-col"
+                  >
+                    {dish.imageUrl && (
+                      <ResolvedImage
+                        src={dish.imageUrl}
+                        alt={dish.title}
+                        className="w-full h-40 object-cover"
+                      />
+                    )}
+
+                    <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
+                      <div className="flex justify-between items-start">
+                        <h4 className="font-medium text-on-surface">
+                          {dish.title}
+                        </h4>
+                        <span className="text-sm font-semibold text-primary">
+                          {dish.price.toFixed(2)} €
+                        </span>
+                      </div>
+
+                      {dish.description && (
+                        <p className="text-sm text-on-surface/70 line-clamp-3">
+                          {dish.description}
+                        </p>
+                      )}
+
+                      <div className="flex justify-between border-t border-outline/30 pt-2 text-sm">
+                        <button
+                          onClick={() => handleEdit(dish)}
+                          className="text-blue-600 hover:underline"
+                        >
+                          ✏️ Modifier
+                        </button>
+                        <button
+                          onClick={() => handleDelete(dish.id)}
+                          className="text-red-600 hover:underline"
+                        >
+                          🗑 Supprimer
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        )}
       </section>
     </div>
   );
