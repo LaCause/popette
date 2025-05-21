@@ -1,6 +1,6 @@
 import GalleryBrowser from "../components/Gallery/GalleryBrowser/GalleryBrowser";
 import { Metadata } from "next";
-import { SEO_GALLERY } from "../constants/seo";
+import { OG_IMAGE_URL, SEO_GALLERY } from "../constants/seo";
 import { POPETTE_DOMAIN } from "../constants/general";
 import { getAllImages } from "../lib/gallery/gallery";
 
@@ -12,11 +12,13 @@ export const metadata: Metadata = {
     description: SEO_GALLERY.description,
     url: POPETTE_DOMAIN,
     type: "website",
+    images: [OG_IMAGE_URL],
   },
   twitter: {
     card: "summary_large_image",
     title: SEO_GALLERY.title,
     description: SEO_GALLERY.description,
+    images: [OG_IMAGE_URL],
   },
 };
 

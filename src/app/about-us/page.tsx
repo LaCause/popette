@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { ResolvedImage } from "../components/ui/ResolvedImage/ResolvedImage";
-import { SEO_ABOUT } from "../constants/seo";
+import { OG_IMAGE_URL, SEO_ABOUT } from "../constants/seo";
 import Title from "../components/ui/Title/Title";
 import { SectionHeader } from "../components/SectionHeader/SectionHeader";
 import { PAGE_ABOUT_US_IMAGE, POPETTE_DOMAIN } from "../constants/general";
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: SEO_ABOUT.title,
     description: SEO_ABOUT.description,
+    images: [OG_IMAGE_URL],
     url: POPETTE_DOMAIN,
     type: "website",
   },
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: SEO_ABOUT.title,
     description: SEO_ABOUT.description,
+    images: [OG_IMAGE_URL],
   },
 };
 

@@ -194,3 +194,6 @@ export const SEO_ABOUT = {
     "Découvrez l'histoire de Popette, restaurant brunch en plein cœur d'Arcachon. Fait maison, produits frais, service en continu et ambiance conviviale.",
   jsonLd: JSON_LD_ABOUT,
 };
+
+export const OG_IMAGE_URL =
+  "https://g5h0ukp15rn2n2m5.public.blob.vercel-storage.com/logo-popette-hero.png";
