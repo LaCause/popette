@@ -3,10 +3,25 @@ import Title from "@/app/components/ui/Title/Title";
 import { Metadata } from "next";
 import ArticleList from "../components/Article/ArticleList/ArticleList";
 import { Post } from "@/generated/prisma";
+import { OG_IMAGE_URL, SEO_BLOG } from "../constants/seo";
+import { POPETTE_DOMAIN } from "../constants/general";
 
 export const metadata: Metadata = {
-  title: "Blog - Popette Brunch",
-  description: "Découvrez nos recettes, actus et coups de cœur brunch.",
+  title: SEO_BLOG.title,
+  description: SEO_BLOG.description,
+  openGraph: {
+    title: SEO_BLOG.title,
+    description: SEO_BLOG.description,
+    url: POPETTE_DOMAIN,
+    images: [OG_IMAGE_URL],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SEO_BLOG.title,
+    description: SEO_BLOG.description,
+    images: [OG_IMAGE_URL],
+  },
 };
 
 export type ClientPost = Omit<Post, "date" | "createdAt"> & {

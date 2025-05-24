@@ -1,35 +1,17 @@
-"use client";
-import { usePathname } from "next/navigation";
+import { Metadata } from "next";
 import type { ReactNode } from "react";
 
-const getTitleFromPath = (pathname: string) => {
-  const segments = pathname.split("/").filter(Boolean);
-  const last = segments[segments.length - 1];
-
-  switch (last) {
-    case "login":
-      return "";
-    case "menu":
-      return "Gestion du menu";
-    case "categories":
-      return "Gestion des catégories";
-    case "articles":
-      return "Gestion des articles";
-    default:
-      return "Tableau de bord";
-  }
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
-  const isLogin = pathname === "/admin/login";
-  const title = getTitleFromPath(pathname);
   return (
     <main className="py-20 px-6">
-      <div className="mx-auto">
-        {!isLogin && <h1 className="text-2xl font-bold mb-6">{title}</h1>}
-        {children}
-      </div>
+      <div className="mx-auto">{children}</div>
     </main>
   );
 }
