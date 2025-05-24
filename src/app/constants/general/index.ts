@@ -10,7 +10,7 @@ export const POPETTE_POSTAL_CODE = "33120 Arcachon";
 export const POPETTE_INSTAGRAM = "https://www.instagram.com/popettearcachon/";
 
 export const PAGE_ABOUT_US_IMAGE =
-  "https://g5h0ukp15rn2n2m5.public.blob.vercel-storage.com/IMG_9282.jpeg";
+  "https://g5h0ukp15rn2n2m5.public.blob.vercel-storage.com/IMG_9469-min.PNG";
 
 export const POPETTE_NAVIGATION = [
   { href: "/", label: "Accueil" },

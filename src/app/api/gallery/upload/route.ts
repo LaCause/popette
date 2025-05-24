@@ -2,7 +2,7 @@ import { prisma } from "@/app/lib/prisma/prisma";
 import { put } from "@vercel/blob";
 import { NextResponse } from "next/server";
 
-const MAX_FILE_SIZE = 1 * 1024 * 1024;
+const MAX_FILE_SIZE = 1.5 * 1024 * 1024;
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
 export async function POST(req: Request) {
