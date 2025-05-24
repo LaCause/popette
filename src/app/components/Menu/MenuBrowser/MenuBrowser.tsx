@@ -6,6 +6,8 @@ import { Category, MenuItem } from "@/generated/prisma";
 import { SectionHeader } from "../../SectionHeader/SectionHeader";
 import Title from "../../ui/Title/Title";
 import MenuCard from "../MenuCard/MenuCard";
+import { Button } from "../../ui/Button/Button";
+import { PAGE_MENU_PDF_URL } from "@/app/constants/general";
 
 interface CategoryWithItems extends Category {
   items: MenuItem[];
@@ -49,6 +51,13 @@ export default function MenuBrowser({
           title="Notre carte complète"
           description="Découvrez notre menu brunch fait maison, préparé avec des produits frais et locaux. Assiettes salées, douceurs sucrées, options végétariennes, vegan et sans gluten – servis en continu dans une ambiance chaleureuse au cœur d’Arcachon."
         />
+        <div className="text-center">
+          <Button size="lg" asChild>
+            <a href={PAGE_MENU_PDF_URL} target="_blank">
+              Consulter notre carte
+            </a>
+          </Button>
+        </div>
         <nav
           aria-label="Filtrer par catégorie"
           className="flex flex-wrap gap-4 justify-center mt-6"
