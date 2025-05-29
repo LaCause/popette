@@ -1,18 +1,23 @@
 import { getAllPosts } from "@/app/lib/posts/post";
-import Title from "@/app/components/ui/Title/Title";
 import { Metadata } from "next";
 import ArticleList from "../components/Article/ArticleList/ArticleList";
 import { Post } from "@/generated/prisma";
 import { OG_IMAGE_URL, SEO_BLOG } from "../constants/seo";
-import { POPETTE_DOMAIN } from "../constants/general";
+import Breadcrumb from "../components/Breadcrumb/Breacrumb";
+import { SectionHeader } from "../components/SectionHeader/SectionHeader";
+import SectionWrapper from "../components/SectionWrapper/SectionWrapper";
 
 export const metadata: Metadata = {
   title: SEO_BLOG.title,
   description: SEO_BLOG.description,
+  alternates: {
+    canonical: "/blog",
+  },
   openGraph: {
+    siteName: "Popette",
     title: SEO_BLOG.title,
     description: SEO_BLOG.description,
-    url: POPETTE_DOMAIN,
+    url: "/blog",
     images: [OG_IMAGE_URL],
     type: "website",
   },
@@ -36,16 +41,15 @@ export default async function BlogPage() {
   }));
 
   return (
-    <main className="bg-background text-on-tertiary-container py-20 px-6 sm:px-8 lg:px-16">
-      <header className="text-center mb-12">
-        <Title as="h1" size="xl">
-          Le blog
-        </Title>
-        <p className="text-sm text-on-surface/70 max-w-2xl mx-auto mt-2">
-          Recettes, actualités, conseils brunch : tout l’univers Popette.
-        </p>
-      </header>
+    <SectionWrapper aria-label="Blog">
+      <Breadcrumb
+        items={[{ label: "Accueil", href: "/" }, { label: "Blog" }]}
+      />
+      <SectionHeader
+        title="Le blog"
+        description="Recettes, actualités, conseils brunch : tout l’univers Popette."
+      />
       <ArticleList posts={posts} />
-    </main>
+    </SectionWrapper>
   );
 }

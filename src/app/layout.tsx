@@ -7,6 +7,8 @@ import { SessionProviderWrapper } from "./providers/sessionProvider";
 import { Analytics } from "@vercel/analytics/next";
 import { POPETTE_DOMAIN } from "./constants/general";
 import { LightboxProvider } from "./components/Gallery/LightboxProvider/LightboxProvider";
+import { getAllImages } from "./lib/gallery/gallery";
+import { getAllMenuItem } from "./lib/menu/menu";
 
 export const metadata: Metadata = {
   title: {
@@ -49,14 +51,20 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
     shortcut: "favicon.ico",
   },
-  // manifest: "/site.webmanifest",
   metadataBase: new URL("https://popette-brunch.com"),
 };
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function RootLayout(
+  props: Readonly<{
+    children: React.ReactNode;
+    params: Promise<{ slug: string }>;
+  }>
+) {
+  const params = await props.params;
+  console.log(params);
+
+  const { children } = props;
+
+  console.log("PARAMS : ", params);
   return (
     <html lang="fr">
       <body className={`antialiased`}>

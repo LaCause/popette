@@ -1,11 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { ArticleBody } from "@/app/components/Article/ArticleBody/ArticleBody";
 import { ArticleSuggestion } from "@/app/components/Article/ArticleSuggestion/ArticleSuggestion";
 import { SEOJsonLd } from "@/app/components/JsonLd/SEOJsonLd/SEOJsonLd";
 import { getPostBySlug, getRelatedPosts } from "@/app/lib/posts/post";
 import Title from "@/app/components/ui/Title/Title";
+import Breadcrumb from "@/app/components/Breadcrumb/Breacrumb";
+import SectionWrapper from "@/app/components/SectionWrapper/SectionWrapper";
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
@@ -21,8 +22,11 @@ export async function generateMetadata(props: {
     title: post.title,
     description,
     openGraph: {
+      siteName: "Popette",
       title: post.title,
       description,
+      url: `https://popette.brunch/blog/${params.slug}`,
+      type: "article",
       images: [`/api/og/${params.slug}`],
     },
     twitter: {
@@ -97,26 +101,18 @@ export default async function Page(props: {
   };
 
   return (
-    <main className="bg-background text-on-tertiary-container py-20 px-6 sm:px-8 lg:px-16">
+    <SectionWrapper>
       <nav
         className="text-sm font-body text-on-tertiary-container/60 mb-6"
         aria-label="Fil d’Ariane"
       >
-        <ol className="flex gap-2">
-          <li>
-            <Link href="/" className="hover:underline">
-              Accueil
-            </Link>{" "}
-            /
-          </li>
-          <li>
-            <Link href="/blog" className="hover:underline">
-              Blog
-            </Link>{" "}
-            /
-          </li>
-          <li className="text-on-tertiary-container">{post.title}</li>
-        </ol>
+        <Breadcrumb
+          items={[
+            { label: "Accueil", href: "/" },
+            { label: "Blog" },
+            { label: post.title },
+          ]}
+        />
       </nav>
 
       <article className="max-w-3xl mx-auto space-y-8">
@@ -195,6 +191,6 @@ export default async function Page(props: {
 
       <SEOJsonLd json={jsonLd} />
       <SEOJsonLd json={breadcrumbLd} />
-    </main>
+    </SectionWrapper>
   );
 }
