@@ -5,7 +5,6 @@ import { SectionHeader } from "../components/SectionHeader/SectionHeader";
 import Title from "../components/ui/Title/Title";
 import {
   POPETTE_ADDRESS,
-  POPETTE_DOMAIN,
   POPETTE_EMAIL,
   POPETTE_HOURS,
   POPETTE_OPENED,
@@ -15,14 +14,19 @@ import {
 } from "../constants/general";
 import FaqSection from "../components/Faq/FaqSection/FaqSection";
 import ItineraryLinks from "../components/ui/ItineraryLinks/ItineraryLinks";
+import Breadcrumb from "../components/Breadcrumb/Breacrumb";
+import SectionWrapper from "../components/SectionWrapper/SectionWrapper";
 
 export const metadata: Metadata = {
   title: SEO_CONTACT.title,
   description: SEO_CONTACT.description,
+  alternates: {
+    canonical: "/contact",
+  },
   openGraph: {
     title: SEO_CONTACT.title,
     description: SEO_CONTACT.description,
-    url: POPETTE_DOMAIN,
+    url: "/contact",
     images: [OG_IMAGE_URL],
     type: "website",
   },
@@ -52,7 +56,10 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: SEO_CONTACT.jsonLd }}
       />
-      <main className="bg-background text-on-tertiary-container py-16 px-6 sm:px-8 lg:px-16 space-y-16">
+      <SectionWrapper aria-label="Contactez-nous">
+        <Breadcrumb
+          items={[{ label: "Accueil", href: "/" }, { label: "Contact" }]}
+        />
         <SectionHeader
           as="h1"
           title="Contactez-nous"
@@ -76,8 +83,7 @@ export default function ContactPage() {
           </p>
           <ItineraryLinks />
         </section>
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Formulaire à gauche */}
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="space-y-6">
             <Title as="h2" size="lg" className="font-bold">
               Écrivez-nous
@@ -135,7 +141,7 @@ export default function ContactPage() {
           </div>
         </section>
         <FaqSection />
-      </main>
+      </SectionWrapper>
     </>
   );
 }

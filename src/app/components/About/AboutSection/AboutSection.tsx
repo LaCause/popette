@@ -10,19 +10,35 @@ export default function AboutSection() {
     >
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
-          <Title as="h2" size="xl">
-            Notre histoire
+          <Title as="h1" size="xl" className="font-bold">
+            Restaurant brunch à Arcachon – Fait maison, gourmand et sans
+            réservation
           </Title>
           <p className="font-body text-base leading-relaxed text-on-primary-container/90">
-            Chez <strong>Popette Brunch</strong>, nous croyons que le brunch est
-            un moment à part. Né de l’envie de réunir les gourmands autour de
-            produits frais, locaux et faits maison, notre restaurant est un lieu
-            convivial, lumineux, et ouvert à tous.
+            En plein cœur d’Arcachon, <strong>Popette</strong> vous accueille
+            tous les jours pour un brunch maison et généreux. Découvrez nos{" "}
+            <a href="/menu" className="underline underline-offset-2">
+              formules brunch
+            </a>
+            , nos{" "}
+            <a href="/patisseries" className="underline underline-offset-2">
+              pâtisseries artisanales
+            </a>{" "}
+            et notre{" "}
+            <a href="/coffee" className="underline underline-offset-2">
+              coffee shop
+            </a>
+            . Service en continu, options <strong>végétariennes</strong>,{" "}
+            <strong>vegan</strong> et <strong>sans gluten</strong> disponibles.
           </p>
           <p className="font-body text-base leading-relaxed text-on-primary-container/80">
             De notre pain brioché maison à nos jus pressés à la minute, tout est
             pensé pour vous offrir une expérience simple, généreuse et
             délicieuse.
+          </p>
+          <p className="text-sm text-muted">
+            10 Rue du Maréchal de Lattre de Tassigny – 33120 Arcachon • Sur
+            place ou à emporter
           </p>
         </div>
 
