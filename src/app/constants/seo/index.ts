@@ -151,47 +151,44 @@ const JSON_LD_ABOUT = `{
   }`;
 
 export const SEO_HOME = {
-  title:
-    "Popette - Restaurant brunch à Arcachon | Fait maison, coffee shop & pâtisseries",
+  title: "Popette – Brunch maison à Arcachon | Coffee shop & pâtisseries",
   description:
     "En plein cœur d’Arcachon, Popette est un restaurant chaleureux où le brunch est roi. Fait maison, produits frais, service continu, coffee shop et pâtisseries artisanales.",
   jsonLd: JSON_LD_HOME,
 };
 
 export const SEO_CONTACT = {
-  title: "Contact Popette - Brunch maison à Arcachon",
+  title: "Contactez Popette – Restaurant brunch à Arcachon",
   description:
-    "Besoin d’infos ? Contactez Popette à Arcachon pour en savoir plus sur nos brunchs maison, plats à emporter et horaires.",
+    "Envie de bruncher chez Popette ? Retrouvez nos horaires, adresse à Arcachon, et toutes les infos pour nous contacter facilement.",
   jsonLd: JSON_LD_CONTACT,
 };
 
 export const SEO_BLOG = {
-  title:
-    "Le blog de Popette - Recettes brunch, astuces & actualités gourmandes",
+  title: "Le blog de Popette – Recettes brunch & actualités à Arcachon",
   description:
-    "Le blog de Popette à Arcachon : recettes de brunch maison, actus coffee shop, infos sur nos fournisseurs locaux et inspirations gourmandes.",
+    "Le blog de Popette : recettes de brunch maison, idées gourmandes, astuces coffee shop et actualités du restaurant à Arcachon.",
   jsonLd: JSON_LD_BLOG,
 };
 
 export const SEO_GALLERY = {
-  title: "Galerie Popette - Découvrez nos brunchs en images",
+  title: "Galerie Popette – Photos du restaurant brunch à Arcachon",
   description:
-    "Photos de nos plats, boissons, pâtisseries maison et ambiance coffee shop dans notre restaurant à Arcachon.",
+    "Explorez l’univers Popette en images : notre salle, nos plats maison, les douceurs du coffee shop et l’ambiance chaleureuse du restaurant à Arcachon.",
   jsonLd: JSON_LD_GALLERY,
 };
 
 export const SEO_MENU = {
-  title: "Menu Popette - Brunch maison, formules gourmandes & plats à emporter",
+  title: "Menu Popette – Brunch gourmand & plats maison à Arcachon",
   description:
-    "Formule brunch Popette : 1 plat salé + 1 plat sucré + 1 boisson fraîche + un café ou thé. Options végétariennes, vegan, sans gluten. Formule enfant. À emporter.",
+    "Découvrez le menu Popette : brunch maison, plats salés, sucrés, options vegan et gluten free. À déguster sur place ou à emporter à Arcachon.",
   jsonLd: JSON_LD_MENU,
 };
 
 export const SEO_ABOUT = {
-  title:
-    "À propos de Popette - Brunch maison à Arcachon & coffee shop chaleureux",
+  title: "À propos – Popette brunch maison & coffee shop à Arcachon",
   description:
-    "Découvrez l'histoire de Popette, restaurant brunch en plein cœur d'Arcachon. Fait maison, produits frais, service en continu et ambiance conviviale.",
+    "Découvrez l'histoire de Popette : un lieu convivial au cœur d’Arcachon, où le brunch fait maison rime avec gourmandise, passion et produits frais.",
   jsonLd: JSON_LD_ABOUT,
 };
 

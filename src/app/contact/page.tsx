@@ -79,7 +79,7 @@ export default function ContactPage() {
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Formulaire à gauche */}
           <div className="space-y-6">
-            <Title as="h2" size="md">
+            <Title as="h2" size="lg" className="font-bold">
               Écrivez-nous
             </Title>
             <ContactBrowser />
