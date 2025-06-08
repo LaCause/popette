@@ -49,14 +49,14 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
     shortcut: "favicon.ico",
   },
-  // manifest: "/site.webmanifest",
   metadataBase: new URL("https://popette-brunch.com"),
 };
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function RootLayout(
+  props: Readonly<{
+    children: React.ReactNode;
+    params: Promise<{ slug: string }>;
+  }>
+) {
   return (
     <html lang="fr">
       <body className={`antialiased`}>
@@ -64,7 +64,7 @@ export default function RootLayout({
         <SessionProviderWrapper>
           <LightboxProvider>
             <Navigation />
-            <ToastProvider>{children}</ToastProvider>
+            <ToastProvider>{props.children}</ToastProvider>
           </LightboxProvider>
         </SessionProviderWrapper>
         <Footer />

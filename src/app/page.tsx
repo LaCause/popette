@@ -6,7 +6,6 @@ import ContactSection from "./components/Contact/ContactSection/ContactSection";
 import AboutSection from "./components/About/AboutSection/AboutSection";
 import { getAllMenuItem } from "./lib/menu/menu";
 import { GalleryImage, MenuItem } from "@/generated/prisma";
-import { POPETTE_DOMAIN } from "./constants/general";
 import GallerySection from "./components/Gallery/GallerySection/GallerySection";
 import { getAllImages } from "./lib/gallery/gallery";
 
@@ -14,10 +13,11 @@ export const metadata: Metadata = {
   title: SEO_HOME.title,
   description: SEO_HOME.description,
   openGraph: {
+    siteName: "Popette",
     title: SEO_HOME.title,
     images: [OG_IMAGE_URL],
     description: SEO_HOME.description,
-    url: POPETTE_DOMAIN,
+    url: "/",
     type: "website",
   },
   twitter: {

@@ -21,17 +21,14 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    // Honeypot anti-bot (champ invisible côté client)
     if (body.company && body.company.length > 0) {
       return new Response(JSON.stringify({ ok: true }), { status: 200 });
     }
 
-    // Données échappées (prévention injection)
     const name = escapeHtml(body.name || "");
     const email = escapeHtml(body.email || "");
     const message = escapeHtml(body.message || "");
 
-    // Vérifications de base
     if (!name || !email || !message) {
       return new Response(JSON.stringify({ error: "Champs requis" }), {
         status: 400,
@@ -50,6 +47,8 @@ export async function POST(req: NextRequest) {
         status: 400,
       });
     }
+
+    console.log(process.env.RESEND_OWNER_EMAIL);
 
     await resend.emails.send({
       from: "Popette Brunch <onboarding@resend.dev>",

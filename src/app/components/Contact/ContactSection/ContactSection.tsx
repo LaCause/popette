@@ -1,11 +1,13 @@
 import {
   POPETTE_ADDRESS,
+  POPETTE_GOOGLE_MY_BUISNESS,
   POPETTE_HOURS,
   POPETTE_OPENED,
   POPETTE_PHONE,
   POPETTE_POSTAL_CODE,
 } from "@/app/constants/general";
 import Title from "../../ui/Title/Title";
+import { Button } from "../../ui/Button/Button";
 
 export default function ContactSection() {
   return (
@@ -39,6 +41,11 @@ export default function ContactSection() {
               <strong>Téléphone :</strong> {POPETTE_PHONE}
             </p>
           </div>
+          <Button asChild variant="outline" size="lg">
+            <a href={POPETTE_GOOGLE_MY_BUISNESS} target="_blank">
+              Fiche Google
+            </a>
+          </Button>
         </div>
         <div className="relative w-full aspect-[4/3] border border-outline shadow bg-tertiary-container">
           <iframe
