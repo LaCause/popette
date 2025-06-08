@@ -8,6 +8,8 @@ export const POPETTE_EMAIL_LINK = "mailto:popette.arcachon@gmail.com";
 export const POPETTE_ADDRESS = "10 Rue du Maréchal de Lattre de Tassigny";
 export const POPETTE_POSTAL_CODE = "33120 Arcachon";
 export const POPETTE_INSTAGRAM = "https://www.instagram.com/popettebrunch";
+export const POPETTE_GOOGLE_MY_BUISNESS =
+  "https://www.google.com/maps/place/Popette+Brunch/@44.661802,-1.1749711,17z/data=!4m8!3m7!1s0xd549f1607e0238f:0x57601583ece061c1!8m2!3d44.661802!4d-1.1723962!9m1!1b1!16s%2Fg%2F11s3bw7pl0?entry=ttu&g_ep=EgoyMDI1MDYwNC4wIKXMDSoASAFQAw%3D%3D";
 
 export const PAGE_ABOUT_US_IMAGE =
   "https://g5h0ukp15rn2n2m5.public.blob.vercel-storage.com/IMG_9469-min.PNG";

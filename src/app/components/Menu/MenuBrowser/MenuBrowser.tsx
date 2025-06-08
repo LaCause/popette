@@ -127,8 +127,9 @@ export default function MenuBrowser({
                 return (
                   <section
                     key={cat.id}
+                    id={cat.slug}
                     aria-labelledby={`cat-${cat.id}`}
-                    className="space-y-4"
+                    className="space-y-4 scroll-mt-24"
                   >
                     <header className="text-center">
                       <Title as="h2" size="xl" className="font-bold">

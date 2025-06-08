@@ -31,7 +31,7 @@ export function SectionGrid({
 
   return (
     <section
-      className={`max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 ${alignmentClass} ${className}`}
+      className={`max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 sm:gap-12 gap-6 ${alignmentClass} ${className}`}
     >
       {reverse ? (
         <>

@@ -1,15 +1,19 @@
 import Title from "@/app/components/ui/Title/Title";
 import FaqItem from "../FaqItem/FaqItem";
 
-export default function FaqSection() {
+interface FaqSectionProps {
+  className?: string;
+}
+
+export default function FaqSection(props: FaqSectionProps) {
   return (
     <section
       id="faq"
       aria-label="Questions fréquentes"
-      className="space-y-6 pt-12 border-t border-outline"
+      className={`space-y-6 pt-12 border-t border-outline ${props.className}`}
     >
       <header className="text-center space-y-4">
-        <Title as="h2" size="lg">
+        <Title as="h1" size="xl">
           Questions fréquentes
         </Title>
         <p className="font-body text-base text-[var(--color-on-surface)]/80">

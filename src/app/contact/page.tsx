@@ -6,6 +6,7 @@ import Title from "../components/ui/Title/Title";
 import {
   POPETTE_ADDRESS,
   POPETTE_EMAIL,
+  POPETTE_GOOGLE_MY_BUISNESS,
   POPETTE_HOURS,
   POPETTE_OPENED,
   POPETTE_PHONE,
@@ -16,6 +17,7 @@ import FaqSection from "../components/Faq/FaqSection/FaqSection";
 import ItineraryLinks from "../components/ui/ItineraryLinks/ItineraryLinks";
 import Breadcrumb from "../components/Breadcrumb/Breacrumb";
 import SectionWrapper from "../components/SectionWrapper/SectionWrapper";
+import { Button } from "../components/ui/Button/Button";
 
 export const metadata: Metadata = {
   title: SEO_CONTACT.title,
@@ -84,7 +86,7 @@ export default function ContactPage() {
           </p>
           <ItineraryLinks />
         </section>
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 py-12">
           <div className="space-y-6">
             <Title as="h2" size="lg" className="font-bold">
               Écrivez-nous
@@ -92,10 +94,9 @@ export default function ContactPage() {
             <ContactBrowser />
           </div>
 
-          {/* Infos pratiques à droite */}
           <div className="space-y-6 font-body text-sm">
             <div>
-              <Title as="h3" size="sm" className="mb-2">
+              <Title as="h3" size="md" className="mb-2">
                 📍 Adresse
               </Title>
               <p>
@@ -104,7 +105,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <Title as="h3" size="sm" className="mb-2">
+              <Title as="h3" size="lg" className="mb-2">
                 ⏰ Horaires
               </Title>
               <ul className="space-y-1">
@@ -115,23 +116,28 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <Title as="h3" size="sm" className="mb-2">
+              <Title as="h3" size="lg" className="mb-2">
                 📞 Téléphone
               </Title>
               <a href={`tel:${POPETTE_PHONE_LINK}`}>{POPETTE_PHONE}</a>
             </div>
 
             <div>
-              <Title as="h3" size="sm" className="mb-2">
+              <Title as="h3" size="lg" className="mb-2">
                 ✉️ Email
               </Title>
               <p>{POPETTE_EMAIL}</p>
             </div>
 
             <div>
-              <Title as="h3" size="sm" className="mb-2">
+              <Title as="h3" size="lg" className="mb-2">
                 📌 Nous trouver
               </Title>
+              <Button asChild size="lg" className="mb-4">
+                <a href={POPETTE_GOOGLE_MY_BUISNESS} target="_blank">
+                  Fiche Google
+                </a>
+              </Button>
               <iframe
                 className="w-full h-64 rounded-xl border border-outline"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2873.089716893106!2d-1.163644284563808!3d44.654660779099265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd54c7c65b167c3d%3A0x258ac017e64c4d9d!2s10%20Rue%20du%20Mar%C3%A9chal%20de%20Lattre%20de%20Tassigny%2C%2033120%20Arcachon!5e0!3m2!1sfr!2sfr!4v1715618169155!5m2!1sfr!2sfr" // ton lien
@@ -141,7 +147,7 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-        <FaqSection />
+        <FaqSection className="scroll-mt-24" />
       </SectionWrapper>
     </>
   );

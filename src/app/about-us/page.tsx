@@ -3,10 +3,15 @@ import { ResolvedImage } from "../components/ui/ResolvedImage/ResolvedImage";
 import { OG_IMAGE_URL, SEO_ABOUT } from "../constants/seo";
 import Title from "../components/ui/Title/Title";
 import { SectionHeader } from "../components/SectionHeader/SectionHeader";
-import { PAGE_ABOUT_US_IMAGE } from "../constants/general";
+import {
+  PAGE_ABOUT_US_IMAGE,
+  PAGE_MENU_PDF_URL,
+  POPETTE_GOOGLE_MY_BUISNESS,
+} from "../constants/general";
 import Breadcrumb from "../components/Breadcrumb/Breacrumb";
 import SectionWrapper from "../components/SectionWrapper/SectionWrapper";
 import Link from "next/link";
+import { SectionGrid } from "../components/SectionGrid/SectionGrid";
 
 export const metadata: Metadata = {
   title: SEO_ABOUT.title,
@@ -164,13 +169,13 @@ export default function AboutUsPage() {
             <Title size="lg" as="h2">
               Popette : restaurant brunch maison à Arcachon
             </Title>
-            <p className="typography-primary-xs leading-relaxed text-on-tertiary-container/90">
+            <p className="typography-primary-s leading-relaxed text-on-tertiary-container/90">
               Tout a commencé par une passion commune : celle de réunir les gens
               autour de bons produits. Depuis nos débuts, nous travaillons avec
               des artisans locaux, nous pressons nos jus à la minute, et nous
               cuisinons chaque plat avec cœur.
             </p>
-            <p className="typography-primary-xs leading-relaxed text-on-tertiary-container/80">
+            <p className="typography-primary-s leading-relaxed text-on-tertiary-container/80">
               Que ce soit pour un brunch en amoureux, une pause entre amis ou un
               café en solo, notre équipe vous accueille dans une ambiance douce,
               généreuse et sans chichi.
@@ -186,33 +191,33 @@ export default function AboutUsPage() {
         </section>
 
         <section className="space-y-6 text-center">
-          <Title as="h2" size="lg" className="mt-6">
+          <Title as="h2" size="xl" className="mt-6">
             Nos valeurs
           </Title>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             <div>
-              <Title as="h3" size="sm" className="mb-2">
+              <Title as="h3" size="lg" className="mb-2">
                 🍞 Local & frais
               </Title>
-              <p className="typography-primary-xs text-sm text-on-tertiary-container/80">
+              <p className="typography-primary-s text-sm text-on-tertiary-container/80">
                 Nos produits sont sélectionnés auprès de producteurs du Bassin
                 pour une fraîcheur maximale.
               </p>
             </div>
             <div>
-              <Title as="h3" size="sm" className="mb-2">
+              <Title as="h3" size="lg" className="mb-2">
                 🫶 Convivialité
               </Title>
-              <p className="typography-primary-xs text-sm text-on-tertiary-container/80">
+              <p className="typography-primary-s text-sm text-on-tertiary-container/80">
                 Un accueil chaleureux, des tables partagées, et des sourires au
                 menu.
               </p>
             </div>
             <div>
-              <Title as="h3" size="sm" className="mb-2">
+              <Title as="h3" size="lg" className="mb-2">
                 🥐 Fait maison
               </Title>
-              <p className="typography-primary-xs text-sm text-on-tertiary-container/80">
+              <p className="typography-primary-s text-sm text-on-tertiary-container/80">
                 De la brioche au granola, tout est cuisiné sur place avec soin
                 et amour.
               </p>
@@ -220,122 +225,149 @@ export default function AboutUsPage() {
           </div>
         </section>
 
-        <section>
-          <h2 className="text-xl font-title mb-4">
-            Popette, votre restaurant brunch à Arcachon
-          </h2>
+        <SectionGrid
+          align="center"
+          image={{
+            src: PAGE_ABOUT_US_IMAGE,
+            alt: "Cuisine Popette",
+          }}
+          reverse
+          className="my-12 sm:mt-4"
+          content={
+            <>
+              <header className="space-y-2">
+                <Title as="h2" size="xl" className="mt-12">
+                  Popette, votre restaurant brunch à Arcachon
+                </Title>
+                <p className="text-base">
+                  En plein cœur du centre-ville d’<strong>Arcachon</strong>, à
+                  quelques pas de la plage,
+                  <strong>Popette</strong> est plus qu’un simple restaurant :
+                  c’est un lieu de vie où le{" "}
+                  <strong>brunch est à l’honneur </strong>
+                  tous les jours de la semaine.
+                </p>
+              </header>
 
-          <p className="text-base font-body leading-relaxed">
-            En plein cœur du centre-ville d’<strong>Arcachon</strong>, à
-            quelques pas de la plage, <strong>Popette</strong> est plus qu’un
-            simple restaurant : c’est un lieu de vie où{" "}
-            <strong>le brunch est à l’honneur</strong> tous les jours de la
-            semaine.
-          </p>
+              <p>
+                Nous proposons une <strong>cuisine faite maison</strong>,
+                généreuse et de saison, élaborée avec des
+                <strong>produits frais et locaux</strong>. Que vous soyez
+                amateur de{" "}
+                <Link
+                  href="/menu#brunch-sale"
+                  className="underline underline-offset-2"
+                >
+                  brunch salé
+                </Link>{" "}
+                ou de{" "}
+                <Link
+                  href="/menu#patisseries"
+                  className="underline underline-offset-2"
+                >
+                  pâtisseries artisanales
+                </Link>
+                , notre{" "}
+                <a
+                  href={PAGE_MENU_PDF_URL}
+                  target="_blank"
+                  className="underline underline-offset-2"
+                >
+                  carte
+                </a>{" "}
+                évolue selon les inspirations du chef et les arrivages.
+              </p>
 
-          <p className="mt-4">
-            Nous proposons une <strong>cuisine faite maison</strong>, généreuse
-            et de saison, élaborée avec des{" "}
-            <strong>produits frais et locaux</strong>. Que vous soyez amateur de{" "}
-            <Link href="/menu" className="underline hover:text-primary">
-              brunch salé
-            </Link>{" "}
-            ou de{" "}
-            <Link href="/gallery" className="underline hover:text-primary">
-              pâtisseries artisanales
-            </Link>
-            , notre{" "}
-            <Link href="/menu" className="underline hover:text-primary">
-              carte
-            </Link>{" "}
-            évolue selon les inspirations du chef et les arrivages.
-          </p>
+              <p>
+                Chez Popette, tout est pensé pour vous offrir un moment de
+                détente dans une ambiance conviviale. Venez déguster un{" "}
+                <strong>avocado toast au pain de campagne</strong>, un
+                <strong>pancake moelleux au sirop d’érable</strong> ou un
+                <strong>café de spécialité torréfié localement</strong>.{" "}
+                <Link href="/contact" className="underline underline-offset-2">
+                  Contactez-nous
+                </Link>{" "}
+                pour toute demande particulière.
+              </p>
 
-          <p className="mt-4">
-            Chez Popette, tout est pensé pour vous offrir un moment de détente
-            dans une ambiance conviviale. Venez déguster un{" "}
-            <strong>avocado toast au pain bio</strong>, un{" "}
-            <strong>pancake moelleux au sirop d’érable</strong> ou un{" "}
-            <strong>café de spécialité torréfié localement</strong>.{" "}
-            <Link href="/contact" className="underline hover:text-primary">
-              Contactez-nous
-            </Link>{" "}
-            pour toute demande particulière.
-          </p>
+              <p className="italic">
+                ➕{" "}
+                <u>Options végétariennes, vegan et sans gluten disponibles</u> –
+                Nous adaptons nos recettes à vos besoins pour que chacun puisse
+                profiter d’un moment gourmand sur le Bassin d’Arcachon.
+              </p>
 
-          <p className="mt-4">
-            ➕{" "}
-            <em>
-              <Link href="/contact" className="underline hover:text-primary">
-                Options végétariennes, vegan et sans gluten disponibles
-              </Link>
-            </em>{" "}
-            – Nous adaptons nos recettes à vos besoins pour que chacun puisse
-            profiter d’un{" "}
-            <strong>brunch gourmand sur le Bassin d’Arcachon</strong>.
-          </p>
+              <address className="not-italic font-semibold mt-4 text-primary">
+                📍 Popette – 10 Rue du Maréchal de Lattre de Tassigny, 33120
+                Arcachon
+              </address>
+            </>
+          }
+        />
 
-          <p className="mt-4">
-            📍{" "}
-            <strong>
-              Popette – 10 Rue du Maréchal de Lattre de Tassigny, 33120 Arcachon
-            </strong>
-            <br />
-            Ouvert 7j/7 – service continu de 10h à 18h
-            <br />
-            <Link href="/contact" className="underline hover:text-primary">
-              Voir nos horaires hors saison
-            </Link>
-          </p>
-        </section>
+        <SectionGrid
+          align="top"
+          image={{
+            src: PAGE_ABOUT_US_IMAGE,
+            alt: "Cuisine Popette",
+          }}
+          content={
+            <>
+              <Title as="h2" size="xl" className="mt-12">
+                Ils ont adoré bruncher chez Popette
+              </Title>
 
-        <section className="mt-12">
-          <h2 className="text-xl font-title mb-4">
-            Ils ont adoré bruncher chez Popette
-          </h2>
+              <ul className="space-y-6">
+                <li className="border-l-4 border-primary pl-4 italic text-base text-on-surface">
+                  "Nous recommandons cet endroit. Les serveuses sont
+                  accueillantes et les plats proposés sont de très bonnes
+                  qualité (les oeufs bénédictes et les pancakes sont WAOUH)"
+                  <br />
+                  <span className="not-italic text-sm text-secondary">
+                    — Laura C.
+                  </span>
+                </li>
 
-          <ul className="space-y-6">
-            <li className="border-l-4 border-primary pl-4 italic text-base text-on-surface">
-              “Une vraie pépite à Arcachon ! Brunch copieux, produits frais et
-              ambiance ultra chaleureuse. Le meilleur avocado toast que j’ai
-              mangé.”
-              <br />
-              <span className="not-italic text-sm text-secondary">
-                — Chloé R.
-              </span>
-            </li>
+                <li className="border-l-4 border-primary pl-4 italic text-base text-on-surface">
+                  "Des boissons et des plats délicieux servis par une équipe
+                  très chaleureuse ! Merci beaucoup pour ce joli moment ! À
+                  bientôt {":)"}"
+                  <br />
+                  <span className="not-italic text-sm text-secondary">
+                    — Marion R.
+                  </span>
+                </li>
 
-            <li className="border-l-4 border-primary pl-4 italic text-base text-on-surface">
-              “Enfin un coffee shop où on peut se poser toute la journée ! Les
-              pancakes sont incroyables, et le personnel adorable.”
-              <br />
-              <span className="not-italic text-sm text-secondary">
-                — Julien M.
-              </span>
-            </li>
+                <li className="border-l-4 border-primary pl-4 italic text-base text-on-surface">
+                  "Ne vous laissez pas rebuter par l'échafaudage actuellement en
+                  place ! Cette adresse est à tester absolument à Arcachon :
+                  produits frais et sains, plats copieux, un frère et une soeur
+                  aux petits soins et une ambiance très sympa, vraiment on
+                  recommande !"
+                  <br />
+                  <span className="not-italic text-sm text-secondary">
+                    — Roselyne D.
+                  </span>
+                </li>
+              </ul>
 
-            <li className="border-l-4 border-primary pl-4 italic text-base text-on-surface">
-              “Top pour un brunch sans gluten à Arcachon ! J’ai adoré la formule
-              complète avec jus pressé et granola maison.”
-              <br />
-              <span className="not-italic text-sm text-secondary">
-                — Émilie G.
-              </span>
-            </li>
-          </ul>
-
-          <p className="mt-6 text-base">
-            👉 Vous aussi,{" "}
-            <a href="/contact" className="underline hover:text-primary">
-              laissez-nous votre avis
-            </a>{" "}
-            ou{" "}
-            <a href="/contact#faq" className="underline hover:text-primary">
-              venez nous rencontrer
-            </a>{" "}
-            au cœur d’Arcachon.
-          </p>
-        </section>
+              <p className="mt-6 text-base">
+                👉 Vous aussi,{" "}
+                <a
+                  href={POPETTE_GOOGLE_MY_BUISNESS}
+                  className="underline hover:text-primary"
+                >
+                  laissez-nous votre avis
+                </a>{" "}
+                ou{" "}
+                <a href="/contact#faq" className="underline hover:text-primary">
+                  venez nous rencontrer
+                </a>{" "}
+                au cœur d’Arcachon.
+              </p>
+            </>
+          }
+        />
       </SectionWrapper>
     </>
   );
