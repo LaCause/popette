@@ -15,7 +15,7 @@ export default function Footer() {
     <footer className="pt-12 border-t border-outline text-sm font-body bg-tertiary-container text-on-tertiary-container">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-16 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
-          <Title as="h2" size="lg">
+          <Title as="h2" size="xl">
             <Link
               href="/menu"
               className="mb-2 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
@@ -40,7 +40,7 @@ export default function Footer() {
         </div>
 
         <nav aria-label="Pied de page - Navigation principale">
-          <Title as="h3" size="sm" className="mb-2">
+          <Title as="h3" size="xl" className="mb-2">
             Navigation
           </Title>
           <ul className="space-y-1">
@@ -59,7 +59,7 @@ export default function Footer() {
 
         {/* Contact */}
         <address className="not-italic">
-          <Title as="h3" size="sm" className="mb-2">
+          <Title as="h3" size="xl" className="mb-2">
             Coordonnées
           </Title>
           <p>

@@ -1,6 +1,7 @@
 import { PAGE_ABOUT_US_IMAGE } from "@/app/constants/general";
 import Title from "../../ui/Title/Title";
 import { SectionGrid } from "../../SectionGrid/SectionGrid";
+import Link from "next/link";
 
 export default function AboutSection() {
   return (
@@ -20,26 +21,47 @@ export default function AboutSection() {
             <p className="font-body text-base leading-relaxed text-on-primary-container/90">
               En plein cœur d’Arcachon, <strong>Popette</strong> vous accueille
               tous les jours pour un brunch maison et généreux. Découvrez nos{" "}
-              <a href="/menu" className="underline underline-offset-2">
+              <Link
+                href="/menu#formules"
+                className="underline underline-offset-2"
+              >
                 formules brunch
-              </a>
+              </Link>
               , nos{" "}
-              <a href="/patisseries" className="underline underline-offset-2">
+              <Link
+                href="/menu#plats-sucres"
+                className="underline underline-offset-2"
+              >
                 pâtisseries artisanales
-              </a>{" "}
+              </Link>{" "}
               et notre{" "}
-              <a href="/coffee" className="underline underline-offset-2">
+              <Link
+                href="/menu#coffee"
+                className="underline underline-offset-2"
+              >
                 coffee shop
-              </a>
+              </Link>
               . Service en continu, options <strong>végétariennes</strong>,{" "}
               <strong>vegan</strong> et <strong>sans gluten</strong>{" "}
               disponibles.
+            </p>
+            <p className="text-base leading-relaxed font-body">
+              Que vous soyez du matin ou du midi, nos{" "}
+              <Link href="/menu" className="underline underline-offset-2">
+                formules brunch
+              </Link>{" "}
+              sont pensées pour toutes les faims. La{" "}
+              <strong>formule gourmande</strong> comprend un plat salé, un plat
+              sucré, une boisson fraîche et un café ou un thé. Pour les plus
+              jeunes, la <strong>formule enfant</strong> est parfaitement
+              adaptée. Toutes nos options sont disponibles à emporter.
             </p>
             <p className="font-body text-base leading-relaxed text-on-primary-container/80">
               De notre pain brioché maison à nos jus pressés à la minute, tout
               est pensé pour vous offrir une expérience simple, généreuse et
               délicieuse.
             </p>
+
             <p className="text-sm text-muted">
               10 Rue du Maréchal de Lattre de Tassigny – 33120 Arcachon • Sur
               place ou à emporter

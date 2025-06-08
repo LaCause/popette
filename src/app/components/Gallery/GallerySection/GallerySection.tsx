@@ -29,8 +29,10 @@ export default function GallerySection({ images }: GallerySectionInterface) {
     >
       <div className="max-w-6xl mx-auto space-y-12">
         <SectionHeader
-          title="Galerie Popette"
-          description="Ambiance, brunchs maison, café latté et pâtisseries : découvrez en images l’univers chaleureux de Popette au cœur d’Arcachon."
+          title="Popette, une ambiance chaleureuse au cœur d’Arcachon"
+          description="Dès l’entrée, vous êtes accueilli dans une atmosphère cosy et conviviale. L’équipe Popette met un point d’honneur à vous faire sentir comme à la maison, que ce soit pour un café rapide ou un brunch complet.Décoration soignée, musique douce et gourmandises en vitrine font partie du charme de notre restaurant.
+
+"
         />
         <div className="columns-2 md:columns-3 gap-4 space-y-4">
           {galleryImages.map((img, idx) => (

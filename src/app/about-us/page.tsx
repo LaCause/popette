@@ -228,17 +228,19 @@ export default function AboutUsPage() {
         <SectionGrid
           align="center"
           image={{
-            src: PAGE_ABOUT_US_IMAGE,
+            src: "https://g5h0ukp15rn2n2m5.public.blob.vercel-storage.com/IMG_9429.jpeg",
             alt: "Cuisine Popette",
           }}
           reverse
-          className="my-12 sm:mt-4"
+          className="my-12"
+          title={
+            <Title as="h2" size="xl">
+              Popette, votre restaurant brunch à Arcachon
+            </Title>
+          }
           content={
             <>
               <header className="space-y-2">
-                <Title as="h2" size="xl" className="mt-12">
-                  Popette, votre restaurant brunch à Arcachon
-                </Title>
                 <p className="text-base">
                   En plein cœur du centre-ville d’<strong>Arcachon</strong>, à
                   quelques pas de la plage,
@@ -307,21 +309,22 @@ export default function AboutUsPage() {
 
         <SectionGrid
           align="top"
+          title={
+            <Title as="h2" size="xl">
+              Ils ont adoré bruncher chez Popette
+            </Title>
+          }
           image={{
             src: PAGE_ABOUT_US_IMAGE,
             alt: "Cuisine Popette",
           }}
           content={
             <>
-              <Title as="h2" size="xl" className="mt-12">
-                Ils ont adoré bruncher chez Popette
-              </Title>
-
               <ul className="space-y-6">
                 <li className="border-l-4 border-primary pl-4 italic text-base text-on-surface">
-                  "Nous recommandons cet endroit. Les serveuses sont
+                  “Nous recommandons cet endroit. Les serveuses sont
                   accueillantes et les plats proposés sont de très bonnes
-                  qualité (les oeufs bénédictes et les pancakes sont WAOUH)"
+                  qualité (les oeufs bénédictes et les pancakes sont WAOUH)“
                   <br />
                   <span className="not-italic text-sm text-secondary">
                     — Laura C.
@@ -329,9 +332,9 @@ export default function AboutUsPage() {
                 </li>
 
                 <li className="border-l-4 border-primary pl-4 italic text-base text-on-surface">
-                  "Des boissons et des plats délicieux servis par une équipe
+                  “Des boissons et des plats délicieux servis par une équipe
                   très chaleureuse ! Merci beaucoup pour ce joli moment ! À
-                  bientôt {":)"}"
+                  bientôt {":)"}“
                   <br />
                   <span className="not-italic text-sm text-secondary">
                     — Marion R.
@@ -339,11 +342,11 @@ export default function AboutUsPage() {
                 </li>
 
                 <li className="border-l-4 border-primary pl-4 italic text-base text-on-surface">
-                  "Ne vous laissez pas rebuter par l'échafaudage actuellement en
+                  “Ne vous laissez pas rebuter par léchafaudage actuellement en
                   place ! Cette adresse est à tester absolument à Arcachon :
                   produits frais et sains, plats copieux, un frère et une soeur
                   aux petits soins et une ambiance très sympa, vraiment on
-                  recommande !"
+                  recommande !“
                   <br />
                   <span className="not-italic text-sm text-secondary">
                     — Roselyne D.
@@ -360,9 +363,12 @@ export default function AboutUsPage() {
                   laissez-nous votre avis
                 </a>{" "}
                 ou{" "}
-                <a href="/contact#faq" className="underline hover:text-primary">
+                <Link
+                  href="/contact#faq"
+                  className="underline hover:text-primary"
+                >
                   venez nous rencontrer
-                </a>{" "}
+                </Link>{" "}
                 au cœur d’Arcachon.
               </p>
             </>
