@@ -58,6 +58,7 @@ export default function MenuCard({
             itemProp="name"
             as="h3"
             size="lg"
+            variant="secondary"
             className="transition-colors duration-200 font-bold text-primary"
           >
             {item.title}

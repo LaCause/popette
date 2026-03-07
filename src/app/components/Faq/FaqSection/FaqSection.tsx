@@ -13,7 +13,7 @@ export default function FaqSection(props: FaqSectionProps) {
       className={`space-y-6 pt-12 border-t border-outline ${props.className}`}
     >
       <header className="text-center space-y-4">
-        <Title as="h1" size="xl">
+        <Title as="h1" size="xl" variant="primary" className="mb-2">
           Questions fréquentes
         </Title>
         <p className="font-body text-base text-[var(--color-on-surface)]/80">

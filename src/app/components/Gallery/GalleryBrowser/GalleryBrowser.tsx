@@ -27,6 +27,7 @@ export default function GalleryBrowser({ images }: GalleryBrowserProps) {
     <section>
       <SectionHeader
         title="Galerie Popette"
+        titleVariant="primary"
         description="Découvrez en images l’ambiance chaleureuse de notre restaurant, les assiettes colorées de nos brunchs maison, et quelques instants volés en cuisine."
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">

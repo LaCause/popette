@@ -12,6 +12,20 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bebas";
+  src: url("../../fonts/Bebas_Neue/BebasNeue-Regular.ttf");
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-primary: #df492d;
   --color-on-primary: #fffdfa;
@@ -36,8 +50,9 @@
   --color-outline: #dbc8c2;
   --color-shadow: 0 4px 24px rgba(75, 45, 35, 0.06);
 
-  --font-primary: "Mulish", sans-serif;
-  --font-secondary: "YellowTail", cursive;
+  --font-primary: "Bebas", sans-serif;
+  --font-secondary: "Montserrat", cursive;
+  --font-tertiary: "YellowTail", cursive;
 
   --radius-xl: 2rem;
 }

@@ -24,22 +24,22 @@ export default function Navigation() {
     <header className="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 shadow backdrop-blur-md">
       <Link
         href="/"
-        className="typography-secondary-xl text-primary tracking-wider"
+        className="typography-tertiary-xl text-primary tracking-wider"
       >
-        Popette
+        Popette Brunch
       </Link>
 
       {userIsAuthenticated && (
         <div className="flex items-center gap-4 ml-auto">
           <Link
             href="/admin"
-            className="bg-primary text-on-primary typography-primary-xs py-1 px-6 rounded-sm transition"
+            className="bg-primary text-on-primary typography-secondary-xs py-1 px-6 rounded-sm transition"
           >
             Admin
           </Link>
           <button
             onClick={() => signOut({ callbackUrl: "/admin/login" })}
-            className="bg-primary text-on-primary typography-primary-xs py-1 px-6 rounded-sm transition"
+            className="bg-primary text-on-primary typography-secondary-xs py-1 px-6 rounded-sm transition"
           >
             Déconnexion
           </button>
@@ -91,7 +91,7 @@ export default function Navigation() {
                     <Link
                       href={item.href}
                       onClick={() => setOpen(false)}
-                      className="block hover:text-primary transition typography-secondary-xl-bold text-center"
+                      className="block hover:text-primary transition typography-primary-xl-bold text-center"
                     >
                       {item.label}
                     </Link>

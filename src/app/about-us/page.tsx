@@ -160,6 +160,7 @@ export default function AboutUsPage() {
         <SectionHeader
           as="h1"
           title="À propos de Popette"
+          titleVariant="primary"
           description="Popette, c’est plus qu’un brunch — c’est une philosophie
               gourmande, locale et conviviale, au cœur d’Arcachon."
         />
@@ -169,13 +170,13 @@ export default function AboutUsPage() {
             <Title size="lg" as="h2">
               Popette : restaurant brunch maison à Arcachon
             </Title>
-            <p className="typography-primary-s leading-relaxed text-on-tertiary-container/90">
+            <p className="text-on-tertiary-container/90">
               Tout a commencé par une passion commune : celle de réunir les gens
               autour de bons produits. Depuis nos débuts, nous travaillons avec
               des artisans locaux, nous pressons nos jus à la minute, et nous
               cuisinons chaque plat avec cœur.
             </p>
-            <p className="typography-primary-s leading-relaxed text-on-tertiary-container/80">
+            <p className="leading-relaxed text-on-tertiary-container/80">
               Que ce soit pour un brunch en amoureux, une pause entre amis ou un
               café en solo, notre équipe vous accueille dans une ambiance douce,
               généreuse et sans chichi.
@@ -191,7 +192,7 @@ export default function AboutUsPage() {
         </section>
 
         <section className="space-y-6 text-center">
-          <Title as="h2" size="xl" className="mt-6">
+          <Title as="h2" size="xl" className="mt-6 font-bold">
             Nos valeurs
           </Title>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
@@ -199,7 +200,7 @@ export default function AboutUsPage() {
               <Title as="h3" size="lg" className="mb-2">
                 🍞 Local & frais
               </Title>
-              <p className="typography-primary-s text-sm text-on-tertiary-container/80">
+              <p className=" text-sm text-on-tertiary-container/80">
                 Nos produits sont sélectionnés auprès de producteurs du Bassin
                 pour une fraîcheur maximale.
               </p>
@@ -208,7 +209,7 @@ export default function AboutUsPage() {
               <Title as="h3" size="lg" className="mb-2">
                 🫶 Convivialité
               </Title>
-              <p className="typography-primary-s text-sm text-on-tertiary-container/80">
+              <p className=" text-sm text-on-tertiary-container/80">
                 Un accueil chaleureux, des tables partagées, et des sourires au
                 menu.
               </p>
@@ -217,7 +218,7 @@ export default function AboutUsPage() {
               <Title as="h3" size="lg" className="mb-2">
                 🥐 Fait maison
               </Title>
-              <p className="typography-primary-s text-sm text-on-tertiary-container/80">
+              <p className=" text-sm text-on-tertiary-container/80">
                 De la brioche au granola, tout est cuisiné sur place avec soin
                 et amour.
               </p>
@@ -234,7 +235,7 @@ export default function AboutUsPage() {
           reverse
           className="my-12"
           title={
-            <Title as="h2" size="xl">
+            <Title as="h2" size="xl" className="font-bold">
               Popette, votre restaurant brunch à Arcachon
             </Title>
           }
@@ -310,7 +311,7 @@ export default function AboutUsPage() {
         <SectionGrid
           align="top"
           title={
-            <Title as="h2" size="xl">
+            <Title as="h2" size="xl" className="font-bold">
               Ils ont adoré bruncher chez Popette
             </Title>
           }

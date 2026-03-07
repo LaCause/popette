@@ -39,7 +39,8 @@ export default function CurvedText({
         fontSize={fontSize}
         fill={color}
         letterSpacing={letterSpacing}
-        fontFamily="var(--font-body, Montserrat, sans-serif)"
+        className="typography-primary-xl"
+        fontFamily=""
       >
         <textPath href={`#${pathId}`} startOffset="50%" textAnchor="middle">
           {text}

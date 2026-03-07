@@ -66,6 +66,7 @@ export default function ContactPage() {
         <SectionHeader
           as="h1"
           title="Contactez-nous"
+          titleVariant="primary"
           description="Une question sur notre menu, une demande spéciale, ou juste un petit mot doux ? Notre équipe vous répondra avec plaisir."
           className="mb-3"
         />
@@ -88,7 +89,7 @@ export default function ContactPage() {
         </section>
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 py-12">
           <div className="space-y-6">
-            <Title as="h2" size="lg" className="font-bold">
+            <Title as="h2" size="lg" variant="primary" className="font-bold">
               Écrivez-nous
             </Title>
             <ContactBrowser />
@@ -96,7 +97,7 @@ export default function ContactPage() {
 
           <div className="space-y-6 font-body text-sm">
             <div>
-              <Title as="h3" size="md" className="mb-2">
+              <Title as="h3" size="lg" variant="primary" className="mb-2">
                 📍 Adresse
               </Title>
               <p>
@@ -105,7 +106,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <Title as="h3" size="lg" className="mb-2">
+              <Title as="h3" size="lg" variant="primary" className="mb-2">
                 ⏰ Horaires
               </Title>
               <ul className="space-y-1">
@@ -116,21 +117,21 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <Title as="h3" size="lg" className="mb-2">
+              <Title as="h3" size="lg" variant="primary" className="mb-2">
                 📞 Téléphone
               </Title>
               <a href={`tel:${POPETTE_PHONE_LINK}`}>{POPETTE_PHONE}</a>
             </div>
 
             <div>
-              <Title as="h3" size="lg" className="mb-2">
+              <Title as="h3" size="lg" variant="primary" className="mb-2">
                 ✉️ Email
               </Title>
               <p>{POPETTE_EMAIL}</p>
             </div>
 
             <div>
-              <Title as="h3" size="lg" className="mb-2">
+              <Title as="h3" size="lg" variant="primary" className="mb-2">
                 📌 Nous trouver
               </Title>
               <Button asChild size="lg" className="mb-4">
