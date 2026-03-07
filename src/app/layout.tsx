@@ -51,10 +51,9 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://popette-brunch.com"),
 };
-export default async function RootLayout(
+export default function RootLayout(
   props: Readonly<{
     children: React.ReactNode;
-    params: Promise<{ slug: string }>;
   }>
 ) {
   return (
