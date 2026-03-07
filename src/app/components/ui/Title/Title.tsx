@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 type TitleSize = "sm" | "md" | "lg" | "xl";
 type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-type TitleVariant = "primary" | "secondary";
+export type TitleVariant = "primary" | "secondary" | "tertiary";
 
 interface TitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
   size?: TitleSize;
@@ -25,6 +25,12 @@ const sizeClasses: Record<TitleVariant, Record<TitleSize, string>> = {
     md: "typography-secondary-m",
     lg: "typography-secondary-l",
     xl: "typography-secondary-xl",
+  },
+  tertiary: {
+    sm: "typography-tertiary-s",
+    md: "typography-tertiary-m",
+    lg: "typography-tertiary-l",
+    xl: "typography-tertiary-xl",
   },
 };
 

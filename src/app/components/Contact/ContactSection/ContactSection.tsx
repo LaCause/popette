@@ -18,7 +18,7 @@ export default function ContactSection() {
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         {/* Colonne infos */}
         <div className="space-y-5">
-          <Title as="h4" size="xl">
+          <Title as="h4" size="xl" className="font-bold">
             Informations pratiques
           </Title>
           <p className="font-body text-on-primary-container/80">

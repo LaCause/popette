@@ -41,7 +41,12 @@ export default function ArticleCard({
       <div
         className={isInline ? "flex-1 py-2 pr-4 space-y-1" : "p-4 space-y-1"}
       >
-        <Title as="h3" size="lg" className="group-hover:text-primary">
+        <Title
+          as="h3"
+          size="lg"
+          variant="primary"
+          className="group-hover:text-primary"
+        >
           {title}
         </Title>
         <p className="text-sm text-on-tertiary-container/70 line-clamp-2">

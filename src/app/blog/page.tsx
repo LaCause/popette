@@ -47,6 +47,7 @@ export default async function BlogPage() {
       />
       <SectionHeader
         title="Le blog"
+        titleVariant="primary"
         description="Recettes, actualités, conseils brunch : tout l’univers Popette."
       />
       <ArticleList posts={posts} />

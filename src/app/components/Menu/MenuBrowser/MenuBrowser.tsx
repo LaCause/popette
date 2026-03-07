@@ -29,14 +29,14 @@ export default function MenuBrowser({
       ? allItems.filter((item) =>
           `${item.title} ${item.description ?? ""}`
             .toLowerCase()
-            .includes(search.toLowerCase())
+            .includes(search.toLowerCase()),
         )
       : (sortedCategories
           .find((cat) => cat.id === activeCategory)
           ?.items.filter((item) =>
             `${item.title} ${item.description ?? ""}`
               .toLowerCase()
-              .includes(search.toLowerCase())
+              .includes(search.toLowerCase()),
           ) ?? []);
 
   return (
@@ -44,6 +44,7 @@ export default function MenuBrowser({
       <SectionHeader
         as="h1"
         title="Notre carte complète"
+        titleVariant="primary"
         description="Découvrez notre menu brunch fait maison, préparé avec des produits frais et locaux. Assiettes salées, douceurs sucrées, options végétariennes, vegan et sans gluten – servis en continu dans une ambiance chaleureuse au cœur d’Arcachon."
       />
       <div className="text-center">
@@ -64,7 +65,7 @@ export default function MenuBrowser({
             setSearch("");
           }}
           aria-pressed={activeCategory === 0}
-          className={`px-4 py-2 font-body text-sm border rounded-full transition ${
+          className={`px-4 py-2 font-body border rounded-full transition typography-secondary-s ${
             activeCategory === 0
               ? "bg-primary text-on-primary"
               : "bg-transparent border-outline text-on-tertiary-container"
@@ -81,7 +82,7 @@ export default function MenuBrowser({
               setSearch("");
             }}
             aria-pressed={activeCategory === cat.id}
-            className={`px-4 py-2 font-body text-sm border rounded-full transition ${
+            className={`px-4 py-2 font-body border rounded-full transition typography-secondary-s tracking-wide ${
               activeCategory === cat.id
                 ? "bg-primary text-on-primary"
                 : "bg-transparent border-outline text-on-tertiary-container"
@@ -103,7 +104,7 @@ export default function MenuBrowser({
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Rechercher un plat..."
-          className="w-full px-4 py-2 font-body text-sm border border-outline rounded-full bg-tertiary-container focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+          className="w-full px-4 py-2 typography-secondary-s font-body text-sm border border-outline rounded-full bg-tertiary-container focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
         />
       </div>
 
@@ -120,7 +121,7 @@ export default function MenuBrowser({
                 const items = cat.items.filter((item) =>
                   `${item.title} ${item.description ?? ""}`
                     .toLowerCase()
-                    .includes(search.toLowerCase())
+                    .includes(search.toLowerCase()),
                 );
                 if (items.length === 0) return null;
 
@@ -132,7 +133,12 @@ export default function MenuBrowser({
                     className="space-y-4 scroll-mt-24"
                   >
                     <header className="text-center">
-                      <Title as="h2" size="xl" className="font-bold">
+                      <Title
+                        as="h2"
+                        size="xl"
+                        variant="secondary"
+                        className="font-bold"
+                      >
                         {cat.name}
                       </Title>
                       <div className="h-[2px] w-16 bg-[var(--color-tertiary)] mx-auto mt-2" />
