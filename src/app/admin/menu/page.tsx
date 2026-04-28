@@ -111,7 +111,7 @@ export default function AdminMenuPage() {
       acc[cat].push(item);
       return acc;
     },
-    {}
+    {},
   );
 
   return (
@@ -239,7 +239,7 @@ export default function AdminMenuPage() {
                 ))}
               </div>
             </div>
-          )
+          ),
         )}
       </section>
     </div>
