@@ -30,6 +30,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 60;
+
 export default async function MenuPage() {
   const categories: CategoryWithItems[] = await prisma.category.findMany({
     orderBy: { order: "asc" },
