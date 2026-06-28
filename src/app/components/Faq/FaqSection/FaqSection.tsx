@@ -24,7 +24,7 @@ export default function FaqSection(props: FaqSectionProps) {
       <div className="space-y-4">
         <FaqItem
           question="🕒 Quels sont les horaires d’ouverture de Popette Brunch à Arcachon ?"
-          answer="Nous sommes ouverts tous les jours de 10h à 18h. En basse saison, nous ouvrons de 11h à 17h et sommes fermés le mardi."
+          answer="Nous sommes ouverts tous les jours de 09h à 17h. En basse saison, nous ouvrons de 11h à 17h et sommes fermés le mardi."
         />
         <FaqItem
           question="🥞 Faut-il réserver pour venir bruncher chez Popette ?"
