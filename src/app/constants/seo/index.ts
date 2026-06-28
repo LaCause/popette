@@ -68,8 +68,8 @@ const JSON_LD_CONTACT = `{
             "Saturday",
             "Sunday"
           ],
-          "opens": "10:00",
-          "closes": "18:00"
+          "opens": "09:00",
+          "closes": "17:00"
         },
         {
           "@type": "OpeningHoursSpecification",

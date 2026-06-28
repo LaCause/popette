@@ -1,6 +1,6 @@
 export const POPETTE_DOMAIN = "popette-brunch.com";
 export const POPETTE_OPENED = "Tout les jours";
-export const POPETTE_HOURS = "10h-18h tous les jours";
+export const POPETTE_HOURS = "09h-17h tous les jours";
 export const POPETTE_PHONE = "06 66 12 81 18";
 export const POPETTE_PHONE_LINK = `tel:+33666128118`;
 export const POPETTE_EMAIL = "popette.arcachon@gmail.com";
