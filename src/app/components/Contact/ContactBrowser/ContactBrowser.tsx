@@ -3,6 +3,7 @@
 import { ContactFormData, contactSchema } from "@/app/lib/schemas/schemas";
 import { useState, useEffect } from "react";
 import { useToast } from "../../ui/ToastContainer/ToastContainer";
+import { FormField } from "../../ui/FormField/FormField";
 
 export default function ContactBrowser() {
   const [status, setStatus] = useState<
@@ -101,41 +102,30 @@ export default function ContactBrowser() {
         autoComplete="off"
       />
 
-      <div>
-        <input
-          name="name"
-          type="text"
-          placeholder="Votre prénom"
-          className="w-full px-4 py-3 rounded border border-outline bg-tertiary-container"
-        />
-        {errors.name && (
-          <p className="text-red-600 text-sm mt-1">{errors.name}</p>
-        )}
-      </div>
+      <FormField
+        name="name"
+        type="text"
+        placeholder="Votre prénom"
+        className="w-full px-4 py-3 rounded border border-outline bg-tertiary-container"
+        error={errors.name}
+      />
 
-      <div>
-        <input
-          name="email"
-          type="email"
-          placeholder="Votre email"
-          className="w-full px-4 py-3 rounded border border-outline bg-tertiary-container"
-        />
-        {errors.email && (
-          <p className="text-red-600 text-sm mt-1">{errors.email}</p>
-        )}
-      </div>
+      <FormField
+        name="email"
+        type="email"
+        placeholder="Votre email"
+        className="w-full px-4 py-3 rounded border border-outline bg-tertiary-container"
+        error={errors.email}
+      />
 
-      <div>
-        <textarea
-          name="message"
-          rows={5}
-          placeholder="Votre message"
-          className="w-full px-4 py-3 rounded border border-outline bg-tertiary-container"
-        />
-        {errors.message && (
-          <p className="text-red-600 text-sm mt-1">{errors.message}</p>
-        )}
-      </div>
+      <FormField
+        as="textarea"
+        name="message"
+        rows={5}
+        placeholder="Votre message"
+        className="w-full px-4 py-3 rounded border border-outline bg-tertiary-container"
+        error={errors.message}
+      />
 
       <button
         type="submit"

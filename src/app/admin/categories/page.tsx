@@ -1,6 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useAdminCrud } from "@/app/hooks/useAdminCrud";
+import { FormField } from "@/app/components/ui/FormField/FormField";
+import { Button } from "@/app/components/ui/Button/Button";
 
 interface Category {
   id: number;
@@ -10,18 +13,20 @@ interface Category {
 }
 
 export default function AdminCategoriesPage() {
-  const [categories, setCategories] = useState<Category[]>([]);
+  const { items: categories, editId, setEditId, submit, remove } =
+    useAdminCrud<Category>({
+      endpoint: "/api/categories",
+      successMessages: {
+        create: "Catégorie ajoutée",
+        update: "Catégorie mise à jour",
+        delete: "Catégorie supprimée",
+      },
+      errorMessage: "Erreur lors de l'enregistrement de la catégorie",
+    });
+
   const [name, setName] = useState("");
   const [slug, setSlug] = useState("");
   const [order, setOrder] = useState("");
-  const [editId, setEditId] = useState<number | null>(null);
-
-  useEffect(() => {
-    fetch("/api/categories")
-      .then((res) => res.json())
-      .then(setCategories)
-      .catch((err) => console.error("Erreur fetch catégories:", err));
-  }, []);
 
   const resetForm = () => {
     setName("");
@@ -33,35 +38,13 @@ export default function AdminCategoriesPage() {
   const saveCategory = async () => {
     if (!name || !slug) return;
 
-    const body = {
+    const ok = await submit({
       name,
       slug,
       order: parseInt(order) || 0,
-    };
-
-    const method = editId ? "PUT" : "POST";
-    const url = editId ? `/api/categories/${editId}` : "/api/categories";
-
-    const res = await fetch(url, {
-      method,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
     });
 
-    if (res.ok) {
-      const updated = await res.json();
-
-      setCategories((prev) => {
-        if (editId) {
-          return prev.map((cat) => (cat.id === updated.id ? updated : cat));
-        }
-        return [...prev, updated];
-      });
-
-      resetForm();
-    } else {
-      console.error("Erreur ajout/modification catégorie");
-    }
+    if (ok) resetForm();
   };
 
   const editCategory = (cat: Category) => {
@@ -69,18 +52,6 @@ export default function AdminCategoriesPage() {
     setName(cat.name);
     setSlug(cat.slug);
     setOrder(cat.order.toString());
-  };
-
-  const deleteCategory = async (id: number) => {
-    const res = await fetch(`/api/categories/${id}`, {
-      method: "DELETE",
-    });
-
-    if (res.ok) {
-      setCategories((prev) => prev.filter((cat) => cat.id !== id));
-    } else {
-      console.error("Erreur suppression catégorie");
-    }
   };
 
   return (
@@ -99,14 +70,16 @@ export default function AdminCategoriesPage() {
             </div>
             <div className="flex gap-3">
               <button
+                type="button"
                 onClick={() => editCategory(cat)}
-                className="text-blue-600 hover:underline"
+                className="text-sm font-medium text-blue-600 hover:underline"
               >
                 Modifier
               </button>
               <button
-                onClick={() => deleteCategory(cat.id)}
-                className="text-red-600 hover:underline"
+                type="button"
+                onClick={() => remove(cat.id)}
+                className="text-sm font-medium text-red-600 hover:underline"
               >
                 Supprimer
               </button>
@@ -119,41 +92,32 @@ export default function AdminCategoriesPage() {
         <h2 className="text-lg font-semibold">
           {editId ? "Modifier la catégorie" : "Ajouter une catégorie"}
         </h2>
-        <input
+        <FormField
           type="text"
           placeholder="Nom de la catégorie"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full border p-2 rounded"
         />
-        <input
+        <FormField
           type="text"
           placeholder="Slug (ex: brunch-sucre)"
           value={slug}
           onChange={(e) => setSlug(e.target.value)}
-          className="w-full border p-2 rounded"
         />
-        <input
+        <FormField
           type="number"
           placeholder="Ordre d'affichage (ex: 0, 1, 2...)"
           value={order}
           onChange={(e) => setOrder(e.target.value)}
-          className="w-full border p-2 rounded"
         />
         <div className="flex gap-3">
-          <button
-            onClick={saveCategory}
-            className="bg-primary text-white px-4 py-2 rounded hover:opacity-90"
-          >
+          <Button type="button" size="sm" onClick={saveCategory}>
             {editId ? "Mettre à jour" : "Ajouter la catégorie"}
-          </button>
+          </Button>
           {editId && (
-            <button
-              onClick={resetForm}
-              className="text-gray-500 hover:text-gray-800"
-            >
+            <Button type="button" variant="ghost" size="sm" onClick={resetForm}>
               Annuler
-            </button>
+            </Button>
           )}
         </div>
       </div>

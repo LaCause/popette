@@ -2,6 +2,7 @@ import { prisma } from "@/app/lib/prisma/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { requireAdminSession } from "@/app/lib/auth/requireAdminSession";
+import { parseIdParam } from "@/app/lib/http/parseIdParam";
 
 // Schéma de validation plus permissif
 const updateSchema = z.object({
@@ -31,10 +32,8 @@ export async function PUT(
   if (unauthorized) return unauthorized;
 
   const params = await props.params;
-  const id = parseInt(params.id, 10);
-  if (isNaN(id)) {
-    return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
-  }
+  const id = parseIdParam(params.id);
+  if (id instanceof NextResponse) return id;
 
   const body = await req.json();
   const parsed = updateSchema.safeParse(body);
@@ -74,10 +73,8 @@ export async function DELETE(
   if (unauthorized) return unauthorized;
 
   const params = await props.params;
-  const id = parseInt(params.id, 10);
-  if (isNaN(id)) {
-    return NextResponse.json({ error: "ID invalide" }, { status: 400 });
-  }
+  const id = parseIdParam(params.id);
+  if (id instanceof NextResponse) return id;
 
   try {
     const deleted = await prisma.menuItem.delete({
