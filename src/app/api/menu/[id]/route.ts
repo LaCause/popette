@@ -1,6 +1,7 @@
 import { prisma } from "@/app/lib/prisma/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { requireAdminSession } from "@/app/lib/auth/requireAdminSession";
 
 // Schéma de validation plus permissif
 const updateSchema = z.object({
@@ -26,6 +27,9 @@ export async function PUT(
   req: NextRequest,
   props: { params: Promise<{ id: string }> }
 ) {
+  const unauthorized = await requireAdminSession();
+  if (unauthorized) return unauthorized;
+
   const params = await props.params;
   const id = parseInt(params.id, 10);
   if (isNaN(id)) {
@@ -66,6 +70,9 @@ export async function DELETE(
   req: NextRequest,
   props: { params: Promise<{ id: string }> }
 ) {
+  const unauthorized = await requireAdminSession();
+  if (unauthorized) return unauthorized;
+
   const params = await props.params;
   const id = parseInt(params.id, 10);
   if (isNaN(id)) {

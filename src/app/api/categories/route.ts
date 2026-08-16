@@ -1,5 +1,6 @@
 import { prisma } from "@/app/lib/prisma/prisma";
 import { NextResponse } from "next/server";
+import { requireAdminSession } from "@/app/lib/auth/requireAdminSession";
 
 export async function GET() {
   try {
@@ -16,6 +17,9 @@ export async function GET() {
   }
 }
 export async function POST(req: Request) {
+  const unauthorized = await requireAdminSession();
+  if (unauthorized) return unauthorized;
+
   try {
     const { name, slug, order } = await req.json();
 

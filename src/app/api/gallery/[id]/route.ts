@@ -3,8 +3,12 @@
 import { prisma } from "@/app/lib/prisma/prisma";
 import { del } from "@vercel/blob";
 import { NextResponse } from "next/server";
+import { requireAdminSession } from "@/app/lib/auth/requireAdminSession";
 
 export async function DELETE(req: Request, props: { params: Promise<{ id: string }> }) {
+  const unauthorized = await requireAdminSession();
+  if (unauthorized) return unauthorized;
+
   const params = await props.params;
   const id = parseInt(params.id);
   if (isNaN(id))

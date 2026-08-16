@@ -1,11 +1,15 @@
 import { prisma } from "@/app/lib/prisma/prisma";
 import { put } from "@vercel/blob";
 import { NextResponse } from "next/server";
+import { requireAdminSession } from "@/app/lib/auth/requireAdminSession";
 
 const MAX_FILE_SIZE = 1.5 * 1024 * 1024;
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
 export async function POST(req: Request) {
+  const unauthorized = await requireAdminSession();
+  if (unauthorized) return unauthorized;
+
   const formData = await req.formData();
   const file = formData.get("file") as File;
   const alt = formData.get("alt") as string;
