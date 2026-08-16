@@ -1,12 +1,10 @@
-import { prisma } from "@/app/lib/prisma/prisma";
 import { NextResponse } from "next/server";
 import { requireAdminSession } from "@/app/lib/auth/requireAdminSession";
+import { getAllCategories, createCategory } from "@/app/lib/categories/categories";
 
 export async function GET() {
   try {
-    const categories = await prisma.category.findMany({
-      orderBy: { order: "asc" }, // 🆕 ordre personnalisé
-    });
+    const categories = await getAllCategories();
     return NextResponse.json(categories);
   } catch (err) {
     console.error("GET /api/categories error:", err);
@@ -30,13 +28,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const created = await prisma.category.create({
-      data: {
-        name,
-        slug,
-        order: typeof order === "number" ? order : 0, // 🆕 gère le champ
-      },
-    });
+    const created = await createCategory({ name, slug, order });
 
     return NextResponse.json(created, { status: 201 });
   } catch (err) {

@@ -1,4 +1,3 @@
-// src/app/api/dishes/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma/prisma";
 import { requireAdminSession } from "@/app/lib/auth/requireAdminSession";

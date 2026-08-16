@@ -4,15 +4,15 @@ import { prisma } from "@/app/lib/prisma/prisma";
 import { del } from "@vercel/blob";
 import { NextResponse } from "next/server";
 import { requireAdminSession } from "@/app/lib/auth/requireAdminSession";
+import { parseIdParam } from "@/app/lib/http/parseIdParam";
 
 export async function DELETE(req: Request, props: { params: Promise<{ id: string }> }) {
   const unauthorized = await requireAdminSession();
   if (unauthorized) return unauthorized;
 
   const params = await props.params;
-  const id = parseInt(params.id);
-  if (isNaN(id))
-    return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
+  const id = parseIdParam(params.id);
+  if (id instanceof NextResponse) return id;
 
   const image = await prisma.galleryImage.findUnique({ where: { id } });
   if (!image) return NextResponse.json({ error: "Not found" }, { status: 404 });

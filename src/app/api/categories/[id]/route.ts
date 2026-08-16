@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/app/lib/prisma/prisma";
 import { z } from "zod";
 import { requireAdminSession } from "@/app/lib/auth/requireAdminSession";
+import { parseIdParam } from "@/app/lib/http/parseIdParam";
+import { updateCategory, deleteCategory } from "@/app/lib/categories/categories";
 
 export async function DELETE(
   req: NextRequest,
@@ -10,17 +11,11 @@ export async function DELETE(
   const unauthorized = await requireAdminSession();
   if (unauthorized) return unauthorized;
 
-  const categoryId = parseInt((await context.params).id, 10);
-
-  if (isNaN(categoryId)) {
-    return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
-  }
+  const categoryId = parseIdParam((await context.params).id);
+  if (categoryId instanceof NextResponse) return categoryId;
 
   try {
-    await prisma.category.delete({
-      where: { id: categoryId },
-    });
-
+    await deleteCategory(categoryId);
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error("Erreur suppression catégorie:", err);
@@ -45,11 +40,8 @@ export async function PUT(
   const unauthorized = await requireAdminSession();
   if (unauthorized) return unauthorized;
 
-  const params = await props.params;
-  const categoryId = parseInt(params.id, 10);
-  if (isNaN(categoryId)) {
-    return NextResponse.json({ error: "ID invalide" }, { status: 400 });
-  }
+  const categoryId = parseIdParam((await props.params).id);
+  if (categoryId instanceof NextResponse) return categoryId;
 
   const body = await req.json();
   const parsed = categoryUpdateSchema.safeParse(body);
@@ -62,11 +54,7 @@ export async function PUT(
   }
 
   try {
-    const updated = await prisma.category.update({
-      where: { id: categoryId },
-      data: parsed.data,
-    });
-
+    const updated = await updateCategory(categoryId, parsed.data);
     return NextResponse.json(updated);
   } catch (err) {
     console.error("Erreur mise à jour catégorie:", err);

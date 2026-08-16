@@ -2,7 +2,9 @@
 
 import GalleryPicker from "@/app/components/Gallery/GalleryPicker/GalleryPicker";
 import { ResolvedImage } from "@/app/components/ui/ResolvedImage/ResolvedImage";
-import { useToast } from "@/app/components/ui/ToastContainer/ToastContainer";
+import { FormField } from "@/app/components/ui/FormField/FormField";
+import { Button } from "@/app/components/ui/Button/Button";
+import { useAdminCrud } from "@/app/hooks/useAdminCrud";
 import { useEffect, useState } from "react";
 
 interface Category {
@@ -21,31 +23,25 @@ interface MenuItem {
 }
 
 export default function AdminMenuPage() {
-  const [items, setItems] = useState<MenuItem[]>([]);
+  const { items, editId, setEditId, submit, remove } = useAdminCrud<MenuItem>(
+    {
+      endpoint: "/api/menu",
+      successMessages: { create: "Plat ajouté", update: "Plat mis à jour", delete: "Plat supprimé" },
+      errorMessage: "Erreur lors de la soumission",
+    }
+  );
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [imageUrl, setImageUrl] = useState("https://placehold.co/600x400.png");
   const [categoryId, setCategoryId] = useState("");
   const [categories, setCategories] = useState<Category[]>([]);
-  const [editId, setEditId] = useState<number | null>(null);
-  const { showToast } = useToast();
-
-  const fetchItems = async () => {
-    const res = await fetch("/api/menu");
-    const data = await res.json();
-    setItems(data);
-  };
-
-  const fetchCategories = async () => {
-    const res = await fetch("/api/categories");
-    const data = await res.json();
-    setCategories(data);
-  };
 
   useEffect(() => {
-    fetchItems();
-    fetchCategories();
+    fetch("/api/categories")
+      .then((res) => res.json())
+      .then(setCategories);
   }, []);
 
   const resetForm = () => {
@@ -57,38 +53,18 @@ export default function AdminMenuPage() {
     setEditId(null);
   };
 
-  const submit = async () => {
-    const body = {
+  const handleSubmit = async () => {
+    const ok = await submit({
       title,
       description,
       price: parseFloat(price),
       imageUrl,
       categoryId: parseInt(categoryId),
-    };
-
-    const method = editId ? "PUT" : "POST";
-    const endpoint = editId ? `/api/menu/${editId}` : "/api/menu";
-
-    const res = await fetch(endpoint, {
-      method,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
     });
 
-    if (res.ok) {
-      showToast({
-        title: editId ? "Plat mis à jour" : "Plat ajouté",
-        variant: "success",
-      });
-      resetForm();
-      fetchItems();
-    } else {
-      showToast({
-        title: "Erreur lors de la soumission",
-        variant: "error",
-      });
-    }
+    if (ok) resetForm();
   };
+
   const handleEdit = (item: MenuItem) => {
     setTitle(item.title);
     setDescription(item.description ?? "");
@@ -96,12 +72,6 @@ export default function AdminMenuPage() {
     setImageUrl(item.imageUrl ?? "");
     setCategoryId(item.category.id.toString());
     setEditId(item.id);
-  };
-
-  const handleDelete = async (id: number) => {
-    await fetch(`/api/menu/${id}`, { method: "DELETE" });
-    showToast({ title: "Plat supprimé", variant: "success" });
-    fetchItems();
   };
 
   const itemsByCategory = items.reduce<Record<string, MenuItem[]>>(
@@ -122,55 +92,47 @@ export default function AdminMenuPage() {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input
-            className="form-input"
+          <FormField
             placeholder="Nom du plat"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <input
-            className="form-input"
+          <FormField
             placeholder="Prix (€)"
             type="number"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
           <GalleryPicker value={imageUrl} onSelect={setImageUrl} />
-          <select
-            className="form-input"
+          <FormField
+            as="select"
             value={categoryId}
             onChange={(e) => setCategoryId(e.target.value)}
           >
             <option value="">Catégorie</option>
-            {categories &&
-              categories.map((cat) => (
-                <option key={cat.id} value={cat.id}>
-                  {cat.name}
-                </option>
-              ))}
-          </select>
-          <textarea
-            className="form-input md:col-span-2"
+            {categories.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.name}
+              </option>
+            ))}
+          </FormField>
+          <FormField
+            as="textarea"
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            containerClassName="md:col-span-2"
           />
         </div>
 
         <div className="flex gap-3">
-          <button
-            onClick={submit}
-            className="bg-primary text-white px-5 py-2 text-sm tracking-wide hover:opacity-90 transition"
-          >
+          <Button type="button" size="sm" onClick={handleSubmit}>
             {editId ? "Mettre à jour" : "Ajouter"}
-          </button>
+          </Button>
           {editId && (
-            <button
-              onClick={resetForm}
-              className="text-gray-500 hover:text-gray-800 text-sm"
-            >
+            <Button type="button" variant="ghost" size="sm" onClick={resetForm}>
               Annuler
-            </button>
+            </Button>
           )}
         </div>
       </section>
@@ -222,13 +184,15 @@ export default function AdminMenuPage() {
 
                       <div className="flex justify-between border-t border-outline/30 pt-2 text-sm">
                         <button
+                          type="button"
                           onClick={() => handleEdit(dish)}
                           className="text-blue-600 hover:underline"
                         >
                           ✏️ Modifier
                         </button>
                         <button
-                          onClick={() => handleDelete(dish.id)}
+                          type="button"
+                          onClick={() => remove(dish.id)}
                           className="text-red-600 hover:underline"
                         >
                           🗑 Supprimer

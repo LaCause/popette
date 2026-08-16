@@ -3,31 +3,37 @@
 import ArticleCard from "@/app/components/Article/ArticleCard/ArticleCard";
 import GalleryPicker from "@/app/components/Gallery/GalleryPicker/GalleryPicker";
 import TiptapEditor from "@/app/components/ui/TiptapEditor/TiptapEditor";
-import { useToast } from "@/app/components/ui/ToastContainer/ToastContainer";
+import { FormField } from "@/app/components/ui/FormField/FormField";
+import { Button } from "@/app/components/ui/Button/Button";
+import { useAdminCrud } from "@/app/hooks/useAdminCrud";
 import { Post } from "@/generated/prisma";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 
 type PostFormInput = Omit<Post, "id" | "createdAt" | "date"> & {
   date: string;
 };
 
-export default function AdminPostsPage() {
-  const { showToast } = useToast();
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [form, setForm] = useState<PostFormInput>({
-    slug: "",
-    title: "",
-    date: new Date().toISOString(),
-    image: "",
-    excerpt: "",
-    content: "",
-  });
-  const [editId, setEditId] = useState<number | null>(null);
+const emptyForm: PostFormInput = {
+  slug: "",
+  title: "",
+  date: new Date().toISOString(),
+  image: "",
+  excerpt: "",
+  content: "",
+};
 
+export default function AdminPostsPage() {
+  const { items: posts, editId, setEditId, submit, remove } =
+    useAdminCrud<Post>({
+      endpoint: "/api/posts",
+      successMessages: { create: "Article enregistré", update: "Article enregistré" },
+      errorMessage: "Erreur lors de la soumission",
+    });
+
+  const [form, setForm] = useState<PostFormInput>(emptyForm);
   const [slugTaken, setSlugTaken] = useState(false);
 
-  // Fonction pour vérifier le slug
   const checkSlug = useDebouncedCallback(async (slug: string) => {
     const res = await fetch(`/api/posts/check-slug?slug=${slug}`);
     const { exists } = await res.json();
@@ -45,57 +51,17 @@ export default function AdminPostsPage() {
       .replace(/-+/g, "-");
   };
 
-  const fetchPosts = async () => {
-    const res = await fetch("/api/posts");
-    const data = await res.json();
-    setPosts(data);
-  };
-
-  useEffect(() => {
-    fetchPosts();
-  }, []);
-
   const resetForm = () => {
-    setForm({
-      slug: "",
-      title: "",
-      date: new Date().toISOString(),
-      image: "",
-      excerpt: "",
-      content: "",
-    });
+    setForm(emptyForm);
     setEditId(null);
   };
 
   const handleSubmit = async () => {
-    const method = editId ? "PUT" : "POST";
-    const endpoint = editId ? `/api/posts/${editId}` : "/api/posts";
-
-    const res = await fetch(endpoint, {
-      method,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
-
-    if (res.ok) {
-      resetForm();
-      fetchPosts();
-      showToast({
-        title: "Article enregistré",
-        variant: "success",
-      });
-    } else {
-      showToast({
-        title: "Erreur lors de la soumission",
-        variant: "error",
-      });
-    }
+    const ok = await submit(form);
+    if (ok) resetForm();
   };
 
-  const handleDelete = async (id: number) => {
-    const res = await fetch(`/api/posts/${id}`, { method: "DELETE" });
-    if (res.ok) fetchPosts();
-  };
+  const handleDelete = (id: number) => remove(id);
 
   const handleEdit = (post: Post) => {
     setForm({
@@ -120,7 +86,7 @@ export default function AdminPostsPage() {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input
+          <FormField
             placeholder="Titre"
             value={form.title}
             onChange={(e) => {
@@ -129,30 +95,27 @@ export default function AdminPostsPage() {
               setForm({ ...form, title: newTitle, slug: newSlug });
               checkSlug(newSlug);
             }}
-            className="form-input"
           />
           {slugTaken && (
             <p className="text-sm text-red-500">Ce slug est déjà utilisé</p>
           )}
 
-          <input
+          <FormField
             placeholder="Slug"
             value={form.slug}
             onChange={(e) => setForm({ ...form, slug: e.target.value })}
-            className="form-input"
           />
-          <input
+          <FormField
             type="date"
             placeholder="Date"
             value={form.date}
             onChange={(e) => setForm({ ...form, date: e.target.value })}
-            className="form-input"
           />
-          <input
+          <FormField
             placeholder="Résumé"
             value={form.excerpt}
             onChange={(e) => setForm({ ...form, excerpt: e.target.value })}
-            className="form-input md:col-span-2"
+            containerClassName="md:col-span-2"
           />
           <GalleryPicker
             value={form.image!}
@@ -172,19 +135,13 @@ export default function AdminPostsPage() {
         </div>
 
         <div className="flex gap-3">
-          <button
-            onClick={handleSubmit}
-            className="bg-primary text-white px-4 py-2 rounded hover:opacity-90"
-          >
+          <Button type="button" size="sm" onClick={handleSubmit}>
             {editId ? "Mettre à jour" : "Créer"}
-          </button>
+          </Button>
           {editId && (
-            <button
-              onClick={resetForm}
-              className="text-sm text-gray-600 hover:underline"
-            >
+            <Button type="button" variant="ghost" size="sm" onClick={resetForm}>
               Annuler
-            </button>
+            </Button>
           )}
         </div>
       </section>
@@ -207,12 +164,14 @@ export default function AdminPostsPage() {
               />
               <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 <button
+                  type="button"
                   onClick={() => handleEdit(post)}
                   className="bg-white text-blue-600 border border-blue-200 px-2 py-1 text-xs rounded shadow-sm hover:bg-blue-50"
                 >
                   Modifier
                 </button>
                 <button
+                  type="button"
                   onClick={() => handleDelete(post.id)}
                   className="bg-white text-red-600 border border-red-200 px-2 py-1 text-xs rounded shadow-sm hover:bg-red-50"
                 >

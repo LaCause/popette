@@ -11,6 +11,8 @@ interface ButtonProps
   asChild?: boolean;
   variant?: ButtonVariant;
   size?: ButtonSize;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
 export const Button = forwardRef<

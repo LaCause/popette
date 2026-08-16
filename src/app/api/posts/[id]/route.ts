@@ -1,18 +1,8 @@
 import { prisma } from "@/app/lib/prisma/prisma";
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
 import { requireAdminSession } from "@/app/lib/auth/requireAdminSession";
-
-const postSchema = z.object({
-  slug: z.string().min(1),
-  title: z.string().min(1),
-  date: z.string().refine((val) => !isNaN(Date.parse(val)), {
-    message: "Date invalide",
-  }),
-  image: z.string().url(),
-  content: z.string().min(1),
-  excerpt: z.string().optional(),
-});
+import { postSchema } from "@/app/lib/schemas/schemas";
+import { parseIdParam } from "@/app/lib/http/parseIdParam";
 
 export async function PUT(
   req: NextRequest,
@@ -22,10 +12,8 @@ export async function PUT(
   if (unauthorized) return unauthorized;
 
   const params = await props.params;
-  const id = parseInt(params.id, 10);
-  if (isNaN(id)) {
-    return NextResponse.json({ error: "ID invalide" }, { status: 400 });
-  }
+  const id = parseIdParam(params.id);
+  if (id instanceof NextResponse) return id;
 
   const body = await req.json();
   const parsed = postSchema.safeParse(body);
@@ -70,10 +58,8 @@ export async function DELETE(
   if (unauthorized) return unauthorized;
 
   const params = await props.params;
-  const id = parseInt(params.id, 10);
-  if (isNaN(id)) {
-    return NextResponse.json({ error: "ID invalide" }, { status: 400 });
-  }
+  const id = parseIdParam(params.id);
+  if (id instanceof NextResponse) return id;
 
   try {
     await prisma.post.delete({ where: { id } });
