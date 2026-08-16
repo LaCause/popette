@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma/prisma";
 import { z } from "zod";
+import { requireAdminSession } from "@/app/lib/auth/requireAdminSession";
 
 export async function DELETE(
   req: NextRequest,
   context: { params: Promise<{ id: string }> }
 ) {
+  const unauthorized = await requireAdminSession();
+  if (unauthorized) return unauthorized;
+
   const categoryId = parseInt((await context.params).id, 10);
 
   if (isNaN(categoryId)) {
@@ -38,6 +42,9 @@ export async function PUT(
   req: NextRequest,
   props: { params: Promise<{ id: string }> }
 ) {
+  const unauthorized = await requireAdminSession();
+  if (unauthorized) return unauthorized;
+
   const params = await props.params;
   const categoryId = parseInt(params.id, 10);
   if (isNaN(categoryId)) {

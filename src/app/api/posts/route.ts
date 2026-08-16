@@ -1,6 +1,7 @@
 import { prisma } from "@/app/lib/prisma/prisma";
 import { postSchema } from "@/app/lib/schemas/schemas";
 import { NextRequest, NextResponse } from "next/server";
+import { requireAdminSession } from "@/app/lib/auth/requireAdminSession";
 
 export async function GET() {
   try {
@@ -18,6 +19,9 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
+  const unauthorized = await requireAdminSession();
+  if (unauthorized) return unauthorized;
+
   const body = await req.json();
 
   const parsed = postSchema.safeParse(body);

@@ -17,12 +17,40 @@ const escapeHtml = (str: string) =>
       })[c] || ""
   );
 
+async function isRecaptchaValid(token: unknown): Promise<boolean> {
+  if (typeof token !== "string" || !token) return false;
+
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
+  if (!secret) {
+    console.error("RECAPTCHA_SECRET_KEY manquante côté serveur");
+    return false;
+  }
+
+  const params = new URLSearchParams({ secret, response: token });
+  const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: params,
+  });
+
+  const data = await res.json();
+  return data.success === true && (data.score ?? 0) >= 0.5;
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
     if (body.company && body.company.length > 0) {
       return new Response(JSON.stringify({ ok: true }), { status: 200 });
+    }
+
+    const recaptchaOk = await isRecaptchaValid(body.token);
+    if (!recaptchaOk) {
+      return new Response(
+        JSON.stringify({ error: "Vérification anti-spam échouée" }),
+        { status: 400 }
+      );
     }
 
     const name = escapeHtml(body.name || "");
@@ -47,8 +75,6 @@ export async function POST(req: NextRequest) {
         status: 400,
       });
     }
-
-    console.log(process.env.RESEND_OWNER_EMAIL);
 
     await resend.emails.send({
       from: "Popette Brunch <onboarding@resend.dev>",

@@ -1,6 +1,7 @@
 // src/app/api/dishes/route.ts
 import { NextResponse } from "next/server";
 import { prisma } from "@/app/lib/prisma/prisma";
+import { requireAdminSession } from "@/app/lib/auth/requireAdminSession";
 
 export async function GET() {
   try {
@@ -18,6 +19,9 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  const unauthorized = await requireAdminSession();
+  if (unauthorized) return unauthorized;
+
   try {
     const body = await req.json();
 
